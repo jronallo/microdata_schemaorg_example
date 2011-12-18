@@ -1,6 +1,6 @@
-<% if data.page.next %>
-<div id="step_instructions">
-  <h2>Step Insructions</h2>
-  <%= partial "instructions/instruction_#{data.page.next - 1}"%>
-</div>
+<% if data.page.step_num %>
+  <div id="step_instructions">
+    <h2>Step Insructions</h2>
+    <%= partial "instructions/#{data.page.step_num.to_s}"%>
+  </div>
 <% end %>

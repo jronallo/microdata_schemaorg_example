@@ -1,0 +1,77 @@
+<h2 id="page_name" <%= 'itemprop="name"' if step(3) %>>
+  <%= data.page.header %>
+</h2>
+  <div class="grid_5">    
+      <%= image_tag 'bell_tower.png', (data.page.item_page_image || {}) %>    
+  </div>  
+  <div id="metadata" class="grid_7" 
+    <%= 'itemprop="about"' if step(4) %>>
+    <div id="item" class="info">
+      <h2>Photograph Information</h2>
+      <dl>
+        <!-- use for itemref
+        <dt>Title</dt>
+        <dd>Students jumping in front of Memorial Bell Tower</dd> -->
+        
+        <dt>Created Date</dt>
+        <dd>circa 1981</dd>  
+        
+        <dt>Subjects</dt>
+        <dd>
+          <a href="#buildings">Buildings</a><br/>
+          <a href="#students">Students</a><br/>
+          <a href="#colleges">Universities and colleges</a>          
+        </dd> 
+        
+        <dt>Genre</dt>
+        <dd>
+          <a href="#architectural_photos">Architectural photographs</a><br/>
+          <a href="#publicity_photos">Publicity photographs</a>         
+        </dd>
+        
+        <dt>Digital Collection</dt>
+        <dd><a href="#uapc">University Archives Photographs</a></dd> 
+      </dl> 
+    </div><!-- item -->
+    <div id="building" class="info">
+      <h2>Building Information</h2>
+      <dl>
+        <dt>Building Name</dt>
+        <dd><a href="#memorial_tower">Memorial Tower</a></dd>   
+        
+        <dt>Description</dt>
+        <dd>Memorial Tower honors those alumni who were killed in World War I. 
+          The cornerstone was laid in 1922 and the Tower was dedicated on 
+          November 11, 1949.</dd>
+        
+        <dt>Address</dt>
+        <dd>
+          2701 Sullivan Drive</br>
+          Raleigh, NC 26707
+        </dd>
+        
+        <dt>Latitude, Longitude</dt>
+        <dd>35.786098, -78.663498</dd>
+        
+        <dt>Subjects</dt>
+        <dd>
+          <a href="#towers">Towers</a>                   
+        </dd> 
+        
+      </dl>      
+    </div><!-- building -->
+    <div id="source" class="info">
+      <h2>Source Information</h2>
+      <dl>
+        <dt>Repository</dt>
+        <dd><a href="#scrc">Special Collections Research Center at NCSU Libraries</a></dd>
+        
+        <dt>Collection</dt>
+        <dd><a href="#ua023_005">Memorial Tower (UA023.005.063)</a></dd>
+        
+        <dt>Rights</dt>
+        <dd>Reproduction and use of this material requires permission from 
+          North Carolina State University.</dd>
+      </dl>      
+    </div><!-- source -->
+  </div>  

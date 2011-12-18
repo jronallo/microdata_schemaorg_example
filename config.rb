@@ -62,6 +62,16 @@ page "/steps/*", :layout => "views/layouts/html5"
 #   end
 # end
 
+helpers do
+  def step(num)
+    if data.page.step_num >= num
+      true 
+    else
+      false
+    end
+  end
+end
+
 # Change the CSS directory
 # set :css_dir, "alternative_css_directory"
 

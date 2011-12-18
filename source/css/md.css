@@ -36,3 +36,12 @@ header a{
 #main, #microdata_items, #step_instructions {
   margin-bottom: 10px;
 }
+
+table td {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+code {
+  color: #FF5F00;
+}

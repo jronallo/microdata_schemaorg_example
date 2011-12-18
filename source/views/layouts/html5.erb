@@ -51,7 +51,9 @@
       <h2>Microdata Items</h2>
     </div>
     <footer>
-      <%= link_to "Next", "/steps/#{data.page.next}.html" if data.page.next%> | <%= link_to "Microdata and Schema.org Example", "/" %>
+      <%= link_to "Previous", "/steps/#{data.page.step_num - 1}.html" if data.page.step_num and data.page.step_num != 1 %> |
+      <%= link_to "Next", "/steps/#{data.page.step_num + 1}.html" if data.page.step_num %> <br/>
+      <%= link_to "Microdata and Schema.org Example", "/" %>
     </footer>
   </div> <!--! end of #container -->
 
