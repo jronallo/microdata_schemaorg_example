@@ -1,0 +1,22 @@
+img{float:left;}
+
+dt{color: grey;}
+dd{margin-left: 15px;}
+
+footer{clear:both;}
+
+.fakelink {
+  color:blue;
+  text-decoration:underline;
+}
+
+header {
+  background-color: black; 
+  color:white; 
+  padding: 10px; 
+  margin-bottom:10px;
+}
+
+header a{
+  color: white !important;
+}
