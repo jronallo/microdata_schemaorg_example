@@ -5,7 +5,8 @@
       <%= image_tag 'bell_tower.png', (data.page.item_page_image || {}) %>    
   </div>  
   <div id="metadata" class="grid_7" 
-    <%= 'itemprop="about"' if step(4) %>>
+    <%= 'itemprop="about"' if step(4) %> 
+    <%= 'itemscope itemtype="http://schema.org/Photograph"' if step(5) %> >
     <div id="item" class="info">
       <h2>Photograph Information</h2>
       <dl>
@@ -18,9 +19,9 @@
         
         <dt>Subjects</dt>
         <dd>
-          <a href="#buildings">Buildings</a><br/>
-          <a href="#students">Students</a><br/>
-          <a href="#colleges">Universities and colleges</a>          
+          <a href="#buildings"><span <%= 'itemprop="keywords"' if step(5) %> >Buildings</span></a><br/>
+          <a href="#students"><span <%= 'itemprop="keywords"' if step(5) %> >Students</span></a><br/>
+          <a href="#colleges"%> ><span <%= 'itemprop="keywords"' if step(5) %> >Universities and colleges</span></a>          
         </dd> 
         
         <dt>Genre</dt>
