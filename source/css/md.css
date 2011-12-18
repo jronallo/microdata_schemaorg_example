@@ -21,10 +21,6 @@ header a{
   color: white !important;
 }
 
-#main {
-  border: 1px solid black;
-}
-
 #microdata_items {
   clear:both;
   border: 1px dotted black;
