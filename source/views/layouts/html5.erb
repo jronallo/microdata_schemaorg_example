@@ -33,6 +33,7 @@
        Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="/js/libs/modernizr-2.0.6.min.js"></script>
+  
 </head>
 
 <body>
@@ -43,6 +44,11 @@
     </header>
     <div id="main" role="main">
       <%= yield %>
+      <br style="clear:both;"/>
+    </div>
+    <%= partial 'step_instructions' %>
+    <div id="microdata_items">
+      <h2>Microdata Items</h2>
     </div>
     <footer>
       <%= link_to "Next", "/steps/#{data.page.next}.html" if data.page.next%> | <%= link_to "Microdata and Schema.org Example", "/" %>
@@ -60,6 +66,21 @@
   <!-- scripts concatenated and minified via build script -->
   <script defer src="/js/plugins.js"></script>
   <script defer src="/js/script.js"></script>
+  <script defer src="/js/libs/jquery.microdata.js"></script>
+  <script defer src="/js/libs/jquery.microdata.json.js"></script>
+
+  <script defer>
+    $(function(){
+      //var items = JSON.stringify(jQuery.microdata.json());
+      console.log();
+      var items = $(document).items();
+      var json_items = $.microdata.json(items, function(o) { return JSON.stringify(o, undefined, 2); })
+      
+      $('#microdata_items').append('<pre><code>' + json_items + '</code></pre>');
+    });
+  
+  </script>
+
   <!-- end scripts -->
 
 

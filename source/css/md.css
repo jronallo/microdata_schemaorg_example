@@ -20,3 +20,23 @@ header {
 header a{
   color: white !important;
 }
+
+#main {
+  border: 1px solid black;
+}
+
+#microdata_items {
+  clear:both;
+  border: 1px dotted black;
+  padding: 10px;
+}
+
+#step_instructions {
+  clear:both;
+  border:1px dotted black;
+  padding: 10px;
+}
+
+#main, #microdata_items, #step_instructions {
+  margin-bottom: 10px;
+}
