@@ -82,7 +82,7 @@ helpers do
   end
   
   def image_tag_options
-    default_values = {:id => 'main_image'}
+    default_values = {:id => 'main_image', :alt => 'Students jumping in front of Memorial Bell Tower'}
     if data.page.item_page_image
       data.page.item_page_image.merge(default_values)
     else
