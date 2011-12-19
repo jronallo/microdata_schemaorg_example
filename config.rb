@@ -81,6 +81,15 @@ helpers do
     end
   end
   
+  def image_tag_options
+    default_values = {:id => 'main_image'}
+    if data.page.item_page_image
+      data.page.item_page_image.merge(default_values)
+    else
+      default_values
+    end
+  end
+  
 end
 
 # Change the CSS directory

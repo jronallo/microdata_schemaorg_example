@@ -2,7 +2,7 @@
   <%= data.page.header %>
 </h2>
   <div class="grid_5">    
-      <%= image_tag 'bell_tower.png', data.page.item_page_image.merge( {:id => 'main_image'} ) %>    
+      <%= image_tag 'bell_tower.png', image_tag_options %>    
   </div>  
   <div id="metadata" class="grid_7" 
     <%= 'itemprop="about"' if step(4) %> 
