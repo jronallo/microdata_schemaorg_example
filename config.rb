@@ -70,6 +70,17 @@ helpers do
       false
     end
   end
+  
+  def tutorial_steps
+    root = File.expand_path(File.dirname(__FILE__))    
+    root_dir = File.join(root, 'source', 'instructions','*')    
+    Dir.glob(root_dir).sort.map do |file_path|
+      file = File.read(file_path)
+      first_line = file.split("\n").first
+      first_line.split('.').last.gsub('`', '')
+    end
+  end
+  
 end
 
 # Change the CSS directory

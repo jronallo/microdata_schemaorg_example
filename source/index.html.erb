@@ -3,16 +3,22 @@ title: Microdata and Schema.org Examples
 header: Microdata and Schema.org Examples 
 ---
 
-<div>
-  
-</div>
+<p>
+  This is a tutorial for working through applying HTML5 Microdata using the
+  schema.org vocabulary to a library's digital special collections pages. Follow
+  the steps below to move through the tutorial and learn about features of 
+  Microdata and schema.org. Throughout are pointers to relevant tools.
+</p>
 
-<ol>  
-  <li><%= link_to "Before Microdata", "/steps/1.html" %></li>
-  <li><%= link_to "ItemPage", "/steps/2.html" %></li> 
-  <li><%= link_to "adding a property to ItemPage", "/steps/3.html" %></li> 
-  
+<h2>Tutorial Steps</h2>
+<ol>   
+  <% tutorial_steps.each_with_index do |step, index| %>
+    <li><%= link_to step, "/steps/#{index + 1}.html" %></li>
+  <% end %>    
+</ol>
+
+<h2>Live Example</h2>
+<ul>
   <li><%= link_to "Full Live Example", "http://d.lib.ncsu.edu/collections/catalog/0004493" %></li>
   <li><%= link_to "Full Live Example in Structured Data Linter", "http://linter.structured-data.org/?url=http%3A%2F%2Fd.lib.ncsu.edu%2Fcollections%2Fcatalog%2F0004493&commit=Submit&content=" %></li>
-  
-</ol>
+</ul>

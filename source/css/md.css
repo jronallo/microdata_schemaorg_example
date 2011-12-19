@@ -45,3 +45,7 @@ table td {
 code {
   color: #FF5F00;
 }
+
+blockquote {
+  margin: 0 25px;
+}

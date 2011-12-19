@@ -2,11 +2,12 @@
   <%= data.page.header %>
 </h2>
   <div class="grid_5">    
-      <%= image_tag 'bell_tower.png', (data.page.item_page_image || {}) %>    
+      <%= image_tag 'bell_tower.png', data.page.item_page_image.merge( {:id => 'main_image'} ) %>    
   </div>  
   <div id="metadata" class="grid_7" 
     <%= 'itemprop="about"' if step(4) %> 
-    <%= 'itemscope itemtype="http://schema.org/Photograph"' if step(5) %> >
+    <%= 'itemscope itemtype="http://schema.org/Photograph"' if step(5) %> 
+    <%= 'itemref="main_image"' if step(6) %>>
     <div id="item" class="info">
       <h2>Photograph Information</h2>
       <dl>
@@ -19,15 +20,15 @@
         
         <dt>Subjects</dt>
         <dd>
-          <a href="#buildings"><span <%= 'itemprop="keywords"' if step(5) %> >Buildings</span></a><br/>
-          <a href="#students"><span <%= 'itemprop="keywords"' if step(5) %> >Students</span></a><br/>
-          <a href="#colleges"><span <%= 'itemprop="keywords"' if step(5) %> >Universities and colleges</span></a>          
+          <a href="#buildings"><%= '<span itemprop="keywords">' if step(5) %>Buildings<%= '</span>' if step(5) %></a><br/>
+          <a href="#students"><%= '<span itemprop="keywords">' if step(5) %>Students<%= '</span>' if step(5) %></a><br/>
+          <a href="#colleges"><%= '<span itemprop="keywords">' if step(5) %>Universities and colleges<%= '</span>' if step(5) %></a>          
         </dd> 
         
         <dt>Genre</dt>
         <dd>
-          <a href="#architectural_photos">Architectural photographs</a><br/>
-          <a href="#publicity_photos">Publicity photographs</a>         
+          <a href="#architectural_photos"><%= '<span itemprop="genre">' if step(5) %>Architectural photographs<%= '</span>' if step(5) %></a><br/>
+          <a href="#publicity_photos"><%= '<span itemprop="genre">' if step(5) %>Publicity photographs<%= '</span>' if step(5) %></a>         
         </dd>
         
         <dt>Digital Collection</dt>
