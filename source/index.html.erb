@@ -3,42 +3,9 @@ title: Microdata and Schema.org Examples
 header: Microdata and Schema.org Examples 
 ---
 
-<p>
-  This is a tutorial for working through applying HTML5 Microdata using the
-  schema.org vocabulary to a library's digital special collections pages. 
-</p>
+<%= partial 'index_text' %>
 
-<p>NOTE: YKK in the text here is just an indication that something needs filled in still.</p>
+<%= partial 'table_of_contents' %>
 
-<p>HTML5 Microdata is... YKK</p>
-  
-<p>Schema.org is... YKK  </p>
+<%= partial 'links' %>
 
-<p>Follow
-  the steps below to move through the tutorial and learn about features of 
-  Microdata and Schema.org. As you go along, you will discover relevant tools. 
-When there are still outstanding
-questions about how to implement something in either microdata or schema.org,
-there will be links to relevant discussions. Microdata is a new standard and 
-schema.org a new vocabulary, so there are many points still being worked out.
-
-</p>
-
-<p>
-At the top of the page for each step will be the markup for a page about a
-photograph. Scroll down to find the information about the current step.
-
-</p>
-
-<h2>Tutorial Steps</h2>
-<ol>   
-  <% tutorial_steps.each_with_index do |step, index| %>
-    <li><%= link_to step, "/steps/#{index + 1}.html" %></li>
-  <% end %>    
-</ol>
-
-<h2>Live Example</h2>
-<ul>
-  <li><%= link_to "Full Live Example", "http://d.lib.ncsu.edu/collections/catalog/0004493" %></li>
-  <li><%= link_to "Full Live Example in Structured Data Linter", "http://linter.structured-data.org/?url=http%3A%2F%2Fd.lib.ncsu.edu%2Fcollections%2Fcatalog%2F0004493&commit=Submit&content=" %></li>
-</ul>

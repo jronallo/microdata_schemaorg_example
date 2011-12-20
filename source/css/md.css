@@ -49,3 +49,16 @@ code {
 blockquote {
   margin: 0 25px;
 }
+
+[itemprop] {
+  background-color:#FEFFBA;
+}
+
+img[itemprop] {
+  border: 3px solid #FEFFBA;
+}
+
+.md {
+  border: 1px solid red;
+  padding: 5px;
+}
