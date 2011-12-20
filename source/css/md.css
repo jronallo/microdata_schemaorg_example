@@ -51,11 +51,11 @@ blockquote {
 }
 
 [itemprop] {
-  background-color:#FEFFBA;
+  outline: solid #FFF27F 2px;
 }
 
 img[itemprop] {
-  border: 3px solid #FEFFBA;
+  outline: solid #FFF27F 2px;
 }
 
 .md {
