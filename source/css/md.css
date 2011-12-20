@@ -13,7 +13,7 @@ img{float:left;}
 dt{color: grey;}
 dd{margin-left: 15px;}
 
-footer{clear:both;}
+footer{clear:both; padding: 10px; border: 2px dotted black;}
 
 .fakelink {
   color:blue;

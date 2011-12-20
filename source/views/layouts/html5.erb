@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="/css/text.css">
   <link rel="stylesheet" href="/css/960.css">
   <link rel="stylesheet" href="/css/md.css">
+ <link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css">
+<link rel="stylesheet" href="/css/github.css">
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
@@ -50,9 +52,16 @@
       <h2>Microdata Items</h2>
     </div>
     <footer>
-      <%= link_to "Previous", "/steps/#{data.page.step_num - 1}.html" if data.page.step_num and data.page.step_num != 1 %> |
-      <%= link_to "Next", "/steps/#{data.page.step_num + 1}.html" if data.page.step_num %> <br/>
-      <%= link_to "Microdata and Schema.org Example", "/" %>
+      <% if data.page.step_num %>
+        <%= link_to "Previous", "/steps/#{data.page.step_num - 1}.html" if data.page.step_num and data.page.step_num != 1 %> |
+        <%= link_to "Next", "/steps/#{data.page.step_num + 1}.html" if data.page.step_num %> <br/>
+      <% end %>
+      <p>
+        <%= link_to "Microdata and Schema.org Tutorial", "/" %> by Jason Ronallo.
+      </p>
+      <p>
+        <%= link_to "Get the code.", 'https://github.com/jronallo/microdata_schemaorg_example'%>
+      </p>
     </footer>
   </div> <!--! end of #container -->
 
@@ -68,6 +77,8 @@
   <script defer src="/js/script.js"></script>
   <script defer src="/js/libs/jquery.microdata.js"></script>
   <script defer src="/js/libs/jquery.microdata.json.js"></script>
+  <script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
   <script>
     $(function(){
