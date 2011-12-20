@@ -1,5 +1,7 @@
 body{
-  background-image: url(../images/background.png);
+  background-color: #6D6D6D;
+  background-image: url(../images/background2.png);
+
 }
 #container {width: 1000px; margin: 0 auto; padding-bottom: 25px;}
 #main, #step_instructions, #microdata_items, footer {background-color:white;}
