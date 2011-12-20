@@ -50,20 +50,20 @@ table td {
 code {
   color: #FF5F00;
 }
+pre code {
+  border: 1px solid brown;
+}
+
 
 blockquote {
   margin: 0 25px;
 }
 
-[itemprop] {
-  outline: solid #FFF27F 2px;
-}
+[itemprop] {outline: solid #FFF27F 2px;}
+[itemtype] {outline: solid #FF857F 2px;}
+body[itemtype]{outline:none;}
 
 img[itemprop] {
   outline: solid #FFF27F 2px;
 }
 
-.md {
-  border: 1px solid red;
-  padding: 5px;
-}
