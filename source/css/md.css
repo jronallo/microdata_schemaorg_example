@@ -1,3 +1,13 @@
+body{
+  background-image: url(../images/background.png);
+}
+#container {width: 1000px; margin: 0 auto; padding-bottom: 25px;}
+#main, #step_instructions, #microdata_items, footer {background-color:white;}
+
+#main {border: 3px solid black; padding-bottom: 25px;}
+
+#page_name{margin: 10px;}
+
 img{float:left;}
 
 dt{color: grey;}
@@ -11,25 +21,20 @@ footer{clear:both;}
 }
 
 header {
-  background-color: black; 
-  color:white; 
-  padding: 10px; 
+  background-color:black;
   margin-bottom:10px;
 }
 
-header a{
-  color: white !important;
+header a, header a:visited{
+  color: white;
+  padding: 10px	;
 }
 
-#microdata_items {
-  clear:both;
-  border: 1px dotted black;
-  padding: 10px;
-}
-
+#microdata_items,
 #step_instructions {
+  margin-bottom: 20px;
   clear:both;
-  border:1px dotted black;
+  border:2px dotted black;
   padding: 10px;
 }
 

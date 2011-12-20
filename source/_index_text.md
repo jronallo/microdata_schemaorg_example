@@ -1,6 +1,6 @@
 This is a tutorial for learning about HTML5 Microdata and the schema.org 
-vocabulary. For an example we'll implement microdata on some library's digital special 
-collections pages. 
+vocabulary. For an example we'll implement microdata on a few pages for a 
+library digital special collections site.
   
 Follow
 the steps below to move through the tutorial and learn about features of 
