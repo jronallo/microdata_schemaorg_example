@@ -1,6 +1,5 @@
 <% if data.page.step_num %>
   <div id="step_instructions">
-    <h2>Step Insructions</h2>
-    <%= partial "instructions/#{data.page.step_num.to_s}"%>
+    <%= partial "instructions/#{"%02d" % data.page.step_num}"%>
   </div>
 <% end %>

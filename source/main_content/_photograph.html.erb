@@ -45,7 +45,10 @@
         </dd> 
       </dl> 
     </div><!-- item -->
-    <div id="building" class="info" <%= 'itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings"' if step(8) %> >
+    <div id="building" class="info" 
+      <%= 'itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings"' if step(8) %>
+      <%= 'itemid="http://www.freebase.com/m/026twjv"' %>
+    >
       <h2>Building Information</h2>
       <dl>
         <dt>Building Name</dt>
@@ -57,13 +60,22 @@
           November 11, 1949.</dd>
         
         <dt>Address</dt>
-        <dd>
+        <dd <%= 'itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"' if step(9) %>>
+          <% if step(9) %>
+            <span itemprop="streetAddress">2701 Sullivan Drive</span><br/>
+            <span itemprop="addressLocality">Raleigh</span>, <span itemprop="addressLocality">NC</span> <span itemprop="postalCode">26707</span>
+          <% else %>
           2701 Sullivan Drive<br/>
           Raleigh, NC 26707
+          <% end %>
         </dd>
         
         <dt>Latitude, Longitude</dt>
-        <dd>35.786098, -78.663498</dd>
+        <% if step(9) %>
+        <dd itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates"><span itemprop="latitude">35.786098</span>, <span itemprop="longitude">-78.663498</span></dd>
+        <% else %>
+          <dd>35.786098, -78.663498</dd>
+        <% end %>
         
         <dt>Subjects</dt>
         <dd>
@@ -82,7 +94,7 @@
         <dd><a href="#ua023_005">Memorial Tower (UA023.005.063)</a></dd>
         
         <dt>Rights</dt>
-        <dd>Reproduction and use of this material requires permission from 
+        <dd <%= 'itemprop="http://purl.org/dc/elements/1.1/rights"' if step(11) %>>Reproduction and use of this material requires permission from 
           North Carolina State University.</dd>
       </dl>      
     </div><!-- source -->
