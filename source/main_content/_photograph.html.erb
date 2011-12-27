@@ -7,8 +7,8 @@
   <div id="metadata" class="grid_7" 
     <%= 'itemprop="about"' if step(4) %> 
     <%= 'itemscope itemtype="http://schema.org/Photograph"' if step(5) %> 
-    <%= 'itemref="main_image"' if step(6) and !step(8) %>
-    <%= 'itemref="main_image isPartOf_digital"' if step(8) %>
+    <%= 'itemref="main_image"' if step(6) and !step(25) %>
+    <%= 'itemref="main_image isPartOf_digital"' if step(25) %>
     >
     <div id="item" class="info">
       <h2>Photograph Information</h2>
@@ -38,21 +38,21 @@
         </dd>
         
         <dt>Digital Collection</dt>
-        <dd <%= 'itemscope' if step(8)%> >
-          <%= '<span itemprop="isPartOf" itemscope itemtype="http://schema.org/CollectionPage" id="isPartOf_digital">' if step(8) %>
-            <a href="#uapc" <%= 'itemprop="url"' if step(8) %>><%='<span itemprop="name">' if step(8)%>University Archives Photographs<%= '</span>' if step(8)%>	</a>
-          <%= '</span>' if step(8)%>
+        <dd <%= 'itemscope' if step(25)%> >
+          <%= '<span itemprop="isPartOf" itemscope itemtype="http://schema.org/CollectionPage" id="isPartOf_digital">' if step(25) %>
+            <a href="#uapc" <%= 'itemprop="url"' if step(25) %>><%='<span itemprop="name">' if step(25)%>University Archives Photographs<%= '</span>' if step(25)%>	</a>
+          <%= '</span>' if step(25)%>
         </dd> 
       </dl> 
     </div><!-- item -->
-    <div id="building" class="info">
+    <div id="building" class="info" <%= 'itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings"' if step(8) %> >
       <h2>Building Information</h2>
       <dl>
         <dt>Building Name</dt>
-        <dd><a href="#memorial_tower">Memorial Tower</a></dd>   
+        <dd><a href="#memorial_tower"><%= '<span itemprop="name">' if step(8) %>Memorial Tower<%= '</span>' if step(8)%></a></dd>   
         
         <dt>Description</dt>
-        <dd>Memorial Tower honors those alumni who were killed in World War I. 
+        <dd <%= 'itemprop="description"' if step(8) %>>Memorial Tower honors those alumni who were killed in World War I. 
           The cornerstone was laid in 1922 and the Tower was dedicated on 
           November 11, 1949.</dd>
         
