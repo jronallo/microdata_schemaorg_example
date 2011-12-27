@@ -7,7 +7,9 @@
   <div id="metadata" class="grid_7" 
     <%= 'itemprop="about"' if step(4) %> 
     <%= 'itemscope itemtype="http://schema.org/Photograph"' if step(5) %> 
-    <%= 'itemref="main_image"' if step(6) %>>
+    <%= 'itemref="main_image"' if step(6) and !step(8) %>
+    <%= 'itemref="main_image isPartOf_digital"' if step(8) %>
+    >
     <div id="item" class="info">
       <h2>Photograph Information</h2>
       <dl>
@@ -36,7 +38,11 @@
         </dd>
         
         <dt>Digital Collection</dt>
-        <dd><a href="#uapc">University Archives Photographs</a></dd> 
+        <dd <%= 'itemscope' if step(8)%> >
+          <%= '<span itemprop="isPartOf" itemscope itemtype="http://schema.org/CollectionPage" id="isPartOf_digital">' if step(8) %>
+            <a href="#uapc" <%= 'itemprop="url"' if step(8) %>><%='<span itemprop="name">' if step(8)%>University Archives Photographs<%= '</span>' if step(8)%>	</a>
+          <%= '</span>' if step(8)%>
+        </dd> 
       </dl> 
     </div><!-- item -->
     <div id="building" class="info">
