@@ -1,4 +1,4 @@
-### 14. Tools
+### Tools
 
 This page lists tools for working with Microdata and Schema.org.
 
@@ -50,5 +50,7 @@ This page lists tools for working with Microdata and Schema.org.
   </ul>
 
 </div>
+
+
 
 

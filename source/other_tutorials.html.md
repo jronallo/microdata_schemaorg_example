@@ -1,4 +1,5 @@
-### 16. Other Tutorials
+### Other Tutorials
 
 * [Google Rich Snippets Videos](http://googlewebmastercentral.blogspot.com/2011/12/rich-snippets-instructional-videos.html?m=1):
   This series of short tutorial videos uses Microdata and Schema.org.
+  

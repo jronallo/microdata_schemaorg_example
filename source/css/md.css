@@ -6,7 +6,7 @@ body{
 #container {width: 1000px; margin: 0 auto; padding-bottom: 25px;}
 #main, #step_instructions, #microdata_items, footer {background-color:white;}
 
-/* #main {border: 3px solid black; padding-bottom: 25px;} */
+#main{padding-bottom: 20px;}
 
 #page_name{margin: 10px;}
 

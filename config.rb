@@ -48,10 +48,14 @@ set :md, :layout_engine => :erb
 page "/index.html", :layout => "views/layouts/html5"
 #page "/steps/*", :layout => "views/layouts/html5"
 
-(0..16).each do |step_num|
+(0..13).each do |step_num|
   page "/steps/#{step_num}.html", :layout => "views/layouts/html5" do
     @step_num = step_num
   end
+end
+
+['tools', 'mappings', 'other_tutorials'].each do |page_name|
+  page "/#{page_name}.html", :layout => "views/layouts/html5"
 end
 
 # ["tom", "dick", "harry"].each do |name|
@@ -102,7 +106,7 @@ helpers do
   end
   
   def tutorial_steps    
-    (0..16).map do |step_num|
+    (0..13).map do |step_num|
       title_text_from_step(step_num)
     end    
   end

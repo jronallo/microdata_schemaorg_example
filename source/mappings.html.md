@@ -1,4 +1,4 @@
-### 15. Mappings
+### Mappings
 
 Listed here are links to mappings from other vocabularies to Schema.org. If you
 maintain your metadata in one of these vocabularies, you can use these to 
@@ -15,3 +15,4 @@ help expose your data in a way that the search engines understand.
   </ul>
 
 </div>
+
