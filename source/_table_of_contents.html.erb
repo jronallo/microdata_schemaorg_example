@@ -1,5 +1,5 @@
 <h2>Tutorial Steps</h2>
-<ol>   
+<ol id="tutorial_steps" start="0">   
   <% tutorial_steps.each_with_index do |step, index| %>
     <li><%= link_to step, "/steps/#{index}.html" %></li>
   <% end %>    

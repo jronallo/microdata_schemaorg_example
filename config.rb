@@ -43,8 +43,22 @@
 #   page "/admin/*"
 # end
 
+set :md, :layout_engine => :erb
+
 page "/index.html", :layout => "views/layouts/html5"
-page "/steps/*", :layout => "views/layouts/html5"
+#page "/steps/*", :layout => "views/layouts/html5"
+
+(0..16).each do |step_num|
+  page "/steps/#{step_num}.html", :layout => "views/layouts/html5" do
+    @step_num = step_num
+  end
+end
+
+# ["tom", "dick", "harry"].each do |name|
+#   page "/about/#{name}.html", :proxy => "/about/template.html" do
+#     @person_name = name
+#   end
+# end
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
@@ -64,28 +78,39 @@ page "/steps/*", :layout => "views/layouts/html5"
 
 helpers do
   def step(num)
-    if data.page.step_num >= num
+    if @step_num and @step_num >= num
       true 
     else
       false
     end
   end
   
-  def tutorial_steps
-    root = File.expand_path(File.dirname(__FILE__))    
-    root_dir = File.join(root, 'source', 'instructions','*')    
-    Dir.glob(root_dir).sort.map do |file_path|
-      next unless File.file?(file_path)
-      file = File.read(file_path)
-      first_line = file.split("\n").first
-      first_line.split('.').last.gsub('`', '')
-    end
+  def title_text_from_step(step_num)
+    file = File.read File.join(steps_root, "#{step_num}.html.md")
+    first_line = file.split("\n").first
+    title_parts = first_line.split('.')
+    title_parts.shift
+    title_parts.join('.').gsub('`', '')
+  end
+  
+  def title_text
+    title_text_from_step(@step_num)
+  end
+  
+  def steps_root
+    File.join(File.expand_path(File.dirname(__FILE__)), 'source', 'steps')
+  end
+  
+  def tutorial_steps    
+    (0..16).map do |step_num|
+      title_text_from_step(step_num)
+    end    
   end
   
   def image_tag_options
     default_values = {:id => 'main_image', :alt => 'Students jumping in front of Memorial Bell Tower'}
-    if data.page.item_page_image
-      data.page.item_page_image.merge(default_values)
+    if step(3)
+     {'itemprop' => 'image'}.merge(default_values)
     else
       default_values
     end
