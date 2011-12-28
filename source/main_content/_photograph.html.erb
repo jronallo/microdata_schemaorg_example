@@ -47,7 +47,7 @@
     </div><!-- item -->
     <div id="building" class="info" 
       <%= 'itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings"' if step(8) %>
-      <%= 'itemid="http://www.freebase.com/m/026twjv"' %>
+      <%= 'itemid="http://www.freebase.com/m/026twjv"' if step(10) %>
     >
       <h2>Building Information</h2>
       <dl>
@@ -94,7 +94,7 @@
         <dd><a href="#ua023_005">Memorial Tower (UA023.005.063)</a></dd>
         
         <dt>Rights</dt>
-        <dd <%= 'itemprop="http://purl.org/dc/elements/1.1/rights"' if step(11) %>>Reproduction and use of this material requires permission from 
+        <dd <%= 'itemprop="http://purl.org/dc/elements/1.1/rights"' if step(12) %>>Reproduction and use of this material requires permission from 
           North Carolina State University.</dd>
       </dl>      
     </div><!-- source -->
