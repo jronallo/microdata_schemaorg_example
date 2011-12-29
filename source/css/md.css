@@ -65,6 +65,10 @@ blockquote {
 [itemtype] {outline: solid #FF857F 2px;}
 body[itemtype]{outline:none;}
 
+[itemtype="http://schema.org/ItemList"] li div {
+  margin-left: 50px;
+}
+
 img[itemprop] {
   outline: solid #FFF27F 2px;
 }
