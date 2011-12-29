@@ -1,4 +1,4 @@
-Know other resources. Send an email to jronallo@gmail.com.
+Know other resources? Send an email to jronallo@gmail.com.
 
 ### Other Tutorials and Resources
 
@@ -26,4 +26,5 @@ Know other resources. Send an email to jronallo@gmail.com.
 * [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
   Schema.org discussion has moved over to this list.
 * [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
+* [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
   

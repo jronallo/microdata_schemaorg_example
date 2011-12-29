@@ -1,7 +1,9 @@
 ### Examples
 
+Know other examples in the cultural heritage sector? 
+Send an email to jronallo@gmail.com.
 
-#### Examples in the Cultural Heritage sector
+#### Examples in the cultural heritage sector
 
 * [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections)
   The example in this tutorial is based on this site.

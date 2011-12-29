@@ -2,7 +2,7 @@
 
 This page lists tools for working with Microdata and Schema.org.
 
-Know other resources. Send an email to jronallo@gmail.com.
+Know other resources? Send an email to jronallo@gmail.com.
 
 <div itemscope="" itemtype="http://schema.org/ItemList">
   <h4 itemprop="name">Recommended Microdata and Schema.org Tools</h4>
