@@ -7,7 +7,7 @@ Send an email to jronallo@gmail.com.
 
 * [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections)
   The example in this tutorial is based on this site.
-* [Indianapolis Museum of Art](YKK)
+* [Indianapolis Museum of Art](http://www.imamuseum.org/art/collections/artwork/untitled-calder-alexander)
 * [Steve](YKK)
 
 
