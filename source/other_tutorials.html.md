@@ -21,6 +21,10 @@ Know other resources? Send an email to jronallo@gmail.com.
   a community of users, researchers, and developers who are designing and using 
   annotated HTML markup."
   
+* [GoodRelations and Microdata Syntax](http://wiki.goodrelations-vocabulary.org/Microdata)
+
+* [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
+  
 ### Discussions
 
 * [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
