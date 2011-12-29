@@ -23,6 +23,7 @@ Know other resources. Send an email to jronallo@gmail.com.
   
 ### Discussions
 
-* [Public Vocabs list](YKK)
-* [W3C HTML Data Task Force](YKK)
+* [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
+  Schema.org discussion has moved over to this list.
+* [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
   
