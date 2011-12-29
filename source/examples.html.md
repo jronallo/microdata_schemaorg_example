@@ -8,7 +8,11 @@ Send an email to jronallo@gmail.com.
 * [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections)
   The example in this tutorial is based on this site.
 * [Indianapolis Museum of Art](http://www.imamuseum.org/art/collections/artwork/untitled-calder-alexander)
-* [Steve](YKK)
+  Uses CreativeWork and extends the type by adding the following properties:
+  accessionNumber, collection, copyright, creditLine, dimensions, materials.
+* [Steve](http://tagger.steve.museum/steve/object/14534) 
+  A project associated with the IMA and other museums for tagging objects.
+  As of this writing, it doesn't parse correctly, though the markup is there.
 
 
 #### Other lists of examples
