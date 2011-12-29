@@ -2,9 +2,11 @@
 
 This page lists tools for working with Microdata and Schema.org.
 
+Know other resources. Send an email to jronallo@gmail.com.
 
 <div itemscope="" itemtype="http://schema.org/ItemList">
-  <h4 itemprop="name">Good Microdata and Schema.org Tools</h4>
+  <h4 itemprop="name">Microdata and Schema.org Tools</h4>
+  <p>These are tools which I have regularly used.</p>
   <meta itemprop="mainContentOfPage" content="true"/>
   <ul>
     <li itemprop="itemListElement"><a href="">Rich Snippets Testing Tool</a>
@@ -41,13 +43,16 @@ This page lists tools for working with Microdata and Schema.org.
         to how this tutorial outputs the JSON from parsing the page.
       </div>
     </li>
+    <li itemprop="itemListElement">
+      <a href="http://html5.validator.nu/">HTML5 Living Validator</a>
+    </li>
     <!-- <li itemprop="itemListElement"><a href=""></a></li> -->
   </ul>
 
 </div>
 
 <div itemscope="" itemtype="http://schema.org/ItemList">
-  <h4 itemprop="name">Other Tools</h4>
+  <h4 itemprop="name">More Microdata and Schema.org Tools Tools</h4>
   <meta itemprop="mainContentOfPage" content="true"/>
   <ul>    
     <li itemprop="itemListElement"><a href="http://krofdrakula.github.com/microdata-tool/">Microdata Tool</a></li>
@@ -73,7 +78,27 @@ This page lists tools for working with Microdata and Schema.org.
     </li>
     
     <li itemprop="itemListElement"><a href="http://microdata.realitysimple.com/">Microdata Tools</a></li>
-    <li itemprop="itemListElement"><a href=""></a></li>
+    <li itemprop="itemListElement"><a href="http://omnidator.appspot.com/">omnidator</a>:
+      <div>Translates Schema.org HTML/Microdata or CSV to various RDF
+        serializations.
+      </div>
+    </li>
+    
+    <li itemprop="itemListElement">
+      <a href="http://www.ebusiness-unibw.org/tools/rdf2microdata/">RDF2Microdata Converter</a>
+      <div>
+        From the folks behind GoodRelations.
+      </div>
+    </li>
+    <li itemprop="itemListElement"><a href="https://github.com/mhausenblas/web.instata">web.insta</a>
+      <div>
+        Converts CSV data to HTML+microdata.
+      </div>
+    </li>
+    
+    
+    <li itemprop="itemListElement"><a href="http://schemafied.com/">schemafied</a></li>
+    <li itemprop="itemListElement"><a href="http://www.schemafeed.com/">Schema Feed</a></li>
     <li itemprop="itemListElement"><a href=""></a></li>
   </ul>
 
