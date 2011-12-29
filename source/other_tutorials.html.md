@@ -21,3 +21,8 @@ Know other resources. Send an email to jronallo@gmail.com.
   a community of users, researchers, and developers who are designing and using 
   annotated HTML markup."
   
+### Discussions
+
+* [Public Vocabs list](YKK)
+* [W3C HTML Data Task Force](YKK)
+  

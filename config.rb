@@ -54,7 +54,7 @@ page "/index.html", :layout => "views/layouts/html5"
   end
 end
 
-['tools', 'mappings', 'other_tutorials'].each do |page_name|
+['tools', 'mappings', 'other_tutorials', 'examples'].each do |page_name|
   page "/#{page_name}.html", :layout => "views/layouts/html5"
 end
 
