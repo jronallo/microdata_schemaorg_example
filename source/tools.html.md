@@ -5,7 +5,7 @@ This page lists tools for working with Microdata and Schema.org.
 Know other resources. Send an email to jronallo@gmail.com.
 
 <div itemscope="" itemtype="http://schema.org/ItemList">
-  <h4 itemprop="name">Microdata and Schema.org Tools</h4>
+  <h4 itemprop="name">Recommended Microdata and Schema.org Tools</h4>
   <p>These are tools which I have regularly used.</p>
   <meta itemprop="mainContentOfPage" content="true"/>
   <ul>
@@ -95,11 +95,9 @@ Know other resources. Send an email to jronallo@gmail.com.
         Converts CSV data to HTML+microdata.
       </div>
     </li>
-    
-    
     <li itemprop="itemListElement"><a href="http://schemafied.com/">schemafied</a></li>
     <li itemprop="itemListElement"><a href="http://www.schemafeed.com/">Schema Feed</a></li>
-    <li itemprop="itemListElement"><a href=""></a></li>
+    
   </ul>
 
 </div>
