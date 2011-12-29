@@ -24,6 +24,8 @@ Know other resources? Send an email to jronallo@gmail.com.
 * [GoodRelations and Microdata Syntax](http://wiki.goodrelations-vocabulary.org/Microdata)
 
 * [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
+
+* [Spoonfeeding Library Data to Search Engines](http://go-to-hellman.blogspot.com/2011/07/spoonfeeding-library-data-to-search.html)
   
 ### Discussions
 
