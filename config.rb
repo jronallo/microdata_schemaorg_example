@@ -1,3 +1,5 @@
+require 'maruku'
+
 ### 
 # Compass
 ###
@@ -54,7 +56,7 @@ page "/index.html", :layout => "views/layouts/html5"
   end
 end
 
-['tools', 'mappings', 'other_tutorials', 'examples'].each do |page_name|
+['tools', 'mappings', 'other_tutorials', 'examples', 'article'].each do |page_name|
   page "/#{page_name}.html", :layout => "views/layouts/html5"
 end
 
@@ -119,6 +121,14 @@ helpers do
       default_values
     end
   end
+  
+  def article_html_for_step(step_num)
+    markdown_string = File.read( File.join(steps_root, "#{step_num}.html.md"))
+    markdown_string = markdown_string.split('<hr/>').first    
+    Maruku.new(markdown_string).to_html
+  end
+  
+  
   
 end
 
