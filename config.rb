@@ -60,6 +60,8 @@ end
   page "/#{page_name}.html", :layout => "views/layouts/html5"
 end
 
+page "/code4lib.html", :layout => "views/layouts/html5"
+
 # ["tom", "dick", "harry"].each do |name|
 #   page "/about/#{name}.html", :proxy => "/about/template.html" do
 #     @person_name = name
