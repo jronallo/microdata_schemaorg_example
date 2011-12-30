@@ -89,7 +89,6 @@
   <script>
     $(function(){
       //var items = JSON.stringify(jQuery.microdata.json());
-      console.log();
       var items = $(document).items();
       var json_items = $.microdata.json(items, function(o) { return JSON.stringify(o, undefined, 2); })
       
