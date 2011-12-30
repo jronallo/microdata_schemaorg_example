@@ -394,9 +394,15 @@ One of the cool features of Microdata is that it is designed to be
  
 YKK
 
+You can copy any of the HTML snippets from here into [Live Microdata]() 
+to see what the JSON output would look like. 
+
+
 ### Microdata DOM API
 
-Another neat feature is the [Microdata DOM API](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#microdata-dom-api),
+Live Microdata uses [MicrodataJS](),
+which is a Javascript (jQuery) implementation of the [Microdata DOM API](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#microdata-dom-api).
+The Microdata DOM API is another neat feature of HTML5 Microdata
 which allows you to extract Microdata client-side. 
 
 You can test whether your browser implements the Microdata DOM API by running the
@@ -413,7 +419,6 @@ type or types as an argument like `document.getItems('http://schema.org/ItemPage
 This API may change in the future 
 ["to match what actually gets implemented"](http://old.nabble.com/Re%3A-New-feature-announcement---Implement-HTML5-Microdata-in-WebKit-p32521849.html).
 
-
     >>> var itemPage = document.getItems('http://schema.org/ItemPage')
       undefined
     >>> itemPage
@@ -422,7 +427,44 @@ This API may change in the future
       HTMLPropertiesCollection [<h2 id="page_name" itemprop="name">, 
         <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png"/>]
 
+### ItemPage about a Photograph
+
+Now that we have some basic microdata on the page, let's try to to describe more
+items on the page. Looking at the valid properties for an [ItemPage](http://schema.org/ItemPage),
+it has an `about` property, inherited from [CreativeWork](http://schema.org/CreativeWork).
+ItemPage inherits different
+properites from Thing, CreativeWork, and WebPage.
+In some cases child types add in new properites, but in the case of ItemPage no 
+new properties are defined.
+
+If we add `itemprop="about"` to the `div` containing all metadata, then what
+would be extracted from the page is just the text content with line breaks and
+all. Microdata processing does not
+maintain any of the markup at all. (If you need to maintain some XML or other markup,
+then [consider](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#syntax-considerations) 
+using microformats or RDfa, which have the ability to maintain
+XML literals.) Microdata is specified in a way where if the
+author of the page gets it wrong, the processor may still be able to do something
+useful with even just that text content. Processors should expect bad data 
+[Conformance](http://schema.org/docs/datamodel.html).
+
+Looking at how the `about` property is defined, the proper value is another 
+`Thing`. This allows us to pick any type in the Schema.org hierarchy to create
+a new item which will become the value of the `about` property. In this case
+it makes sense to 
 
 
+Here's what our marked up snippet looks like so far:
 
+    YKK
+
+This snippet now basically says:
+
+> This page is an ItemPage with a "name" of "YKK" and an "image" at ""YKK. 
+> The ItemPage
+> is "about" a Photograph. The Photograph 
+
+Here's the JSON output so far:
+
+    YKK
 
