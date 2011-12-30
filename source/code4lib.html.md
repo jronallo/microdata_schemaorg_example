@@ -6,15 +6,18 @@ On June 2, 2011 [Bing](http://www.bing.com/community/site_blogs/b/search/archive
 and 
 [Yahoo](http://developer.yahoo.com/blogs/ydn/posts/2011/06/introducing-schema-org-a-collaboration-on-structured-data/ ) 
 announced the joint effort [Schema.org](http://schema.org). When the big search
-engines talk, web site authors listen. This article is an introduction
-to Microdata and Schema.org. 
+engines talk, web site authors listen. 
+
+This is an introduction to Microdata and Schema.org. 
 The tutorial will lead you through implementing these new technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, you will be introduced to some tools for implementers and some
 issues with applying this to cultural heritage materials.
 
-HTML5
------
+Foundation
+----------
+
+### HTML5
 
 The [HTML5 standard](http://www.w3.org/TR/html5/) 
 (or [HTML Living Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/), 
@@ -42,8 +45,7 @@ already know. The trip from the database or XML into HTML results in lost meanin
 Maybe a human can read your field labels to understand your metadata, but
 that meaning is lost on machines.
 
-One Simple Solution
--------------------
+### One Simple Solution
 
 One solution communicate more of this metadata is to provide an alternative 
 representation of your data separate from the HTML representation. You could
@@ -63,8 +65,7 @@ Techniques like this do not use the visible content
 of the HTML, so the consumers of your data have to know to look for this
 particular invisible content.
 
-Embedding Data in Markup
-------------------------
+### Embedding Data in Markup
 
 The HTML representation is most visible to users, so it
 is also the HTML code which gets the most attention from developers. 
@@ -78,8 +79,7 @@ which take the
 approach of embedding structured data with the visible HTML content. Microdata
 is just one of the syntaxes in use today.
 
-History of Structured Data in HTML
-----------------------------------
+### History of Structured Data in HTML
 
 Other efforts that came before Microdata have solved this same problem of marking
 up the meaning of content. Of the main syntaxes used today,
@@ -124,8 +124,7 @@ which may resolve to alternative formats through a service.
 [COinS](http://ocoins.info/) uses empty spans to make OpenURL context objects
 available for autodiscovery by machines.
 
-So what is Microdata?
----------------------
+### So what is Microdata?
 
 Microdata came out of a [long thread about incorporating RDFa in HTML5](http://www.jenitennison.com/blog/node/124).
 Because RDFa simply was not going to be incorporated into HTML5, 
@@ -145,23 +144,21 @@ attributes are core to the data model:
 * `itemtype` specifies the type of item
 * `itemprop` gives the item properties
 
-First Example
--------------
+### A First Example
 
-
-     <div itemscope itemtype="unorganization">
-      <span itemprop="name">code4lib</span>
+    <div itemscope itemtype="unorganization">
+      <span itemprop="eponym">code4lib</span>
     </div>
     
 The user of a browser would only see the text "code4lib".
 The snippet provides more meaning for machines by asserting that there is an 
-"unorganization" with the name "code4lib."
+"unorganization" with the "eponym" "code4lib."
 
 The `@itemscope` attribute creates an item and requires no value.
 The `@itemtype` attribute asserts that the type of thing being described is an 
 "unorganization."
 The item has a single
-key-value pair--the property "name" with a value of "code4lib."
+key-value pair--the property "eponym" with a value of "code4lib."
 
 To make it clear to someone who thinks in JSON, here is what the item looks
 like:
@@ -171,7 +168,7 @@ like:
         "unorganization"
       ],
       "properties": {
-        "name": [
+        "eponym": [
           "code4lib"
         ]
       }
@@ -181,8 +178,7 @@ Those are the only three attributes necessary for a complete understanding of th
 Microdata model. (You'll learn about two more optional ones later.) 
 Pretty simple, right?
 
-What is Schema.org?
--------------------
+### What is Schema.org?
 
 While the above snippet is completely valid Microdata,  
 it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
@@ -203,7 +199,12 @@ You can browse the
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
 feel of the bounds of the world according to search engines. 
 
-YKK describe the vocabulary a bit more.
+Schema.org defines a hierarchy of types descending from Thing. Thing has four
+properties (description, image, name, url) which are inherited by other types.
+Child types can add their own properites and have their own children types.
+A property name with a particular meaning has that same meaning when found in
+every type in the vocabulary.
+We will get to other specifics as we go through a tutorial.
 
 Microdata and Schema.org have a tight connection, though each can be used without
 the other.
@@ -211,11 +212,67 @@ The search engines are currently the main consumers
 of Schema.org data and have a stated preference for Microdata, which can be
 seen through the Schema.org examples being written using the Microdata syntax.
 
-Here's the above example rewritten to use the Schema.org [`Organization`]()
+Here's the above Microdata example rewritten to make more sense and
+use the Schema.org [`Organization`](http://schema.org/Organization)
 type.
 
-Rich Snippets
--------------
+    <div itemscope itemtype="http://schema.org/Organization">
+      <span itemprop="name">code4lib</span>
+    </div>
 
+### Rich Snippets
 
+The most obvious way that the search engines are currently using
+Microdata is to be able to display rich snippets in search results. 
+If you have done a Google search in the past two years, you have probably seen 
+some examples of this.
+You can see
+good examples of how powerful this is by doing a [Google Recipe Search](http://www.google.com/landing/recipes/)
+for "vegan cupcakes":
+
+<p>
+<img alt="Rich Snippet for Vegan Cupcakes" src="/images/vegan_cupcakes.png"/>
+</p>
+
+This search result snippet for a recipe includes an image, reviews, cooking 
+time, calorie count, some of the text introducing the recipe, and a list of
+some of the ingredients needed. This gives a lot more scent to the user for 
+clicking on a particular result.
+Snippets with this kind of extra information are
+reported to [increase click through rates](http://www.heppresearch.com/gr4google). 
+
+Google started presenting rich snippets [in 2009](http://googlewebmastercentral.blogspot.com/2009/05/introducing-rich-snippets.html). 
+Using embedded markup like microformats, RDFa or Microdata, page authors 
+can influence what could show up in a search result snippet.
+Both [Microformats](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=146897) 
+and [RDFa](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=146898) 
+were promoted
+for rich snippets in the past and continue to be supported. 
+Google [added support for Microdata for Rich Snippets](http://googlewebmastercentral.blogspot.com/2010/03/microdata-support-for-rich-snippets.html) 
+in early 2010. After RDFa Lite was created, the Schema.org partners agreed to
+support that syntax as well.
+
+Before Schema.org rich snippets were constrained in the types that would trigger
+them. Reviews, products, and recipes were common types.
+At the time of this writing there is still not support for all, or even most,
+of the Schema.org types, but the number of supported types and example rich 
+snippets has been slowly growing. The promise is that many more of the Schema.org
+types will begin to trigger rich snippets.
+
+Currently, the main reason to be using Microdata with Schema.org is that it is
+the latest search-engine preferred method for exposing structured data in HTML.
+While other consumers for structured data using Microdata and/or Schema.org may
+appear in the future, the [most compelling uses cases](YKK Hixie on use cases) 
+are currently for use by the search engines. By providing the search engines
+with more data on your pages, it improves the search experience of users and 
+can draw them to your site. Since most of the users of your site likely come
+through the search engines, this could be a powerful way to draw more users
+to your resources.
+
+From a developer's perspective there are [many considerations](YKK) for 
+choosing a particular syntax. Microdata has a natural fit with HTML and is
+designed for simplicity and ease of implementation.
+
+Tutorial
+--------
 
