@@ -427,6 +427,7 @@ This API may change in the future
       HTMLPropertiesCollection [<h2 id="page_name" itemprop="name">, 
         <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png"/>]
 
+
 ### ItemPage about a Photograph
 
 Now that we have some basic microdata on the page, let's try to to describe more
@@ -449,14 +450,88 @@ useful with even just that text content. Processors should expect bad data
 [Conformance](http://schema.org/docs/datamodel.html).
 
 Looking at how the `about` property is defined, the proper value is another 
-`Thing`. This allows us to pick any type in the Schema.org hierarchy to create
-a new item which will become the value of the `about` property. In this case
-it makes sense to 
+`Thing`. In this way Schema.org suggests how to nest items.
+In this case it allows us to pick any type in the Schema.org hierarchy to create
+a new item which will become the value of the `about` property. Photograph is
+most appropriate here.
 
+You implement nesting by using all three attributes 
+(`itemprop`, `itemscope`, `itemtype`) on the same element.
+Since all of the metadata is describing the photograph, these
+will be applied to `div#metadata` which contains all of the metadata.
+
+At this point we can also add the subjects and genres, as properties. Subjects
+maps well enough to the "keywords" property of `Photograph`. 
+We could attach the `itemprop` to the `dd` element, but then a processor
+would extract all the text. The genres have some spaces for each term, so rather
+than leaving it up to a post-processor to handle that, we apply the same 
+`itemprop` to each term separately to insure it remains intact. 
+At this time irregardless of singulars or
+plurals for property names, it is allowable to repeat all properties,
+which then get placed into an array.
+[Even singular properties can have multiple values](http://www.w3.org/2011/webschema/track/issues/5).
+We cannot just apply the `itemprop`
+to the `a` elements either, though, since the value would come from the `href` 
+attribute. To work
+around this we use the common pattern of adding some extra spans to get at
+the text content.
+
+
+YKK: remove this paragraph?
+So one question to ask is what the difference is between marking up keywords
+on the page in this way versus how it can be done in the `head` of the page.
+Don't search engines ignore the keywords in the head of the page?
+Search engines caught on that the keywords placed in the `head` of the page 
+were often placed there to try to game the system and rank for terms the page
+may not have even been about. Marking up the visible content of the page
+as we are doing with microdata, means
+that users will see these keywords, so may be more likely to really describe
+the content of the page. Search engines therefore may pay more attention to these
+keywords than to some hidden keywords in the `head` of the document.
+Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
+on the page, but to stick to adding microdata attributes to what is visible to 
+users. Later we will see how
+there are some occassions when it is necessary or convenient to add hidden 
+markup to add data.
+
+### And More Nesting
+
+YKK start marking up the Building
+
+### Result so far
 
 Here's what our marked up snippet looks like so far:
 
-    YKK
+     <div id="main" class="container_12" itemscope="" itemtype="http:schema.org/ItemPage">
+      <h2 id="page_name" itemprop="name">
+        Students jumping in front of Memorial Bell Tower
+      </h2>
+      <div class="grid_5">    
+          <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
+            src="/images/bell_tower.png" itemprop="image">    
+      </div>  
+      <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph">
+        <div id="item" class="info">
+          <h2>Photograph Information</h2>
+          <dl>             
+            ...             
+            <dt>Subjects</dt>
+            <dd>
+              <a href="#buildings"><span itemprop="keywords">Buildings</span></a><br>
+              <a href="#students"><span itemprop="keywords">Students</span></a>
+            </dd> 
+            
+            <dt>Genre</dt>
+            <dd>
+              <a href="#architectural_photos"><span itemprop="genre">Architectural photographs</span></a><br>
+              <a href="#publicity_photos"><span itemprop="genre">Publicity photographs</span></a>         
+            </dd>
+            ... 
+          </dl> 
+        </div><!-- item -->
+        ...
+      </div>
+    </div>
 
 This snippet now basically says:
 
@@ -467,4 +542,80 @@ This snippet now basically says:
 Here's the JSON output so far:
 
     YKK
+
+
+### itemref
+
+
+### time
+
+### itemid
+
+### Extending Schema.org
+
+### Examples from Cultural Heritage Organizations
+
+* [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections)
+  The example in this tutorial is based on this site.
+* [Indianapolis Museum of Art](http://www.imamuseum.org/art/collections/artwork/untitled-calder-alexander)
+  Uses CreativeWork and extends the type by adding the following properties:
+  accessionNumber, collection, copyright, creditLine, dimensions, materials.
+* [Biodiversity Heritage Library](http://www.biodiversitylibrary.org/bibliography/51518)
+  Adds an "OCLC" property for a Book.
+* [Sudoc French academic union catalogue](http://www.sudoc.fr/132133520.html) 
+  Seems to only show the microdata representation to crawlers? 
+  [more information](http://lists.w3.org/Archives/Public/public-lld/2011Jul/0013.html)
+* [Sindice Search](http://sindice.com/search?q=schema&nq=&fq=class%3Ahttp%3A%2F%2Fschema.org%2F*%20format%3AMICRODATA&interface=guru&facet.field=domain)
+  This search can be adjusted to find a specific schema.org type (class here).
+  Faceting by the Microdata does not always seem to find sites that predominantly
+  use Microdata rather than RDFa.
+
+
+
+### Tools
+
+These are tools which I have regularly used.
+
+* [Rich Snippets Testing Tool](YKK) Note that while it may not currently show a *rich* snippet example for 
+      every schema.org type, you can use the data at the bottom of the page to
+      insure that your Microdata is being parsed as you intended. The format
+      here breaks every item out and shows references between them in a flat
+      way.
+* [Structured Data Linter](http://linter.structured-data.org/) 
+  The best feature of this tool is the way that it displays your nested
+      microdata as nested tables, making it easy to spot problems. 
+      If the Rich Snippets Testing Tool doesn't show a rich snippet for your 
+      content, this is a good alternative to see what your snippets *might* 
+      look like.
+      The snippets here do not cover every type either, but they cover a few
+      different types from what the Rich Snippets Testing Tool does, for 
+      instance it will show images for more types.
+      The code is open source, so you can run your own instance to be able
+      to check your syntax while you are in development.
+      This is written by folks who have been part of the conversations around
+      web vocabularies and structured data in HTML.
+* [Live Microdata](http://foolip.org/microdatajs/live/)
+  A good open-source tool for testing snippets of HTML marked up with
+        Microdata. The [MicrodataJS source code](https://gitorious.org/microdatajs/)
+        allows you to implement the Microdata DOM API on your own site, similar
+        to how this tutorial outputs the JSON from parsing the page.
+* [HTML5 Living Validator](http://html5.validator.nu/)
+* [schema.rdfs.org list of tools](http://schema.rdfs.org/tools.html)
+
+### Mappings
+
+There are many efforts to map Schema.org to other vocabularies.
+If you
+maintain your metadata in one of these vocabularies, you can use these to 
+help expose your data in a way that the search engines understand.
+
+* [Dublin Core Alignment Task Group](http://wiki.dublincore.org/index.php/Schema.org_Alignment)
+* [Partial BIBO mapping](http://schema.rdfs.org/mappings/bibo)
+* [Alignment between rNews and Schema.org](http://dev.iptc.org/rNews-10-Implementation-Guide-HTML-5-Microdata)
+* [schema.rdfs.org  list of mappings](http://schema.rdfs.org/mappings.html)
+
+
+
+
+
 
