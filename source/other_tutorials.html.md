@@ -19,6 +19,7 @@ Know other resources? Send an email to jronallo@gmail.com.
 * [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
 * [Spoonfeeding Library Data to Search Engines](http://go-to-hellman.blogspot.com/2011/07/spoonfeeding-library-data-to-search.html)
 * [Microdata & the microdata DOM API](http://dev.opera.com/articles/view/microdata-and-the-microdata-dom-api/)
+* [Extending microdata vocabularies](http://www.w3.org/wiki/HTML_Data_Vocabularies#Extending_microdata_vocabularies)
   
 ### Discussions
 
