@@ -76,29 +76,33 @@ neglected. Data embedded in visible HTML helps keep the representations in sync.
 This insight has lead to a number of different standards over time
 which take the
 approach of embedding structured data with the visible HTML content. Microdata
-is just one of these approaches.
+is just one of the syntaxes in use today.
 
 History of Structured Data in HTML
 ----------------------------------
 
 Other efforts that came before Microdata have solved this same problem of marking
 up the meaning of content. Of the main syntaxes used today,
-[Microformats](http://microformats.org/) was an [early effort](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Dec/0030.html)
+[Microformats](http://microformats.org/) was not the first but was
+an [early effort](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Dec/0030.html)
 to provide "a general approach
 of using visible HTML markup to publish structured data to the web." 
 Some Microformat
 specifications like [hCard](http://microformats.org/wiki/hcard), 
 [hCalendar](http://microformats.org/wiki/hcalendar), and 
 [rel-license](http://microformats.org/wiki/rel-license) are in common use across
-the web. Simply put, Microformats usually use the convention of standard class 
+the web. Development of the various small Microformat standards take place on 
+a community wiki.
+Simply put, Microformats usually use the convention of standard class 
 names to provide meaning on a web page. The latest version [microformats-2](http://microformats.org/wiki/microformats-2)
 simplifies and harmonizes these conventions across specifications significantly.
 
-A standard of the W3C, RDFa has the vision of 
-"[Bridging the Human and Data Webs](http://www.w3.org/TR/xhtml-rdfa-primer/)".
-The idea is to provide attributes and processing rules for embedding RDF, and
-all of its graph-based, linked data goodness, in HTML. 
-Implementing RDFa has been overly complex for many web developers. Google had
+RDFa, a standard of the W3C, has the vision of 
+"[Bridging the Human and Data Webs](http://www.w3.org/TR/xhtml-rdfa-primer/)."
+The idea is to provide attributes and processing rules for embedding RDF (and
+all of its graph-based, linked data goodness) in HTML. 
+With all that expressive power comes some difficulty, and
+implementing RDFa has been overly complex for most web developers. Google has
 supported RDFa in some fashion since 2009, and over that time had discovered
 a [large error rate](http://lists.w3.org/Archives/Public/public-vocabs/2011Oct/0113.html)
 in the application of RDFa by webmasters. 
@@ -129,18 +133,89 @@ something else was needed to fill the gap.
 Out of that thread and collected use cases [Ian "Hixie" Hickson](http://hixie.ch/),
 the editor of the HTML5 specification,
 showed the first work on Microdata on [May 10, 2009](http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2009-May/019681.html)
-(the syntax has changed some since then).
+(the syntax has changed some since then). The syntax is designed to be simple
+for page authors to implement.
 
-In Microdata terms, the things being described are items. Each
+In technical Microdata terms, the things being described are items. Each
 item is made up of one or more key-value pairs.
-The Microdata syntax is made up of attributes, only three new HTML
+The Microdata syntax is made up of attributes. Only three new HTML
 attributes are core to the data model:
 
 * `itemscope` says that there is a new item
 * `itemtype` specifies the type of item
 * `itemprop` gives the item properties
 
+First Example
+-------------
 
- 
+
+     <div itemscope itemtype="unorganization">
+      <span itemprop="name">code4lib</span>
+    </div>
+    
+The user of a browser would only see the text "code4lib".
+The snippet provides more meaning for machines by asserting that there is an 
+"unorganization" with the name "code4lib."
+
+The `@itemscope` attribute creates an item and requires no value.
+The `@itemtype` attribute asserts that the type of thing being described is an 
+"unorganization."
+The item has a single
+key-value pair--the property "name" with a value of "code4lib."
+
+To make it clear to someone who thinks in JSON, here is what the item looks
+like:
+
+    {
+      "type": [
+        "unorganization"
+      ],
+      "properties": {
+        "name": [
+          "code4lib"
+        ]
+      }
+    }
+
+Those are the only three attributes necessary for a complete understanding of the 
+Microdata model. (You'll learn about two more optional ones later.) 
+Pretty simple, right?
+
+What is Schema.org?
+-------------------
+
+While the above snippet is completely valid Microdata,  
+it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
+live in your own little closed world, that may be just fine. But for the most
+part you probably want other people's machines to understand the meaning of
+your content. You need to use a shared language so that page authors and
+consumers can cooperate on how to interpret the meaning.
+
+This is where Schema.org comes in. Schema.org is a vocabulary. The search  
+engines (Bing, Google, Yahoo) created Schema.org 
+and have agreed to support and understand it. 
+The domain it covers is broad, sometimes called a Web-scale vocabulary 
+or ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html).
+One goal of having such a broad schema all in one place is to 
+[simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
+and cover the most common use cases.
+You can browse the 
+[full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
+feel of the bounds of the world according to search engines. 
+
+YKK describe the vocabulary a bit more.
+
+Microdata and Schema.org have a tight connection, though each can be used without
+the other.
+The search engines are currently the main consumers
+of Schema.org data and have a stated preference for Microdata, which can be
+seen through the Schema.org examples being written using the Microdata syntax.
+
+Here's the above example rewritten to use the Schema.org [`Organization`]()
+type.
+
+Rich Snippets
+-------------
+
 
 
