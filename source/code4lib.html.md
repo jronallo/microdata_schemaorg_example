@@ -546,12 +546,158 @@ Here's the JSON output so far:
 
 ### itemref
 
+One thing we have not marked up yet, is to associate the Photograph with the
+image on the page. We need to fix that, because a rich snippet for a Photograph
+is unlikely to show up for . The problem is that the image is not
+nested within the same `div` where the Photograph is defined.
 
-### time
+> Valid HTML is particularly important in pages that contain embedded markup. 
+> All methods of embedding data within HTML use the structure of the HTML to 
+> determine the meaning of the additional markup. [http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice)
+
+While we have the content on our page relatively well organized to contain our
+items, our layout and grid system mean that the image of the photograph is
+not nested within the same `div` as the metadata about the photograph. When
+coding new pages it is important to think not just about presentation but also
+about how to structure the page with [both presentation and data in mind](http://semanticweb.com/schema-org-microdata-rdfa-and-black-friday-at-bestbuy_b24643). 
+It makes marking up data easier if the 
+properties of a thing are grouped together.
+
+While in most
+cases it will be easier to arrange our markup so that the properties of an
+item are all within the same block on the page, microdata provides a rather
+simple mechanism for including properties that are outside of that scope.
+
+Microdata uses the `itemref` attribute to make this more convenient.
+
+> Note: The itemref attribute is not part of the microdata data model. It is merely a 
+> syntactic construct to aid authors in adding annotations to pages where the 
+> data to be annotated does not follow a convenient tree structure.
+> [Microdata specification itemref attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemref)
+
+In our example above we already have an `id` of main_image_and an `itemprop` with 
+the value "image" on the image. All that we need to give our Photograph an image
+property  is add
+`itemref="main_image"` to `div#metadata`.
+
+    <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
+            src="/images/bell_tower.png" itemprop="image"> 
+    ...        
+    <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph" itemref="main_image">
+      ...
+    </div>
+
+### time and Datatypes
+
+Another piece of data which would be good to add to the Photograph
+is the created date (`dateCreated`) with an 
+expected value of [`Date`](http://schema.org/Date).
+
+The Microdata specification (unlike RDFa and Microformats-2) does not provide a 
+generic mechanism for specifying data types.
+Instead Microdata again [relies on a vocabulary](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#names:-the-itemprop-attribute)
+to define expected data types. 
+Schema.org has four basic types: Boolean, Date, Number, and Text, but none of 
+them are very well documented.
+
+HTML5 has some new elements to allow inclusion of machine-readable data in HTML 
+and these can be used for the Schema.org datatypes.
+The [`time`](http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-time-element) 
+and [`data`](http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-data-element)
+elements have been added to HTML5. The specification of `time` has not been 
+stable. In fact it was removed with some [strong objections](http://www.brucelawson.co.uk/2011/goodbye-html5-time-hello-data/)
+and lots of exciting specification [drama](https://plus.google.com/107429617152575897589/posts/3ZEQAVkF6xd).
+
+So while `time` is in the specification again, the Schema.org and Google
+documentation adds its own confusion
+to the matter, by using the `meta` element instead when it needs a date. 
+Lots of examples around look like this:
+
+    <meta itemprop="startDate" content="2016-04-21T20:00">
+      Thu, 04/21/16
+      8:00 p.m.
+
+Using the `meta` and `link` elements within the `body` body of a document is 
+[allowed in HTML5 when used with an `itemprop` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#flow-content). 
+These
+can sometimes be useful for Microdata in expressing the meaning of content or
+a URL which has no
+usefulness to a human reader. 
+The `meta` element here is used to give the machine readable date near the date
+visible to the user. It is hidden on the page, so goes against the general 
+recommendation to not use hidden markup for Microdata. 
+Further, the `meta` element does not even surround the free text version of the 
+date disassociating them from each other.  
+
+You could alternatively mark up the same text with `<time>` like so:
+  
+    <time itemprop="startDate" datetime="2016-04-21T20:00">
+      Thu, 04/21/16
+      8:00 p.m.
+    </time>
+    
+The `time` element has the correct semantics for our Photograph:
+
+    <time itemprop="dateCreated" datetime="1981">
+      circa 1981
+    </time>
+    
+I have made no attempt to handle the approximate date ("circa"). The current
+specification processing rules does not handle many valid ISO8601 dates.
+As dates and [ambiguity about dates](http://wiki.whatwg.org/wiki/Time_element#Fuzzy_dates) 
+is important for describing cultural heritage 
+materials, hopefully the HTML5 processing rules can be adjusted to handle all
+valid ISO8601 dates. It seems as if the WHATWG has accepted a proposal to
+support [year only dates](http://wiki.whatwg.org/wiki/Time_element#year_only),
+which is a start.
+
+(YKKK Move this to a footnote or remove? Also the MicrodataJS parser in use on this site erroneously takes 
+the text value of the `time` element rather than the value of the `@datetime` 
+attribute. As `time` is currently specified, the value for purposes of Microdata
+of `time` is only falls back to the text content if there is no `@datetime` 
+attribute.
+Up until some time in December of 2011 the Google Rich Snippets Testing Tool, 
+was throwing a warning that just a year was not a valid ISO8601 date,
+[though it seems to be](http://en.wikipedia.org/wiki/ISO_8601#Years). The
+HTML5 specification has [stricter processing rules](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#vaguer-moments-in-time).) 
 
 ### itemid
 
+The Building the Memorial Bell Tower is a unique resource which can be represented by this
+Freebase URI:
+
+[http://www.freebase.com/m/026twjv](http://www.freebase.com/m/026twjv)
+
+In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
+can be used to associate an item with a
+globally unique URL identifier, "so that it can be related to other items on pages
+elsewhere on the web." 
+This is the main 
+mechanism by which Microdata natively supports something like linked data. 
+("Item types are opaque identifiers, and user agents must not dereference 
+unknown item types, or otherwise deconstruct them, in order to determine how to 
+process items that use them." [Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
+The meaning of the `@itemid` attribute is determined by the vocabulary. 
+
+Unfortunately, Schema.org 
+[does not document any use or support for the `itemid` attribute](http://www.w3.org/2011/webschema/track/issues/6)
+at this time, though they ["strongly encourage the use of itemids"](http://groups.google.com/group/schemaorg-discussion/msg/f3317f1482d56232). 
+The semantics of `itemid` in the Schema.org context seems 
+[uncertain and overlapping with the consistent use of url properties](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
+
+We'll add an `itemid` in any case.
+
+    <div id="building" class="info" itemprop="about" itemscope="" itemtype="http://schema.org/LandmarksOrHistoricalBuildings" itemid="http://www.freebase.com/m/026twjv">
+  
+
+
+
 ### Extending Schema.org
+
+
+
+Appendix: Resources
+-------------------
 
 ### Examples from Cultural Heritage Organizations
 
@@ -614,8 +760,9 @@ help expose your data in a way that the search engines understand.
 * [Alignment between rNews and Schema.org](http://dev.iptc.org/rNews-10-Implementation-Guide-HTML-5-Microdata)
 * [schema.rdfs.org  list of mappings](http://schema.rdfs.org/mappings.html)
 
+### Possible Snippets
 
-
+YKK
 
 
 
