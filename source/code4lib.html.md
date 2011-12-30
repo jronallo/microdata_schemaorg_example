@@ -276,3 +276,153 @@ designed for simplicity and ease of implementation.
 Tutorial
 --------
 
+This tutorial will lead you through implementing Microdata and Schema.org on
+a pre-existing site for exposing digitized collections. The example is based on
+[NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections).
+Each step will lead you through the decisions that are made and
+the problems that are encounted in implementing Microdata and Schema.org.
+
+### Before Microdata
+
+Here's a screenshot of the page to mark up. As we add Microdata to the page,
+it will continue to look exactly like this. The page uses a grid system to
+place the image on the left and the metadata to the right.
+
+Those students are excited to learn more about HTML5 Microdata and Schema.org!
+
+<p>
+<img alt="Screenshot of page for digital photograph" src="/images/bell_tower_screenshot.png"/>
+</p>
+
+Here is the basic structure of the main content of the page with 
+some sections and attributes removed for brevity.
+
+    <div id="main" class="container_12">
+      <h2 id="page_name">
+        Students jumping in front of Memorial Bell Tower
+      </h2>
+      <div class="grid_5">    
+          <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
+      </div>  
+      <div id="metadata" class="grid_7">
+        <div id="item" class="info">
+          <h2>Photograph Information</h2>
+          <dl>   
+            ...         
+          </dl> 
+        </div><!-- item -->
+        
+        <div id="building" class="info">
+          <h2>Building Information</h2>
+          <dl>
+            ...        
+          </dl>      
+        </div><!-- building -->
+        
+        <div id="source" class="info">
+          <h2>Source Information</h2>
+          <dl>
+            ...
+          </dl>     
+        </div><!-- source -->
+      </div>
+    </div>
+
+
+### Adding a WebPage
+
+When using the schema.org vocabularies, every page is implicitly assumed to be 
+some kind of [WebPage](http://schema.org/WebPage), but the [advice](YKK) is to 
+explicitly declare the type of page. When we find an appropriate type, we will
+want to choose the most specific type that could accurately represent the
+thing we want to mark up. In this case it seems appropriate to use 
+[ItemPage](http://schema.org/ItemPage). ItemPage
+adds no new properties to WebPage, but it communicates to the search engines that
+the page refers to a single item rather than a search results page.
+I can find no proof for this yet, but it may be that using ItemPage will give
+an extra hint to a crawler that a page should be indexed or treated differently. 
+For the same reason, marking up a SearchResultsPage could give the hint to the
+search engines to crawl but not index the page.
+
+In some way when you are adding Microdata you are always just describing a web
+page. Ian Hickson the editor of the Microdata specification, has said that
+Microdata items exist "in the context of a page and its 
+DOM. It does not have an independent existence outside the page." 
+([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html).)
+This is different than the way RDFa may think about embedded structured data in 
+HTML. Microdata isn't
+so much linked data as it is a description of a single page. 
+
+Here we add the ItemPage to the `div#main` on the page and some properties
+within. 
+
+    <div id="main" class="container_12" itemscope="" itemtype="http:schema.org/ItemPage">
+      <h2 id="page_name" itemprop="name">
+        Students jumping in front of Memorial Bell Tower
+      </h2>
+      <div class="grid_5">    
+          <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
+            src="/images/bell_tower.png" itemprop="image">    
+      </div>  
+      <div id="metadata" class="grid_7">
+        ...
+      </div>
+    </div>
+
+Here we apply the `itemscope` and `itemtype` attributes at a level in the DOM
+that surrounds everything we want to describe about the page.
+Since we are describing, the page, we could instead add the `itemscope` and
+`itemtype` at a higher level. If we need to use some metadata in the `head` of
+the document, say the `title` element, we could apply this to the `html`
+element. YKK reports of some problems
+
+Within `div#main` we add the two `itemprop`s for the "name" and "image"
+properties. Different elements take their `itemprop` value from different
+places. 
+In this case the "name" property is taken from the text content of `h2` element.
+For the `img` element the value is taken from the `src` attribute, which is
+then resolved into an absolute URL. The `a` element uses the absolute URL
+from the `href` attribute.
+If you start using Microdata, you will want to consult 
+[this list from the spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#values)
+which details how property values are determind for different elements.
+
+### Microdata JSON
+
+One of the cool features of Microdata is that it is designed to be 
+[extracted into JSON](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#json). 
+ 
+YKK
+
+### Microdata DOM API
+
+Another neat feature is the [Microdata DOM API](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#microdata-dom-api),
+which allows you to extract Microdata client-side. 
+
+You can test whether your browser implements the Microdata DOM API by running the
+[microdata test suite](http://w3c-test.org/html/tests/submission/Opera/microdata/001.html) 
+created by Opera. If
+you open this page up in [Opera Next](http://www.opera.com/browser/next/) 
+(at the time of this writing version 12.00 alpha, build 1191), go to this page,
+and open up the console (Ctrl+Shift+i), you can play with the Microdata
+DOM API a bit. 
+`document.getItems()` will return a NodeList of all items. There is (and will be)
+only one top-level item on this page, so the NodeList will contain only one
+element. It is possible to get all items of a particular type by specifying the
+type or types as an argument like `document.getItems('http://schema.org/ItemPage')`.
+This API may change in the future 
+["to match what actually gets implemented"](http://old.nabble.com/Re%3A-New-feature-announcement---Implement-HTML5-Microdata-in-WebKit-p32521849.html).
+
+
+    >>> var itemPage = document.getItems('http://schema.org/ItemPage')
+      undefined
+    >>> itemPage
+      NodeList [<html itemscope="" itemtype="http://schema.org/ItemPage" lang="en">]
+    >>> itemPage[0].properties
+      HTMLPropertiesCollection [<h2 id="page_name" itemprop="name">, 
+        <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png"/>]
+
+
+
+
+
