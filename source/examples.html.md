@@ -14,6 +14,7 @@ Send an email to jronallo@gmail.com.
   A project associated with the IMA and other museums for tagging objects.
   As of this writing, it doesn't parse correctly, though the markup is there.
 * [Biodiversity Heritage Library](http://www.biodiversitylibrary.org/bibliography/51518)
+  Adds an "OCLC" property for a Book.
 * [Sudoc French academic union catalogue](http://www.sudoc.fr/132133520.html) 
   Seems to only show the microdata representation to crawlers? 
   [more information](http://lists.w3.org/Archives/Public/public-lld/2011Jul/0013.html)
