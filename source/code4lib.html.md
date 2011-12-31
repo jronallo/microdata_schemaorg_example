@@ -876,7 +876,7 @@ for the property like this:
           Reproduction and use of this material requires permission from 
           North Carolina State University.</dd>
 
-#### Another way forward for the cultural heritage sector?
+### Another way forward for the cultural heritage sector?
 
 These are just some of the ways in which Schema.org may not fit the needs of 
 cultural heritage organizations very well. Other communities have already voiced
@@ -927,7 +927,7 @@ Conclusion
 
 Semantic markup of data embedded in HTML is a rapidly changing area. Whether or
 not you implement Microdata and/or Schema.org, understanding ...
-For cultural heritage organizations to 
+For cultural heritage organizations to YKK
 
 Appendix: Resources
 -------------------
@@ -955,7 +955,8 @@ Appendix: Resources
 
 These are tools which I have regularly used.
 
-* [Rich Snippets Testing Tool](YKK) Note that while it may not currently show a *rich* snippet example for 
+* [Rich Snippets Testing Tool](http://www.google.com/webmasters/tools/richsnippets) 
+  Note that while it may not currently show a *rich* snippet example for 
       every schema.org type, you can use the data at the bottom of the page to
       insure that your Microdata is being parsed as you intended. The format
       here breaks every item out and shows references between them in a flat
