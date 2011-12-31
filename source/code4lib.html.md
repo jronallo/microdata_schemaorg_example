@@ -1,6 +1,8 @@
 HTML5 Microdata and Schema.org
 ==============================
 
+DRAFT NOTE: YKK means things that still need zipped up.
+
 On June 2, 2011 [Bing](http://www.bing.com/community/site_blogs/b/search/archive/2011/06/02/bing-google-and-yahoo-unite-to-build-the-web-of-objects.aspx), 
 [Google](http://googleblog.blogspot.com/2011/06/introducing-schemaorg-search-engines.html ), 
 and 
@@ -9,6 +11,7 @@ announced the joint effort [Schema.org](http://schema.org). When the big search
 engines talk, web site authors listen. 
 
 This is an introduction to Microdata and Schema.org. 
+YKK
 The tutorial will lead you through implementing these new technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, you will be introduced to some tools for implementers and some
