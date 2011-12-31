@@ -538,7 +538,7 @@ of objects they describe. There are types like Painting, Photograph, and
 Sculpture. So some types of objects like drawings, vases, and suits of armor
 may have to move back up the hierarchy to use CreativeWork. With the thousands
 of types of objets that may be held by archives, museums and historical 
-societies, it is [not feasible](YKK Martin Hepp article) 
+societies, it is [not feasible](www.heppnetz.de/files/IEEE-IC-PossibleOntologies-published.pdf) 
 to add every type to Schema.org.
 One suggestion
 made by Charles Moad, Director of the Indianapolis Museum of Art Lab, is to
@@ -548,13 +548,13 @@ This objectType property in conjunction with Schema.org (or community practice)
 making the suggestion to use an 
 appropriate vocabulary for the value could go a long way towards expanding the 
 options for cultural heritage organizations to describe their materials.
-It would be possible to do something like what the [product ontology](http://www.productontology.org/)
+It would be possible to create something like what the [product ontology](http://www.productontology.org/)
 does by reusing the names of Wikipedia articles ([http://en.wikipedia.org/wiki/Plate_armour](http://en.wikipedia.org/wiki/Plate_armour))
 to identify types of objects.
 
     <div itemscope itemtype="http://schema.org/CreativeWork" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
       <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span>
-      <link itemprop="objectType" href="http://museumobjects.org/Plate_armour">
+      <link itemprop="objectType" href="http://productontology.org/id/Plate_armour">
     </div>
 
 
