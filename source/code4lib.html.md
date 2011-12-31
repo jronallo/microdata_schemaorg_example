@@ -276,8 +276,8 @@ can draw them to your site. Since most of the users of your site likely come
 through the search engines, this could be a powerful way to draw more users
 to your resources.
 
-From a developer's perspective there are [many considerations](YKK) for 
-choosing a particular syntax. Microdata has a natural fit with HTML and is
+From a developer's perspective there are [many considerations](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html) 
+for choosing a particular syntax. Microdata has a natural fit with HTML and is
 designed for simplicity and ease of implementation.
 
 Tutorial
@@ -367,10 +367,10 @@ within.
       <h2 id="page_name" itemprop="name">
         Students jumping in front of Memorial Bell Tower
       </h2>
-      <div class="grid_5">    
+      <div class="grid_5">
           <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image">    
-      </div>  
+      </div>
       <div id="metadata" class="grid_7">
         ...
       </div>
@@ -554,9 +554,9 @@ Here's what our marked up snippet looks like so far:
     <h2 id="page_name" itemprop="name">
       Students jumping in front of Memorial Bell Tower
     </h2>
-      <div class="grid_5">    
+      <div class="grid_5"> 
           <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
-      </div>  
+      </div> 
       <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph">
         <div id="item" class="info">
           <h2>Photograph Information</h2>
@@ -610,7 +610,7 @@ Here's what our marked up snippet looks like so far:
           <h2>Source Information</h2>          
           ...     
         </div><!-- source -->
-      </div>  
+      </div> 
     </div>
 
 All told there are five Microdata items (ItemPage, Photograph, 
@@ -692,7 +692,7 @@ in the DOM to check for properties.
 
     <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image"> 
-    ...        
+    ... 
     <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph" itemref="main_image">
       ...
     </div>
@@ -737,7 +737,7 @@ The `meta` element here is used to give the machine readable date near the date
 visible to the user. It is hidden on the page, so goes against the general 
 recommendation to not use hidden markup for Microdata. 
 Further, the `meta` element does not even surround the free text version of the 
-date disassociating them from each other.  
+date disassociating them from each other. 
 
 You could alternatively mark up the same text with `<time>` like so:
   
@@ -991,14 +991,14 @@ help expose your data in a way that the search engines understand.
 ### Other Tutorials
 
 * [Google Rich Snippets Videos](http://googlewebmastercentral.blogspot.com/2011/12/rich-snippets-instructional-videos.html?m=1):
-  This series of short tutorial videos uses Microdata and Schema.org.  
-* [Getting started with schema.org](http://schema.org/docs/gs.html)  
+  This series of short tutorial videos uses Microdata and Schema.org. 
+* [Getting started with schema.org](http://schema.org/docs/gs.html) 
 * [HTML Data Guide](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#publishers):
   This guide helps producers and consumers determine which structured data 
-  syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended.  
+  syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended. 
 * [Why rNews?](http://dev.iptc.org/rNews-Why-rNews) is a good tutorial on how
   organizations often have good structured data that when made accessible 
-  through HTML loses its meaning.  
+  through HTML loses its meaning. 
 * [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
 * [Spoonfeeding Library Data to Search Engines](http://go-to-hellman.blogspot.com/2011/07/spoonfeeding-library-data-to-search.html)
 * [Extending microdata vocabularies](http://www.w3.org/wiki/HTML_Data_Vocabularies#Extending_microdata_vocabularies)

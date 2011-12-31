@@ -276,8 +276,8 @@ can draw them to your site. Since most of the users of your site likely come
 through the search engines, this could be a powerful way to draw more users
 to your resources.
 
-From a developer's perspective there are [many considerations](YKK) for 
-choosing a particular syntax. Microdata has a natural fit with HTML and is
+From a developer's perspective there are [many considerations](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html) 
+for choosing a particular syntax. Microdata has a natural fit with HTML and is
 designed for simplicity and ease of implementation.
 
 Tutorial
@@ -367,10 +367,10 @@ within.
       <h2 id="page_name" itemprop="name">
         Students jumping in front of Memorial Bell Tower
       </h2>
-      <div class="grid_5">    
+      <div class="grid_5">
           <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image">    
-      </div>  
+      </div>
       <div id="metadata" class="grid_7">
         ...
       </div>
