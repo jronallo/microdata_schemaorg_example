@@ -12,7 +12,9 @@ This is an introduction to Microdata and Schema.org.
 The tutorial will lead you through implementing these new technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, you will be introduced to some tools for implementers and some
-issues with applying this to cultural heritage materials.
+issues with applying this to cultural heritage materials. 
+The conclusion will
+provide some suggestions on how the cultural heritage sector could ... YKK
 
 Foundation
 ----------
@@ -187,14 +189,16 @@ part you probably want other people's machines to understand the meaning of
 your content. You need to use a shared language so that page authors and
 consumers can cooperate on how to interpret the meaning.
 
-This is where Schema.org comes in. Schema.org is a vocabulary. The search  
+This is where the Schema.org vocabulary comes in. The search  
 engines (Bing, Google, Yahoo) created Schema.org 
-and have agreed to support and understand it. 
+and have agreed to support and understand it. It is unrealistic for them to try
+to support every vocabulary in use.
 The domain it covers is broad, sometimes called a Web-scale vocabulary 
 or ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html).
 One goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
 and cover the most common use cases.
+The vocabulary does seem to have a bias towards commercial use cases.
 You can browse the 
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
 feel of the bounds of the world according to search engines. 
@@ -690,11 +694,128 @@ We'll add an `itemid` in any case.
     <div id="building" class="info" itemprop="about" itemscope="" itemtype="http://schema.org/LandmarksOrHistoricalBuildings" itemid="http://www.freebase.com/m/026twjv">
   
 
-
-
 ### Extending Schema.org
 
+Another kind of property a cultural heritage organization might like to add to a 
+landmark or building like the Memorial Tower are the 
+events related to the building. In this case the cornerstone was laid in 1922 
+and the tower dedicated on November 11, 1949. Other buildings could have events
+in their history like the dates
+they were designed or dates of renovations, derived from the drawings and 
+project records. Museums
+may be interested in various events in the history of a painting including
+provenance and restorations. History museums and historical societies may also
+want to refer to various historical events that relate to their exhibits. Each
+of these may also want to promote various events happening in the future like
+movie screenings, limited time exhibits, and tours. So it may be important to be
+able to disambiguate whether an event is in the future or
+of some historical significance.
 
+Schema.org has an Event type defined as: "An event happening at a certain time at a 
+certain location." That seems broad enough to apply it to either future or 
+historic events. But
+the message from Google's [support page on Rich Snippets for events](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=164506)
+gives more specific guidance:
+
+> The goal of events snippets is to provide users with additional information 
+> about specific events not to promote complementary products or services. Event 
+> markup can be used to mark up events that occur on specific future dates, 
+> such as a musical concert or an art festival.
+
+Google has
+a different view of the world than cultural heritage organizations.
+Because of the focus on the future, we may not want to try to mark up historic
+events, as rich snippets may be unlikely to show up for past events. 
+
+Another option may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extension.html)
+to possibly make it clearer to the search engines that certain types of events 
+are different. 
+As Schema.org is intended as a Web-scale schema, there is no possibility of 
+having it fit every kind of data on the web.
+The basic mechanism for extending an item type is to take any Schema.org type 
+URL, add a forward slash to 
+the end, and then add the camel cased name of the extension. So one possibility
+to handle historic events would be to extend Event:
+
+    http://schema.org/Event/HistoricEvent
+
+At least the search engines will
+understand that these items are some type of event. If enough other folks use the 
+same extension and the search engines notice, then the search engines may start
+using the data in a meaningful way. There is not a good, public, formal 
+[process](http://www.w3.org/wiki/SchemaDotOrgProcess) 
+for how to share extensions or advocate for their inclusion in Schema.org proper.
+There is still work to be done to have a clear central location to share 
+extensions or have a community process to work out new extensions.
+
+For properties there are two options for mixing in a new property for 
+an existing (or extended type). Schema.org prefers page authors to just add
+the new property name as if it were defined by Schema.org. 
+So our rights statement could be given this markup:
+
+    <dd itemprop="rights">
+          Reproduction and use of this material requires permission from 
+          North Carolina State University.</dd>
+  
+The other option provided by the Microdata specification is to add a full URL
+for the property like this:
+
+    <dd itemprop="http://purl.org/dc/elements/1.1/rights">
+          Reproduction and use of this material requires permission from 
+          North Carolina State University.</dd>
+
+#### Another way forward for the cultural heritage sector?
+
+These are just some of the ways in which Schema.org may not fit the needs of 
+cultural heritage organizations very well. Other communities have already voiced
+their concerns that their domains are not adequately specified. 
+
+For instance,
+the [rNews standard](http://dev.iptc.org/rNews) 
+of the International Press and Telecommunications Council
+was [added to schema.org](http://www.iptc.org/site/Home/Media_Releases/schema.org_adopts_IPTC's_rNews_for_news_markup). 
+This was the first industry organization to 
+work with the Schema.org partners to publish an expansion of
+Schema.org to make it more robust and useful in a particular domain. The 
+adoption of much of rNews has resulted in
+news and publishing-related types being more expressive and better meeting the needs of 
+news organizations.
+
+Another change to the schema was the result of a [collaboration](http://www.whitehouse.gov/blog/2011/11/07/open-innovation-heroes-introducing-veterans-job-bank) 
+between Schema.org
+and the United States Office of Science and Technology Policy to 
+[add support for job postings](http://blog.schema.org/2011/11/schemaorg-support-for-job-postings.html) 
+to schema.org. One immediate use this was put to was to create a
+[job search widget](https://www.nationalresourcedirectory.gov/home/job_search_widget) 
+for use on government web sites to highlight job listings from 
+employers who commit to hiring veterans. 
+(See the [Veterans Job Bank](https://www.nationalresourcedirectory.gov/jobSearch/index).)
+
+So this kind of partnership with domain experts seems like a clear way forward
+for other groups.
+Libraries, museums, archives, and other cultural heritage organizations could 
+start to enumerate the places where the vocabulary could be modified to better
+fit their data.
+There has been some suggestion for [future discussions with the cultural sector](http://www.w3.org/wiki/WebSchemas#Proposals_from_and_for_Schema.org) 
+to this end.
+
+
+Some of this work may already be available.
+Work is ongoing to map other vocabularies to Schema.org. 
+This provides a simpler way for organizations to expose their data through 
+Microdata and Schema.org while still maintaining their data in their current
+schema.
+The Dublin Core Metadata Initiative
+has begun an effort to do such a mapping. In each of these mappings there are 
+certainly some areas where there is not overlap, so there is potential for 
+expanding Schema.org in those directions. 
+
+Conclusion
+----------
+
+Semantic markup of data embedded in HTML is a rapidly changing area. Whether or
+not you implement Microdata and/or Schema.org, understanding ...
+For cultural heritage organizations to 
 
 Appendix: Resources
 -------------------
