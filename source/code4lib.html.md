@@ -68,7 +68,9 @@ where it can be found.
 This approach can work in many cases, but it has some problems.
 Techniques like this do not use the visible content
 of the HTML, so the consumers of your data have to know to look for this
-particular invisible content.
+particular invisible content. Relying on digital collections to have APIs or
+metadata gateways can add burdensome setup and maintenance costs for some 
+organizations.
 
 ### Embedding Data in Markup
 
@@ -78,7 +80,8 @@ Little-used, overlooked APIs or data feeds are easy to let go stale.
 If the website goes down, you are likely to hear about it from multiple sources
 at once. If the OAI-PMH gateway goes down, I am guessing that it would take longer
 for you to find out about it. Hidden services and content are too easy to get
-neglected. Data embedded in visible HTML helps keep the representations in sync.
+neglected. Data embedded in visible HTML helps keep the representations in sync
+so that page authors only have to expose one public version of their data.
 This insight has lead to a number of different standards over time
 which take the
 approach of embedding structured data with the visible HTML content. Microdata
@@ -907,7 +910,11 @@ fit their data.
 There has been some suggestion for [future discussions with the cultural sector](http://www.w3.org/wiki/WebSchemas#Proposals_from_and_for_Schema.org) 
 to this end.
 
+One suggested location for this kind of activity is the [W3C wiki](http://www.w3.org/wiki/SchemaDotOrgProcess),
+which points to the simplicity of the submission for job postings.
+YKK This is one place to hash out this kind of work as a community...
 
+YKK... This p could probably be moved or removed.
 Some of this work may already be available.
 Work is ongoing to map other vocabularies to Schema.org. 
 This provides a simpler way for organizations to expose their data through 
