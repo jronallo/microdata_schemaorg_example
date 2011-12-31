@@ -554,7 +554,7 @@ to identify types of objects.
 
     <div itemscope itemtype="http://schema.org/CreativeWork" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
       <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span>
-      <link itemprop="objectType" href="http://productontology.org/id/Plate_armour">
+      <link itemprop="objectType" href="http://objectontology.org/id/Plate_armour">
     </div>
 
 
