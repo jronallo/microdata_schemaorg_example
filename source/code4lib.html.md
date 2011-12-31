@@ -391,20 +391,14 @@ If you start using Microdata, you will want to consult
 [this list from the spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#values)
 which details how property values are determind for different elements.
 
-### Microdata JSON
+### Microdata JSON and DOM API
 
 One of the cool features of Microdata is that it is designed to be 
 [extracted into JSON](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#json). 
- 
-YKK
-
-You can copy any of the HTML snippets from here into [Live Microdata]() 
+You can copy any of the HTML snippets from here into [Live Microdata](http://foolip.org/microdatajs/live/) 
 to see what the JSON output would look like. 
 
-
-### Microdata DOM API
-
-Live Microdata uses [MicrodataJS](),
+Live Microdata uses [MicrodataJS](https://gitorious.org/microdatajs/),
 which is a Javascript (jQuery) implementation of the [Microdata DOM API](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#microdata-dom-api).
 The Microdata DOM API is another neat feature of HTML5 Microdata
 which allows you to extract Microdata client-side. 
@@ -560,25 +554,28 @@ to identify types of objects.
 
 ### Result so far
 
-Here's what our marked up snippet looks like so far: YKK add building
+Here's what our marked up snippet looks like so far: 
 
-     <div id="main" class="container_12" itemscope="" itemtype="http:schema.org/ItemPage">
-      <h2 id="page_name" itemprop="name">
-        Students jumping in front of Memorial Bell Tower
-      </h2>
+    <div id="main" role="main" class="container_12" itemscope itemtype="http:schema.org/ItemPage">
+    <h2 id="page_name" itemprop="name">
+      Students jumping in front of Memorial Bell Tower
+    </h2>
       <div class="grid_5">    
-          <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
-            src="/images/bell_tower.png" itemprop="image">    
+          <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
       </div>  
       <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph">
         <div id="item" class="info">
           <h2>Photograph Information</h2>
-          <dl>             
-            ...             
+          <dl>            
+            <dt>Created Date</dt>
+            <dd>
+              circa 1981
+            </dd>  
+            
             <dt>Subjects</dt>
             <dd>
               <a href="#buildings"><span itemprop="keywords">Buildings</span></a><br>
-              <a href="#students"><span itemprop="keywords">Students</span></a>
+              <a href="#students"><span itemprop="keywords">Students</span></a><br>
             </dd> 
             
             <dt>Genre</dt>
@@ -586,23 +583,57 @@ Here's what our marked up snippet looks like so far: YKK add building
               <a href="#architectural_photos"><span itemprop="genre">Architectural photographs</span></a><br>
               <a href="#publicity_photos"><span itemprop="genre">Publicity photographs</span></a>         
             </dd>
-            ... 
+            
+            <dt>Digital Collection</dt>
+            <dd><a href="#uapc">University Archives Photographs</a></dd> 
           </dl> 
         </div><!-- item -->
-        ...
-      </div>
+        
+        <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings">
+          <h2>Building Information</h2>
+          <dl>
+            <dt>Building Name</dt>
+            <dd><a href="#memorial_tower"><span itemprop="name">Memorial Tower</span></a></dd>   
+            
+            <dt>Description</dt>
+            <dd itemprop="description">Memorial Tower honors those alumni who were killed in World War I. 
+              The cornerstone was laid in 1922 and the Tower was dedicated on 
+              November 11, 1949.</dd>
+            
+            <dt>Address</dt>
+            <dd itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">              
+                <span itemprop="streetAddress">2701 Sullivan Drive</span><br>
+                <span itemprop="addressLocality">Raleigh</span>, <span itemprop="addressLocality">NC</span> <span itemprop="postalCode">26707</span>              
+            </dd>
+            
+            <dt>Latitude, Longitude</dt>            
+            <dd itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates"><span itemprop="latitude">35.786098</span>, <span itemprop="longitude">-78.663498</span></dd>
+                        
+          </dl>      
+        </div><!-- building -->
+        
+        <div id="source" class="info">
+          <h2>Source Information</h2>          
+          ...     
+        </div><!-- source -->
+      </div>  
     </div>
 
-This snippet now basically says:
+This snippet now basically says something like this in English:
 
-> This page is an ItemPage with a "name" of "YKK" and an "image" at ""YKK. 
-> The ItemPage
-> is "about" a Photograph. The Photograph 
+> This page is an ItemPage which is about a Photograph which is about a 
+> LandmarksOrHistoricalBuildings. The Itempage has a "name" of 
+> "Students jumping in front of Memorial Bell Tower" and an 
+> "image" at "http://example.com//images/bell_tower.png." 
+> The Photograph has some "keywords" and "genre."
+> The LandmarksOrHistoricalBuildings has a "name" of "Memorial Tower" and a
+> "description." The LandmarksOrHistoricalBuildings has an "address" which
+> is a PostalAddress item (with its own properties), as well as, a "geo"
+> property which is a GeoCoordinates item. 
 
-Here's the JSON output so far:
-
-    YKK
-
+All told there are five Microdata items on the page.
+Here's the JSON output so far [at Live Microdata](http://foolip.org/microdatajs/live/?html=%3Cdiv%20id%3D%22main%22%20role%3D%22main%22%20class%3D%22container_12%22%20itemscope%3D%22%22%20itemtype%3D%22http%3Aschema.org%2FItemPage%22%3E%0A%20%20%20%20%3Ch2%20id%3D%22page_name%22%20itemprop%3D%22name%22%3E%0A%20%20%20%20%20%20Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%0A%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grid_5%22%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20itemprop%3D%22image%22%20id%3D%22main_image%22%20alt%3D%22Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%22%20src%3D%22%2Fimages%2Fbell_tower.png%22%3E%20%20%20%20%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%20%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22metadata%22%20class%3D%22grid_7%22%20itemprop%3D%22about%22%20itemscope%3D%22%22%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPhotograph%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22item%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EPhotograph%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ECreated%20Date%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20circa%201981%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ESubjects%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23buildings%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EBuildings%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23students%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EStudents%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EGenre%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23architectural_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EArchitectural%20photographs%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23publicity_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EPublicity%20photographs%3C%2Fspan%3E%3C%2Fa%3E%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDigital%20Collection%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23uapc%22%3EUniversity%20Archives%20Photographs%3C%2Fa%3E%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20item%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22building%22%20class%3D%22info%22%20itemprop%3D%22about%22%20itemscope%3D%22%22%20itemtype%3D%22http%3A%2F%2Fschema.org%2FLandmarksOrHistoricalBuildings%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EBuilding%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EBuilding%20Name%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23memorial_tower%22%3E%3Cspan%20itemprop%3D%22name%22%3EMemorial%20Tower%3C%2Fspan%3E%3C%2Fa%3E%3C%2Fdd%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDescription%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22description%22%3EMemorial%20Tower%20honors%20those%20alumni%20who%20were%20killed%20in%20World%20War%20I.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20The%20cornerstone%20was%20laid%20in%201922%20and%20the%20Tower%20was%20dedicated%20on%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20November%2011%2C%201949.%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EAddress%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22address%22%20itemscope%3D%22%22%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPostalAddress%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22streetAddress%22%3E2701%20Sullivan%20Drive%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22addressLocality%22%3ERaleigh%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22addressLocality%22%3ENC%3C%2Fspan%3E%20%3Cspan%20itemprop%3D%22postalCode%22%3E26707%3C%2Fspan%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ELatitude%2C%20Longitude%3C%2Fdt%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22geo%22%20itemscope%3D%22%22%20itemtype%3D%22http%3A%2F%2Fschema.org%2FGeoCoordinates%22%3E%3Cspan%20itemprop%3D%22latitude%22%3E35.786098%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22longitude%22%3E-78.663498%3C%2Fspan%3E%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20building%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22source%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESource%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20...%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20source%20--%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%20%0A%20%20%20%20%3C%2Fdiv%3E).
+YKK redo this link with the final version.
 
 ### itemref
 
@@ -638,7 +669,8 @@ Microdata uses the `itemref` attribute to make this more convenient.
 In our example above we already have an `id` of main_image_and an `itemprop` with 
 the value "image" on the image. All that we need to give our Photograph an image
 property  is add
-`itemref="main_image"` to `div#metadata`.
+`itemref="main_image"` to `div#metadata`. This adds it to the queue of locations
+in the DOM to check for properties.
 
     <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image"> 
