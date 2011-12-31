@@ -655,7 +655,9 @@ possible preview for the LandmarksOrHistoricalBuildings.
 </p>
 
 This is exactly the kind of rich snippet we want users to see for our 
-digitized resources.
+digitized resources. Hopefully the search engines will beging showing snippets
+for some of the types cultural heritage organizations are most likely to be
+making available.
 
 ### itemref
 
