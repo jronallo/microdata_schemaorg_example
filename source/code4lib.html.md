@@ -144,7 +144,7 @@ attributes are core to the data model:
 
 * `itemscope` says that there is a new item
 * `itemtype` specifies the type of item
-* `itemprop` gives the item properties
+* `itemprop` gives the item properties and values
 
 ### A First Example
 
@@ -336,7 +336,7 @@ some sections and attributes removed for brevity.
 ### Adding a WebPage
 
 When using the schema.org vocabularies, every page is implicitly assumed to be 
-some kind of [WebPage](http://schema.org/WebPage), but the [advice](YKK) is to 
+some kind of [WebPage](http://schema.org/WebPage), but the advice is to 
 explicitly declare the type of page. When we find an appropriate type, we will
 want to choose the most specific type that could accurately represent the
 thing we want to mark up. In this case it seems appropriate to use 
@@ -498,13 +498,69 @@ users. Later we will see how
 there are some occassions when it is necessary or convenient to add hidden 
 markup to add data.
 
-### And More Nesting
+### Picking Types and Properties (and More Nesting)
 
-YKK start marking up the Building
+We can also begin to state that the Photograph is `about` the Memorial Bell
+Tower at North Carolina State University. In this case, 
+`LandmarksOrHistoricalBuildings` seems to work well enough as a type. 
+
+    <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings">
+
+Once we add a type for the building it is easy to add a name and description.
+We also have the data to add the address and geographic location as nested
+items.
+
+Picking appropriate types is an issue for describing the historic record.
+At NCSU Libraries we are describing lots of buildings and making related
+architectural drawings accessible. Some of these buildings are on the National
+Register of Historic Places, but many are buildings of 
+less note. Some were never built or have since been demolished. 
+It could be that for most of the
+records of buildings in the collection, that something more generic like [Place](http://schema.org/Place)
+would be a more easy fit. For other buildings there are definitely more specific
+types which could fit, like Airport, CityHall, Courthouse, Hospital, Church.
+
+If we use one of these more specific types, it may be impossible for the search
+engines to realize that the items refer to the historic record of these
+places rather than to their current services. 
+We could be giving exact geographic coordinates for a hospital which was
+demolished or no longer in operation!
+Also, this is a new facet that we do not currently capture. 
+It would take some retrospective and ongoing work to 
+choose the correct type for
+every building. For now we have made the decision to always pick the more
+specific type of `LandmarksOrHistoricalBuildings` for all the buildings we
+describe as something of a compromise.
+
+Picking appropriate types is one area where Schema.org does not provide anything 
+near the level of granularity at which archives and museums often specify the types
+of objects they describe. There are types like Painting, Photograph, and 
+Sculpture. So some types of objects like drawings, vases, and suits of armor
+may have to move back up the hierarchy to use CreativeWork. With the thousands
+of types of objets that may be held by archives, museums and historical 
+societies, it is [not feasible](YKK Martin Hepp article) 
+to add every type to Schema.org.
+One suggestion
+made by Charles Moad, Director of the Indianapolis Museum of Art Lab, is to
+extend CreativeWork with an objectType property (private correspondence). 
+
+This objectType property in conjunction with Schema.org (or community practice) 
+making the suggestion to use an 
+appropriate vocabulary for the value could go a long way towards expanding the 
+options for cultural heritage organizations to describe their materials.
+It would be possible to do something like what the [product ontology](http://www.productontology.org/)
+does by reusing the names of Wikipedia articles ([http://en.wikipedia.org/wiki/Plate_armour](http://en.wikipedia.org/wiki/Plate_armour))
+to identify types of objects.
+
+    <div itemscope itemtype="http://schema.org/CreativeWork" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
+      <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span>
+      <link itemprop="objectType" href="http://museumobjects.org/Plate_armour">
+    </div>
+
 
 ### Result so far
 
-Here's what our marked up snippet looks like so far:
+Here's what our marked up snippet looks like so far: YKK add building
 
      <div id="main" class="container_12" itemscope="" itemtype="http:schema.org/ItemPage">
       <h2 id="page_name" itemprop="name">
@@ -880,6 +936,28 @@ help expose your data in a way that the search engines understand.
 * [Partial BIBO mapping](http://schema.rdfs.org/mappings/bibo)
 * [Alignment between rNews and Schema.org](http://dev.iptc.org/rNews-10-Implementation-Guide-HTML-5-Microdata)
 * [schema.rdfs.org  list of mappings](http://schema.rdfs.org/mappings.html)
+
+### Other Tutorials
+
+* [Google Rich Snippets Videos](http://googlewebmastercentral.blogspot.com/2011/12/rich-snippets-instructional-videos.html?m=1):
+  This series of short tutorial videos uses Microdata and Schema.org.  
+* [Getting started with schema.org](http://schema.org/docs/gs.html)  
+* [HTML Data Guide](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#publishers):
+  This guide helps producers and consumers determine which structured data 
+  syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended.  
+* [Why rNews?](http://dev.iptc.org/rNews-Why-rNews) is a good tutorial on how
+  organizations often have good structured data that when made accessible 
+  through HTML loses its meaning.  
+* [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
+* [Spoonfeeding Library Data to Search Engines](http://go-to-hellman.blogspot.com/2011/07/spoonfeeding-library-data-to-search.html)
+* [Extending microdata vocabularies](http://www.w3.org/wiki/HTML_Data_Vocabularies#Extending_microdata_vocabularies)
+
+### Discussions
+
+* [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
+  Schema.org discussion has moved over to this list.
+* [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
+* [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
 
 ### Possible Snippets
 
