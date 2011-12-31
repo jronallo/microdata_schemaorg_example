@@ -395,7 +395,8 @@ which details how property values are determind for different elements.
 
 One of the cool features of Microdata is that it is designed to be 
 [extracted into JSON](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#json). 
-You can copy any of the HTML snippets from here into [Live Microdata](http://foolip.org/microdatajs/live/) 
+You can copy any of the HTML snippets with an itemscope from here into 
+[Live Microdata](http://foolip.org/microdatajs/live/) 
 to see what the JSON output would look like. 
 
 Live Microdata uses [MicrodataJS](https://gitorious.org/microdatajs/),
@@ -460,37 +461,27 @@ will be applied to `div#metadata` which contains all of the metadata.
 
 At this point we can also add the subjects and genres, as properties. Subjects
 maps well enough to the "keywords" property of `Photograph`. 
+These keywords are 
+visible to users, so it is less likely to try to be gamed in the way that
+the of meta keywords in the `head` a document was.
+Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
+on the page, but to stick to adding microdata attributes to what is visible to 
+users.
+
 We could attach the `itemprop` to the `dd` element, but then a processor
-would extract all the text. The genres have some spaces for each term, so rather
+would extract all the text. The genres have some spaces within each term, so rather
 than leaving it up to a post-processor to handle that, we apply the same 
-`itemprop` to each term separately to insure it remains intact. 
+`itemprop` to each term separately to insure the multiword keywords remain intact. 
 At this time irregardless of singulars or
-plurals for property names, it is allowable to repeat all properties,
-which then get placed into an array.
+plurals for property names, it is allowable in Schema.org to repeat all properties,
+which then form a list of values.
 [Even singular properties can have multiple values](http://www.w3.org/2011/webschema/track/issues/5).
+
 We cannot just apply the `itemprop`
 to the `a` elements either, though, since the value would come from the `href` 
 attribute. To work
 around this we use the common pattern of adding some extra spans to get at
 the text content.
-
-
-YKK: remove this paragraph?
-So one question to ask is what the difference is between marking up keywords
-on the page in this way versus how it can be done in the `head` of the page.
-Don't search engines ignore the keywords in the head of the page?
-Search engines caught on that the keywords placed in the `head` of the page 
-were often placed there to try to game the system and rank for terms the page
-may not have even been about. Marking up the visible content of the page
-as we are doing with microdata, means
-that users will see these keywords, so may be more likely to really describe
-the content of the page. Search engines therefore may pay more attention to these
-keywords than to some hidden keywords in the `head` of the document.
-Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
-on the page, but to stick to adding microdata attributes to what is visible to 
-users. Later we will see how
-there are some occassions when it is necessary or convenient to add hidden 
-markup to add data.
 
 ### Picking Types and Properties (and More Nesting)
 
