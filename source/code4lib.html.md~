@@ -185,14 +185,14 @@ Pretty simple, right?
 
 ### What is Schema.org?
 
-While the above snippet is completely valid Microdata,  
+While the above snippet is completely valid Microdata, 
 it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
 live in your own little closed world, that may be just fine. But for the most
 part you probably want other people's machines to understand the meaning of
 your content. You need to use a shared language so that page authors and
 consumers can cooperate on how to interpret the meaning.
 
-This is where the Schema.org vocabulary comes in. The search  
+This is where the Schema.org vocabulary comes in. The search 
 engines (Bing, Google, Yahoo) created Schema.org 
 and have agreed to support and understand it. It is unrealistic for them to try
 to support every vocabulary in use.
@@ -200,7 +200,7 @@ The domain it covers is broad, sometimes called a Web-scale vocabulary
 or ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html).
 One goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
-and cover the most common use cases.
+and cover the most common, populars use cases.
 The vocabulary does seem to have a bias towards commercial use cases.
 You can browse the 
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
@@ -449,7 +449,7 @@ using microformats or RDfa, which have the ability to maintain
 XML literals.) Microdata is specified in a way where if the
 author of the page gets it wrong, the processor may still be able to do something
 useful with even just that text content. Processors should expect bad data 
-[Conformance](http://schema.org/docs/datamodel.html).
+([Conformance](http://schema.org/docs/datamodel.html)).
 
 Looking at how the `about` property is defined, the proper value is another 
 `Thing`. In this way Schema.org suggests how to nest items.
@@ -472,7 +472,8 @@ on the page, but to stick to adding microdata attributes to what is visible to
 users.
 
 We could attach the `itemprop` to the `dd` element, but then a processor
-would extract all the text. The genres have some spaces within each term, so rather
+would extract all the text contained within. The genres have some spaces within 
+each term, so rather
 than leaving it up to a post-processor to handle that, we apply the same 
 `itemprop` to each term separately to insure the multiword keywords remain intact. 
 At this time irregardless of singulars or
@@ -554,9 +555,9 @@ Here's what our marked up snippet looks like so far:
     <h2 id="page_name" itemprop="name">
       Students jumping in front of Memorial Bell Tower
     </h2>
-      <div class="grid_5">    
+      <div class="grid_5"> 
           <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
-      </div>  
+      </div> 
       <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph">
         <div id="item" class="info">
           <h2>Photograph Information</h2>
@@ -610,7 +611,7 @@ Here's what our marked up snippet looks like so far:
           <h2>Source Information</h2>          
           ...     
         </div><!-- source -->
-      </div>  
+      </div> 
     </div>
 
 All told there are five Microdata items (ItemPage, Photograph, 
@@ -692,7 +693,7 @@ in the DOM to check for properties.
 
     <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image"> 
-    ...        
+    ... 
     <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph" itemref="main_image">
       ...
     </div>
@@ -737,7 +738,7 @@ The `meta` element here is used to give the machine readable date near the date
 visible to the user. It is hidden on the page, so goes against the general 
 recommendation to not use hidden markup for Microdata. 
 Further, the `meta` element does not even surround the free text version of the 
-date disassociating them from each other.  
+date disassociating them from each other. 
 
 You could alternatively mark up the same text with `<time>` like so:
   
@@ -991,14 +992,14 @@ help expose your data in a way that the search engines understand.
 ### Other Tutorials
 
 * [Google Rich Snippets Videos](http://googlewebmastercentral.blogspot.com/2011/12/rich-snippets-instructional-videos.html?m=1):
-  This series of short tutorial videos uses Microdata and Schema.org.  
-* [Getting started with schema.org](http://schema.org/docs/gs.html)  
+  This series of short tutorial videos uses Microdata and Schema.org. 
+* [Getting started with schema.org](http://schema.org/docs/gs.html) 
 * [HTML Data Guide](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#publishers):
   This guide helps producers and consumers determine which structured data 
-  syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended.  
+  syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended. 
 * [Why rNews?](http://dev.iptc.org/rNews-Why-rNews) is a good tutorial on how
   organizations often have good structured data that when made accessible 
-  through HTML loses its meaning.  
+  through HTML loses its meaning. 
 * [Dive Into HTML5: “Distributed,” “Extensibility,” And Other Fancy Words](http://diveintohtml5.info/extensibility.html)
 * [Spoonfeeding Library Data to Search Engines](http://go-to-hellman.blogspot.com/2011/07/spoonfeeding-library-data-to-search.html)
 * [Extending microdata vocabularies](http://www.w3.org/wiki/HTML_Data_Vocabularies#Extending_microdata_vocabularies)

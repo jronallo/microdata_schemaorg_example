@@ -185,18 +185,19 @@ Pretty simple, right?
 
 ### What is Schema.org?
 
-While the above snippet is completely valid Microdata,  
+While the above snippet is completely valid Microdata, 
 it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
 live in your own little closed world, that may be just fine. But for the most
 part you probably want other people's machines to understand the meaning of
 your content. You need to use a shared language so that page authors and
 consumers can cooperate on how to interpret the meaning.
 
-This is where the Schema.org vocabulary comes in. The search  
+This is where the Schema.org vocabulary comes in. The search 
 engines (Bing, Google, Yahoo) created Schema.org 
 and have agreed to support and understand it. It is unrealistic for them to try
 to support every vocabulary in use.
-The domain it covers is broad, sometimes called a Web-scale vocabulary 
+The domain it covers is broad focusing on popular concepts.
+It is sometimes called a Web-scale vocabulary 
 or ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html).
 One goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
@@ -449,7 +450,7 @@ using microformats or RDfa, which have the ability to maintain
 XML literals.) Microdata is specified in a way where if the
 author of the page gets it wrong, the processor may still be able to do something
 useful with even just that text content. Processors should expect bad data 
-[Conformance](http://schema.org/docs/datamodel.html).
+([Conformance](http://schema.org/docs/datamodel.html)).
 
 Looking at how the `about` property is defined, the proper value is another 
 `Thing`. In this way Schema.org suggests how to nest items.
@@ -472,7 +473,8 @@ on the page, but to stick to adding microdata attributes to what is visible to
 users.
 
 We could attach the `itemprop` to the `dd` element, but then a processor
-would extract all the text. The genres have some spaces within each term, so rather
+would extract all the text contained within. The genres have some spaces within 
+each term, so rather
 than leaving it up to a post-processor to handle that, we apply the same 
 `itemprop` to each term separately to insure the multiword keywords remain intact. 
 At this time irregardless of singulars or
