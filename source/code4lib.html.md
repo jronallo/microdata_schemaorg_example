@@ -1007,9 +1007,7 @@ help expose your data in a way that the search engines understand.
 * [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
 * [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
 
-### Possible Snippets
 
-YKK
 
 
 
