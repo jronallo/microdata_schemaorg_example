@@ -1,6 +1,8 @@
 HTML5 Microdata and Schema.org
 ==============================
 
+by Jason Ronallo, Digital Collections Technology Librarian, NCSU Libraries
+
 DRAFT NOTE: YKK means things that still need zipped up.
 
 On June 2, 2011 [Bing](http://www.bing.com/community/site_blogs/b/search/archive/2011/06/02/bing-google-and-yahoo-unite-to-build-the-web-of-objects.aspx), 
@@ -12,12 +14,13 @@ engines talk, web site authors listen.
 
 This is an introduction to Microdata and Schema.org. 
 YKK
-The tutorial will lead you through implementing these new technologies on a 
+The tutorial will introduce you to implementing these new technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, you will be introduced to some tools for implementers and some
 issues with applying this to cultural heritage materials. 
 The conclusion will
-provide some suggestions on how the cultural heritage sector could ... YKK
+provide some suggestions on how the cultural heritage sector could work to 
+better leverage Microdata and Schema.org.
 
 Foundation
 ----------
@@ -35,8 +38,9 @@ gets rendered with numbers for the list items.
 With HTML5 we also have new semantic elements 
 like `header`, `nav`, `article`, and `footer` that allow more expressiveness for 
 page authors. A bunch of `div`s with various class names 
-is no longer the way to divide up much content. These new elements also
-allow web browser plugins to pull out the article for a cleaner reading 
+is no longer the way to divide up so much content. These new elements also
+enable new tools and better services. Browser plugins can pull out the article for a 
+cleaner reading 
 experience, or search engines to give more weight to the `article` content 
 rather than the advertising sidebar.
 
@@ -46,13 +50,13 @@ In many cases you are probably
 using a nicely normalized relational database or an XML document with a lot of 
 fielded information about your resources. Putting that information in HTML 
 loses a lot of what you
-already know. The trip from the database or XML into HTML results in lost meaning.
-Maybe a human can read your field labels to understand your metadata, but
-that meaning is lost on machines.
+already know. The trip metadata takes from the database or XML into HTML results 
+in lost meaning. Maybe a human can read your field labels to understand your 
+metadata, but that meaning is lost on machines.
 
 ### One Simple Solution
 
-One solution communicate more of this metadata is to provide an alternative 
+One solution to communicate more of this metadata is to provide an alternative 
 representation of your data separate from the HTML representation. You could
 even help with auto-detection of that content by providing an alternative link
 in the `head` of your HTML document. 
@@ -68,9 +72,10 @@ where it can be found.
 This approach can work in many cases, but it has some problems.
 Techniques like this do not use the visible content
 of the HTML, so the consumers of your data have to know to look for this
-particular invisible content. Relying on digital collections to have APIs or
-metadata gateways can add burdensome setup and maintenance costs for some 
-organizations.
+particular invisible content. It also adds a layer of complication by relying 
+on digital collections to have APIs or
+metadata gateways that can be burdensome to setup and expensive for organizations
+to maintain.
 
 ### Embedding Data in Markup
 
@@ -78,7 +83,7 @@ The HTML representation is most visible to users, so it
 is also the HTML code which gets the most attention from developers. 
 Little-used, overlooked APIs or data feeds are easy to let go stale.
 If the website goes down, you are likely to hear about it from multiple sources
-at once. If the OAI-PMH gateway goes down, I am guessing that it would take longer
+immediately. If the OAI-PMH gateway goes down, it would probably take longer
 for you to find out about it. Hidden services and content are too easy to get
 neglected. Data embedded in visible HTML helps keep the representations in sync
 so that page authors only have to expose one public version of their data.
@@ -114,8 +119,8 @@ implementing RDFa has been overly complex for most web developers. Google has
 supported RDFa in some fashion since 2009, and over that time had discovered
 a [large error rate](http://lists.w3.org/Archives/Public/public-vocabs/2011Oct/0113.html)
 in the application of RDFa by webmasters. 
-Simplicity is one of the main reasons for the search engines preferring 
-Microdata over RDFa.
+Simplicity is one of the main reasons for the development of Microdata and the 
+search engines preferring it over RDFa.
 In part in
 reaction to greater adoption of Microdata, a simplified profile of RDFa has been 
 created. [RDFa Lite 1.1](http://www.w3.org/2010/02/rdfa/sources/rdfa-lite/Overview-src.html)
@@ -127,7 +132,7 @@ specifications which tried to solve similar problems of making structured data
 available to machines through HTML pages.
 The [unAPI](http://unapi.info/) specification uses a microformat for 
 exposing (through the [deprecated `abbr` method](http://microformats.org/wiki/value-class-pattern)) 
-the presence of identifiers  
+the presence of identifiers
 which may resolve to alternative formats through a service. 
 [COinS](http://ocoins.info/) uses empty spans to make OpenURL context objects
 available for autodiscovery by machines.
