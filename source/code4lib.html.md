@@ -539,61 +539,89 @@ text so that the text content is selected instead.
 
 ### Picking Types and Properties (and More Nesting)
 
-We can also begin to state that the Photograph is `about` the Memorial Bell
-Tower at North Carolina State University. In this case, 
+After nesting a Photograph within an ItemPage, the nesting can continue further.
+The photograph has the Memorial Bell Tower at North Carolina State University in 
+the background.
+The Photograph is `about` the Memorial Bell
+Tower. In this case, 
 `LandmarksOrHistoricalBuildings` seems to work well enough as a type. 
 
     <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings">
 
-Once we add a type for the building it is easy to add a name and description.
-We also have the data to add the address and geographic location as nested
-items.
+Once we add an item for the building, it is easy to add
+name and description properties for the building.
+We also have the data to add the address (as a [PostalAddress](http://schema.org/PostalAddress)) 
+and geographic location ("geo" property with a value of a [GeoCoordinates](http://schema.org/GeoCoordinates))
+as further nested data items.
 
-Picking appropriate types is an issue for describing the historic record.
+Picking appropriate types is an important issue for describing the historic record.
 At NCSU Libraries we are describing lots of buildings and making related
-architectural drawings accessible. Some of these buildings are on the National
+drawings accessible. Some of these buildings are on the National
 Register of Historic Places, but many are buildings of 
-less note. Some were never built or have since been demolished. 
+lesser note. Some were never built or have since been demolished. 
 It could be that for most of the
-records of buildings in the collection, that something more generic like [Place](http://schema.org/Place)
-would be a more easy fit. For other buildings there are definitely more specific
-types which could fit, like Airport, CityHall, Courthouse, Hospital, Church.
+records of buildings an architectural collection, that a more generic item type
+like [Place](http://schema.org/Place)
+would be a more appropriate fit. For other buildings there are definitely 
+more specific types like Airport, CityHall, Courthouse, Hospital, and Church.
 
-If we use one of these more specific types, it may be impossible for the search
+Using a more specific type, it would still be impossible for the search
 engines to realize that the items refer to the historic record of these
 places rather than to their current services. 
 We could be giving exact geographic coordinates for a hospital which was
 demolished or no longer in operation!
-Also, this is a new facet that we do not currently capture. 
-It would take some retrospective and ongoing work to 
+Also, this is a new metadata facet that may not already being captured in a way
+that would be easy to convert to Schema.org types. 
+Some retrospective and ongoing work would be needed to 
 choose the correct type for
-every building. For now we have made the decision to always pick the more
+every building. For now NCSU has made the decision to always pick the more
 specific type of `LandmarksOrHistoricalBuildings` for all the buildings we
-describe as something of a compromise.
+describe as something of a compromise. It better communicates that the resource 
+is part of the historic record, but it does lose on the specificity we might
+like to have.
 
 Picking appropriate types is one area where Schema.org does not provide anything 
 near the level of granularity at which archives and museums often specify the types
-of objects they describe. There are types like Painting, Photograph, and 
-Sculpture. So some types of objects like drawings, vases, and suits of armor
-may have to move back up the hierarchy to use CreativeWork. With the thousands
-of types of objets that may be held by archives, museums and historical 
-societies, it is [not feasible](www.heppnetz.de/files/IEEE-IC-PossibleOntologies-published.pdf) 
+of objects they describe. There are types for Painting, Photograph, and 
+Sculpture. Some types of objects like drawings, vases, and suits of armor
+may have to move back up the hierarchy to use the generic CreativeWork type. 
+With the thousands of types of objects that may be held by libraries, archives, 
+museums and historical societies (LAMs), it is [not feasible](www.heppnetz.de/files/IEEE-IC-PossibleOntologies-published.pdf) 
 to add every type to Schema.org.
-One suggestion
-made by Charles Moad, Director of the Indianapolis Museum of Art Lab, is to
-extend CreativeWork with an objectType property (private correspondence). 
+One suggestion made by Charles Moad, Director of the Indianapolis Museum of Art 
+Lab, is to extend CreativeWork with an objectType property (private correspondence). 
 
-This objectType property in conjunction with Schema.org (or community practice) 
-making the suggestion to use an 
-appropriate vocabulary for the value could go a long way towards expanding the 
-options for cultural heritage organizations to describe their materials.
-It would be possible to create something like what the [product ontology](http://www.productontology.org/)
-does by reusing the names of Wikipedia articles ([http://en.wikipedia.org/wiki/Plate_armour](http://en.wikipedia.org/wiki/Plate_armour))
-to identify types of objects.
+If this "objectType" property were part of Schema.org, then the LAM community 
+could suggest that the value of the property come from a vocabulary that 
+covers the kinds of objects LAMs collect. 
+This could go a long way towards expanding the 
+options for LAMs to describe their materials. The [JobPosting](http://schema.org/JobPosting)
+type includes an
+"occupationalCategory" property which suggests the use of the [BLS O*NET-SOC taxonomy](http://www.onetcenter.org/taxonomy.html)
+(though the exact format this value should take is underspecified). This same
+pattern of using external vocabularies maintained by domain experts is likely
+to be repeated for other property values. 
+
+This still leaves open the question of what free, open vocabulary would allow
+for the kind of extensibility LAMs need to cover all of their object types at
+a good enough level of specificity. It is not feasible to create a vocabulary
+to cover and keep up with every type of thing LAMs may collect.
+The [product ontology](http://www.productontology.org/) provides a possible
+model for how to create such an extensible vocabulary
+by reusing the names of Wikipedia articles 
+to identify types of objects. Something like the following code could be done to 
+simply reuse the name of the [Plate_armour](http://en.wikipedia.org/wiki/Plate_armour)
+article to note that the type of object in the collection is plate armour.
+The URL `http://objectontology.org/id/Plate_armour` could resolve to useful 
+information and tutorial information similar to the product ontology page for
+[Plate armour](http://www.productontology.org/doc/Plate_armour). 
+An object in a LAM collection differs enough from a product for sale
+to need a new namespace to explain the difference, especially to machines.
+This kind of link also begins to make Microdata more linkable data. 
 
     <div itemscope itemtype="http://schema.org/CreativeWork" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
-      <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span>
-      <link itemprop="objectType" href="http://objectontology.org/id/Plate_armour">
+      <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span><br/>
+      Item Type: <link itemprop="objectType" href="http://objectontology.org/id/Plate_armour"> Plate armour
     </div>
 
 
@@ -652,7 +680,7 @@ Here's what our marked up snippet looks like so far:
             </dd>
             
             <dt>Latitude, Longitude</dt>            
-            <dd itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates"><span itemprop="latitude">35.786098</span>, <span itemprop="longitude">-78.663498</span></dd>
+            <dd itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates"><span itemprop="latitude">35.786098</span>, <span itemprop="longitude">-78.663498</span></dd>
                         
           </dl>      
         </div><!-- building -->
