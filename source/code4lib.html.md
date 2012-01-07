@@ -480,50 +480,62 @@ new properties are defined.
 
 If we add `itemprop="about"` to the `div` containing all metadata, then what
 would be extracted from the page is just the text content with line breaks and
-all. Microdata processing does not
-maintain any of the markup at all. (If you need to maintain some XML or other markup,
+all. Microdata processing never maintains markup.
+(If you need to maintain some snippet of markup,
 then [consider](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#syntax-considerations) 
 using microformats or RDfa, which have the ability to maintain
-XML literals.) Microdata is specified in a way where if the
+XML literals.) 
+
+Microdata is specified in a way where if the
 author of the page gets it wrong, the processor may still be able to do something
 useful with even just that text content. Processors should expect bad data 
 ([Conformance](http://schema.org/docs/datamodel.html)).
+Looking at how the `about` property is defined, though, the proper value of 
+the `about` property is another `Thing` (not a jumble of text). 
+In this way Schema.org suggests how to nest items within other items forming
+a tree.
+In this case specifying Thing as a valid value of the `about` property means 
+that any type in the Schema.org hierarchy can be selected to create
+a new item as the value of the `about` property. The [Photograph](http://schema.org/Photograph)
+type is most appropriate for this example.
 
-Looking at how the `about` property is defined, the proper value is another 
-`Thing`. In this way Schema.org suggests how to nest items.
-In this case it allows us to pick any type in the Schema.org hierarchy to create
-a new item which will become the value of the `about` property. Photograph is
-most appropriate here.
-
-You implement nesting by using all three attributes 
-(`itemprop`, `itemscope`, `itemtype`) on the same element.
-Since all of the metadata is describing the photograph, these
+Nesting is implemented by using all three attributes 
+(`itemprop`, `itemscope`, `itemtype`) on the same element. Doing this states
+that the value of a property is a new item of a particular type.
+Since all of the metadata is describing the photograph, these attributes
 will be applied to `div#metadata` which contains all of the metadata.
 
-At this point we can also add the subjects and genres, as properties. Subjects
-maps well enough to the "keywords" property of `Photograph`. 
+At this point the subjects and genres can be added as properties of the
+Photograph. Subjects
+map well enough to the "keywords" property of `Photograph`. 
 These keywords are 
-visible to users, so it is less likely to try to be gamed in the way that
-the of meta keywords in the `head` a document was.
+visible to users, so the values are less likely to be used to try to game
+search engines to rank for particular terms that had nothing to do with the
+content in the body in the way
+the use of invisible `meta` keywords in the `head` of a document were long ago.
 Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
 on the page, but to stick to adding microdata attributes to what is visible to 
 users.
 
-We could attach the `itemprop` to the `dd` element, but then a processor
-would extract all the text contained within. The genres have some spaces within 
-each term, so rather
+We could attach the "genres" `itemprop` to the `dd` element, but then a processor
+would extract all the text contained within as a single chunk of text. 
+The genres have some spaces within each term, so rather
 than leaving it up to a post-processor to handle that, we apply the same 
-`itemprop` to each term separately to insure the multiword keywords remain intact. 
-At this time irregardless of singulars or
-plurals for property names, it is allowable in Schema.org to repeat all properties,
-which then form a list of values.
-[Even singular properties can have multiple values](http://www.w3.org/2011/webschema/track/issues/5).
+`itemprop` to each term separately. This insures that the multiword genres 
+remain intact. 
+At this time irregardless of the use of 
+[singulars or plurals for property names](http://www.w3.org/2011/webschema/track/issues/5)
+in the Schema.org documentation, it is allowable in 
+to repeat all Schema.org properties like this. When these repeated properties
+are parsed, the values are merged under a single property to form a list/array
+of values.
 
-We cannot just apply the `itemprop`
-to the `a` elements either, though, since the value would come from the `href` 
-attribute. To work
-around this we use the common pattern of adding some extra spans to get at
-the text content.
+The "keywords" `itemprop` cannot be applied to the `a` element that 
+surrounds each term.
+The gotcha here is that the property value of an `a` element
+is the value of its `href` attribute. To work
+around this we use the common pattern of adding some extra spans around the
+text so that the text content is selected instead.
 
 ### Picking Types and Properties (and More Nesting)
 
