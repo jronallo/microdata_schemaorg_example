@@ -310,7 +310,13 @@ This tutorial will lead you through implementing Microdata and Schema.org on
 a pre-existing site for exposing digitized collections. The example is based on
 [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections).
 Each section will lead you through decisions that are made and common
-problems that are encounted in implementing Microdata and Schema.org.
+problems that are encounted in implementing Microdata and Schema.org. 
+
+YKK 
+
+* some useful tools. 
+* tips tricks
+* deeper dive into the specifications
 
 ### Before Microdata
 
@@ -364,30 +370,35 @@ some sections and attributes removed with ellipses for brevity.
 
 When using the schema.org vocabularies, every page is implicitly assumed to be 
 some kind of [WebPage](http://schema.org/WebPage), but the advice is to 
-explicitly declare the type of page. When we find an appropriate type, we will
-want to choose the most specific type that could accurately represent the
+explicitly declare the type of page. When picking an appropriate type, it is 
+best to choose the most specific type that could accurately represent the
 thing we want to mark up. In this case it seems appropriate to use 
-[ItemPage](http://schema.org/ItemPage). ItemPage
+[ItemPage](http://schema.org/ItemPage) which is a subclass of WebPage. ItemPage
 adds no new properties to WebPage, but it communicates to the search engines that
-the page refers to a single item rather than a search results page.
+the page refers to a single item rather than a search results or other
+type of page.
 I can find no proof for this yet, but it may be that using ItemPage will give
-an extra hint to a crawler that a page should be indexed or treated differently. 
+an extra hint to a crawler that a page should be indexed or treated differently
+from other types of web pages. 
 For the same reason, marking up a SearchResultsPage could give the hint to the
 search engines to crawl but not index the page.
 
-In some way when you are adding Microdata you are always just describing a web
-page. Ian Hickson the editor of the Microdata specification, has said that
+When you are adding Microdata there is a sense in which you are always just 
+describing a web page. Ian Hickson the editor of the Microdata specification, 
+has said that
 Microdata items exist "in the context of a page and its 
 DOM. It does not have an independent existence outside the page." 
 ([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html).)
 This is different than the way RDFa may think about embedded structured data in 
-HTML. Microdata isn't
-so much linked data as it is a description of a single page. 
+HTML as part of a graph which links items together across the web. Microdata 
+is not so much linked data as it is a description of a single page. 
+While there are efforts to serialize Microdata as RDF, the Microdata model
+is tree-based so it has some limitations as linked data.
 
-Here we add the ItemPage to the `div#main` on the page and some properties
-within. 
+Below the ItemPage is added to the `div#main` on the page and some properties
+are added within the scope of that `div#main`. 
 
-    <div id="main" class="container_12" itemscope="" itemtype="http:schema.org/ItemPage">
+    <div id="main" class="container_12" itemscope itemtype="http:schema.org/ItemPage">
       <h2 id="page_name" itemprop="name">
         Students jumping in front of Memorial Bell Tower
       </h2>
@@ -404,8 +415,9 @@ Here we apply the `itemscope` and `itemtype` attributes at a level in the DOM
 that surrounds everything we want to describe about the page.
 Since we are describing, the page, we could instead add the `itemscope` and
 `itemtype` at a higher level. If we need to use some metadata in the `head` of
-the document, say the `title` element, we could apply this to the `html`
-element. YKK reports of some problems
+the document, say the `title` element, we could apply this to the `body` or
+even the `html`
+element, though there are [some limitations to using Microdata within `head`](https://www.w3.org/Bugs/Public/show_bug.cgi?id=15304). 
 
 Within `div#main` we add the two `itemprop`s for the "name" and "image"
 properties. Different elements take their `itemprop` value from different
@@ -413,10 +425,12 @@ places.
 In this case the "name" property is taken from the text content of `h2` element.
 For the `img` element the value is taken from the `src` attribute, which is
 then resolved into an absolute URL. The `a` element uses the absolute URL
-from the `href` attribute.
+from the `href` attribute. Like `img` and `a` many elements provide their 
+values through an attribute rather than the text content.
 If you start using Microdata, you will want to consult 
 [this list from the spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#values)
 which details how property values are determind for different elements.
+
 
 ### Microdata JSON and DOM API
 
