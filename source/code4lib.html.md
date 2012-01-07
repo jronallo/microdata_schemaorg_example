@@ -148,9 +148,11 @@ showed the first work on Microdata on [May 10, 2009](http://lists.whatwg.org/htd
 (the syntax has changed some since then). The syntax is designed to be simple
 for page authors to implement.
 
-In technical Microdata terms, the things being described are items. Each
-item is made up of one or more key-value pairs.
-The Microdata syntax is made up of attributes. Only three new HTML
+In technical Microdata terms, the things on an HTML page being described are 
+items. Each item is made up of one or more key-value pairs, a property and a
+value.
+The Microdata syntax is completely made up of attributes. These attributes 
+can be used on any valid HTML element. Only three new HTML
 attributes are core to the data model:
 
 * `itemscope` says that there is a new item
@@ -165,13 +167,13 @@ attributes are core to the data model:
     
 The user of a browser would only see the text "code4lib".
 The snippet provides more meaning for machines by asserting that there is an 
-"unorganization" with the "eponym" "code4lib."
+"unorganization" with the "eponym" of "code4lib."
 
 The `@itemscope` attribute creates an item and requires no value.
 The `@itemtype` attribute asserts that the type of thing being described is an 
 "unorganization."
-The item has a single
-key-value pair--the property "eponym" with a value of "code4lib."
+This item has a single
+key-value pair--the property "eponym" with a value of "code4lib." 
 
 To make it clear to someone who thinks in JSON, here is what the item looks
 like:
