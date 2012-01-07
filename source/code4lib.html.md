@@ -716,22 +716,26 @@ YKK redo this link with the final version.
 
 ### Problems with Rich Snippets
 
-Even though we have all these items marked up, at the time of this writing 
-Google Rich Snippets only supports several of the Schema.org types 
-(Applications, Authors, Events, Movie, Music, People, Products, Products with many offers, Recipes, Reviews, TV Series,
-not all of which are Schema.org types). 
 No rich
 snippet would show up in search results or the [Rich Snippets Testing Tool](http://www.google.com/webmasters/tools/richsnippets)
-for this example right now. But using the 
+for this example right now.
+Even though we valid Microdata and multiple Schema.org items marked up, 
+at the time of this writing, Google would not use data from any of the 
+possible items in a search result snippet.
+Google currently only supports Rich Snippets for several of the Schema.org types 
+(Applications, Authors, Events, Movie, Music, People, Products, Products with many offers, Recipes, Reviews, TV Series--
+not all of which are Schema.org types). 
+But using the 
 [Structured Data Linter](http://linter.structured-data.org/) we get this 
-possible preview for the LandmarksOrHistoricalBuildings.
+possible preview for the LandmarksOrHistoricalBuildings item.
 
 <p>
 <img alt="Screenshot of page for digital photograph" src="/images/memorial_tower_snippet.png"/>
 </p>
 
-This is exactly the kind of rich snippet we want users to see for our 
-digitized resources. Hopefully the search engines will beging showing snippets
+This is exactly the kind of attractive rich snippet we want users to see for our 
+digitized resources. It uses the image and address to make a more clickable 
+target. Hopefully the search engines will begin showing snippets
 for some of the types cultural heritage organizations are most likely to be
 making available.
 
