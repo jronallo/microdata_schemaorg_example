@@ -243,7 +243,8 @@ type (and make more sense).
 ### Rich Snippets
 
 The most obvious way that the search engines are currently using
-Microdata is to be able to display rich snippets in search results. 
+Microdata is to use the embedded data on pages to display rich snippets in 
+search results. 
 If you have done a Google search in the past two years, you have probably seen 
 some examples of rich snippets showing up in your search results.
 You can see
@@ -272,18 +273,22 @@ Google [added support for Microdata for Rich Snippets](http://googlewebmastercen
 in early 2010. After RDFa Lite was created, the Schema.org partners agreed to
 support that syntax as well.
 
-Before Schema.org rich snippets were constrained in the types that would trigger
-them. Reviews, products, and recipes were common types.
+Before Schema.org, rich snippets were constrained to being triggered by 
+the few types defined by [data-vocabulary.org](http://www.data-vocabulary.org/), 
+which prefigured the Schema.org approach. 
+Reviews, products, and breadcrumbs were the kinds of common types of data that
+could be embedded.
 At the time of this writing there is still not support for all, or even most,
-of the Schema.org types, but the number of supported types and example rich 
+of the Schema.org types. The number of supported types and example rich 
 snippets has been slowly growing. The promise is that many more of the Schema.org
 types will begin to trigger rich snippets.
 
-Currently, the main reason to be using Microdata with Schema.org is that it is
+The main reason to be using Microdata with Schema.org is that it is
 the latest search-engine preferred method for exposing structured data in HTML.
 While other consumers for structured data using Microdata and/or Schema.org may
-appear in the future, the [most compelling uses cases](YKK Hixie on use cases) 
-are currently for use by the search engines. By providing the search engines
+appear in the future, the most compelling uses cases
+are currently from the search engines, especially for rich snippets. 
+By providing the search engines
 with more data on your pages, it improves the search experience of users and 
 can draw them to your site. Since most of the users of your site likely come
 through the search engines, this could be a powerful way to draw more users
@@ -291,7 +296,12 @@ to your resources.
 
 From a developer's perspective there are [many considerations](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html) 
 for choosing a particular syntax. Microdata has a natural fit with HTML and is
-designed for simplicity and ease of implementation.
+designed for simplicity and ease of implementation. Schema.org simplifies the
+documentation and choices to make.
+In my own experience 
+implementing Microdata and Schema.org was orders of magnitude simpler than
+a past failed attempt at implementing RDFa using various vocabularies on a similar
+site.
 
 Tutorial
 --------
