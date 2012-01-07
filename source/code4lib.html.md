@@ -197,19 +197,22 @@ Pretty simple, right?
 
 While the above snippet is completely valid Microdata, 
 it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
-live in your own little closed world, that may be just fine. But for the most
-part you probably want other people's machines to understand the meaning of
-your content. You need to use a shared language so that page authors and
-consumers can cooperate on how to interpret the meaning.
+only need to communicate this information within a tight community and do not
+need anyone else to ever understand what your data means, 
+that may be just fine. But for the most
+part you probably want many other machines to understand the meaning of
+your content. To accomplish this you need to use a shared language so that page 
+authors and consumers can cooperate on how to interpret the meaning.
 
 This is where the Schema.org vocabulary comes in. The search 
 engines (Bing, Google, Yahoo) created Schema.org 
 and have agreed to support and understand it. It is unrealistic for them to try
-to support every vocabulary in use.
-The domain it covers is broad focusing on popular concepts.
-It is sometimes called a Web-scale vocabulary 
-or ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html).
-One goal of having such a broad schema all in one place is to 
+to support every vocabulary in use, so this is an attempt to have a shared
+vocabulary at broad, web scale focusing on popular concepts.
+It stakes a position as a ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html)
+that does not attempt to have the scope of an "ontology of everything" or go 
+into depth in any one area.
+A central goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
 and cover the most common use cases.
 The vocabulary does seem to have a bias towards commercial use cases.
@@ -217,22 +220,21 @@ You can browse the
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
 feel of the bounds of the world according to search engines. 
 
-Schema.org defines a hierarchy of types descending from Thing. Thing has four
-properties (description, image, name, url) which are inherited by other types.
-Child types can add their own properites and have their own children types.
-A property name with a particular meaning has that same meaning when found in
-every type in the vocabulary.
-We will get to other specifics as we go through a tutorial.
+Schema.org defines a hierarchy of types all descending from Thing. Thing has four
+properties (description, image, name, url) which are inherited by all other types.
+Child types can add their own properites and in turn can have their own children 
+types. Each property name has the same meaning when found in any type in the 
+vocabulary. We will get to other specifics as we go through a tutorial.
 
 Microdata and Schema.org have a tight connection, though each can be used without
-the other.
+the other. 
 The search engines are currently the main consumers
-of Schema.org data and have a stated preference for Microdata, which can be
-seen through the Schema.org examples being written using the Microdata syntax.
+of Schema.org data and have a stated preference for Microdata.
+The Schema.org examples are written using the Microdata syntax.
 
-Here's the above Microdata example rewritten to make more sense and
+Here is the above Microdata example rewritten 
 use the Schema.org [`Organization`](http://schema.org/Organization)
-type.
+type (and make more sense).
 
     <div itemscope itemtype="http://schema.org/Organization">
       <span itemprop="name">code4lib</span>
@@ -243,7 +245,7 @@ type.
 The most obvious way that the search engines are currently using
 Microdata is to be able to display rich snippets in search results. 
 If you have done a Google search in the past two years, you have probably seen 
-some examples of this.
+some examples of rich snippets showing up in your search results.
 You can see
 good examples of how powerful this is by doing a [Google Recipe Search](http://www.google.com/landing/recipes/)
 for "vegan cupcakes":
@@ -319,9 +321,9 @@ some sections and attributes removed for brevity.
       <h2 id="page_name">
         Students jumping in front of Memorial Bell Tower
       </h2>
-      <div class="grid_5">    
+      <div class="grid_5"> 
           <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
-      </div>  
+      </div> 
       <div id="metadata" class="grid_7">
         <div id="item" class="info">
           <h2>Photograph Information</h2>
