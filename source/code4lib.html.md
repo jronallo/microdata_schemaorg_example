@@ -309,23 +309,24 @@ Tutorial
 This tutorial will lead you through implementing Microdata and Schema.org on
 a pre-existing site for exposing digitized collections. The example is based on
 [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections).
-Each step will lead you through the decisions that are made and
-the problems that are encounted in implementing Microdata and Schema.org.
+Each section will lead you through decisions that are made and common
+problems that are encounted in implementing Microdata and Schema.org.
 
 ### Before Microdata
 
 Here's a screenshot of the page to mark up. As we add Microdata to the page,
-it will continue to look exactly like this. The page uses a grid system to
+the appearance of the page will not change at all. The page uses a grid system to
 place the image on the left and the metadata to the right.
 
-Those students are excited to learn more about HTML5 Microdata and Schema.org!
+These students are jumping from excitement to learn more about HTML5 Microdata 
+and Schema.org!
 
 <p>
 <img alt="Screenshot of page for digital photograph" src="/images/bell_tower_screenshot.png"/>
 </p>
 
 Here is the basic structure of the main content of the page with 
-some sections and attributes removed for brevity.
+some sections and attributes removed with ellipses for brevity.
 
     <div id="main" class="container_12">
       <h2 id="page_name">
