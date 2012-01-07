@@ -448,12 +448,12 @@ which allows you to extract Microdata client-side.
 You can test whether your browser implements the Microdata DOM API by running the
 [microdata test suite](http://w3c-test.org/html/tests/submission/Opera/microdata/001.html) 
 created by Opera. If
-you open this page up in [Opera Next](http://www.opera.com/browser/next/) 
-(at the time of this writing version 12.00 alpha, build 1191), go to this page,
+you open a page with Microdata with [Opera Next](http://www.opera.com/browser/next/) 
+(at the time of this writing version 12.00 alpha, build 1191)
 and open up the console (Ctrl+Shift+i), you can play with the Microdata
 DOM API a bit. 
-`document.getItems()` will return a NodeList of all items. There is (and will be)
-only one top-level item on this page, so the NodeList will contain only one
+`document.getItems()` will return a NodeList of all items. 
+The NodeList will contain only the top-level items, in this case one
 element. It is possible to get all items of a particular type by specifying the
 type or types as an argument like `document.getItems('http://schema.org/ItemPage')`.
 This API may change in the future 
