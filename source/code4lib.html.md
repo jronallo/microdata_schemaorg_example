@@ -873,11 +873,18 @@ globally unique URL identifier, "so that it can be related to other items on pag
 elsewhere on the web." 
 This is the main 
 mechanism by which Microdata natively supports something like linked data. 
-Other URLs used throughout Microdata do not provide this linkability:
+Other URLs used throughout Microdata do not provide this linkability, and
+the assumption is that consumers would have a built-in knowledge of the 
+vocabulary used for item types and properties in order to make sense of the data.
+Microdata does not adhere to the "follow-your-nose principle, whereby vocabulary
+authors are encouraged to provide a machine-readable description of
+classes and properties at the URL used for the class or property," like RDF does.
+[HTML Data Guide, W3C Editor's Draft 08 January 2012](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#application-considerations)
 
 > Item types are opaque identifiers, and user agents must not dereference 
 > unknown item types, or otherwise deconstruct them, in order to determine how to 
-> process items that use them. ([Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
+> process items that use them. ([HTML Microdata: Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
+
 
 The meaning of the `@itemid` attribute is determined by the vocabulary.
 Unfortunately, Schema.org 
