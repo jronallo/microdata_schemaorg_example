@@ -1,7 +1,7 @@
 HTML5 Microdata and Schema.org
 ==============================
 
-by <span itemscope itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Digital Collections Technology Librarian</span></a>, <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
+by <span itemscope="" itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Digital Collections Technology Librarian</span></a>, <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
 
 DRAFT NOTE: YKK means things that still need zipped up.
 
