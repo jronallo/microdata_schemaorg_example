@@ -944,9 +944,10 @@ to handle historic events would be to extend Event:
 At least the search engines will
 understand that these items are some type of event. If enough other folks use the 
 same extension and the search engines notice, then the search engines may start
-using the data in a meaningful way. This is one way to grow the schema
-organically with actual use influencing the vocabulary, though there are no 
-assurances that extensions will get used.
+using the data in a meaningful way. This is one way to 
+[grow the schema organically](http://www.jenitennison.com/blog/node/156)
+with actual use influencing the vocabulary, though there are those who question
+this extension mechanism and there are no assurances that extensions will get used.
 There is not a good, public, formal 
 [process](http://www.w3.org/wiki/SchemaDotOrgProcess) 
 for how to share extensions or advocate for their inclusion in Schema.org proper.
