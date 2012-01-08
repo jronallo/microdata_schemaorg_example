@@ -972,37 +972,34 @@ their concerns that their domains are not adequately specified.
 For instance,
 the [rNews standard](http://dev.iptc.org/rNews) 
 of the International Press and Telecommunications Council
-was [added to schema.org](http://www.iptc.org/site/Home/Media_Releases/schema.org_adopts_IPTC's_rNews_for_news_markup). 
+was in large part [added to Schema.org](http://www.iptc.org/site/Home/Media_Releases/schema.org_adopts_IPTC's_rNews_for_news_markup). 
 This was the first industry organization to 
 work with the Schema.org partners to publish an expansion of
 Schema.org to make it more robust and useful in a particular domain. The 
 adoption of much of rNews has resulted in
-news and publishing-related types being more expressive and better meeting the needs of 
-news organizations.
+news and publishing-related types being more expressive and better meeting the 
+needs of news organizations.
 
 Another change to the schema was the result of a [collaboration](http://www.whitehouse.gov/blog/2011/11/07/open-innovation-heroes-introducing-veterans-job-bank) 
 between Schema.org
 and the United States Office of Science and Technology Policy to 
 [add support for job postings](http://blog.schema.org/2011/11/schemaorg-support-for-job-postings.html) 
-to schema.org. One immediate use this was put to was to create a
+to Schema.org. These additions were immediately put to use to create a
 [job search widget](https://www.nationalresourcedirectory.gov/home/job_search_widget) 
-for use on government web sites to highlight job listings from 
+for government web sites to highlight job listings from 
 employers who commit to hiring veterans. 
 (See the [Veterans Job Bank](https://www.nationalresourcedirectory.gov/jobSearch/index).)
 
-So this kind of partnership with domain experts seems like a clear way forward
+So this kind of partnership with domain experts seems like a way forward
 for other groups.
 Libraries, museums, archives, and other cultural heritage organizations could 
 start to enumerate the places where the vocabulary could be modified to better
-fit their data.
+fit their data and use cases.
 There has been some suggestion for [future discussions with the cultural sector](http://www.w3.org/wiki/WebSchemas#Proposals_from_and_for_Schema.org) 
 to this end.
-
 One suggested location for this kind of activity is the [W3C wiki](http://www.w3.org/wiki/SchemaDotOrgProcess),
 which points to the simplicity of the submission for job postings.
-YKK This is one place to hash out this kind of work as a community...
 
-YKK... This p could probably be moved or removed.
 Some of this work may already be available.
 Work is ongoing to map other vocabularies to Schema.org. 
 This provides a simpler way for organizations to expose their data through 
@@ -1016,9 +1013,19 @@ expanding Schema.org in those directions.
 Conclusion
 ----------
 
-Semantic markup of data embedded in HTML is a rapidly changing area. Whether or
-not you implement Microdata and/or Schema.org, understanding ...
-For cultural heritage organizations to YKK
+Semantic markup of data embedded in HTML is a rapidly changing area, and much of 
+what is written here is likely to change. While this is challenging for 
+implementers, it also provides a chance for
+cultural heritage organizations to enter the conversation. 
+There is still an
+opportunity to have an impact on these technologies to improve the 
+discoverability and uses of our collections and services.
+The next step is to take a closer look, try it out, and report back to the 
+community on your experiences and use cases. Who is interested in making the 
+web a better place for libraries, archives, and museums?
+
+YKK call to action too cheesy?
+
 
 Appendix: Resources
 -------------------
