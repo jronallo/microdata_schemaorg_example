@@ -964,7 +964,8 @@ for the property like this:
 
 So while anyone can easily extend Schema.org types and properties, for them to
 have any usefulness, there needs to be some community using or consumer 
-understanding the same extensions in a consistent way.
+understanding the same extensions in a consistent way. Do not expect the search
+engines to do anything with any arbitrary property name.
 
 ### Another way forward for the cultural heritage sector?
 
