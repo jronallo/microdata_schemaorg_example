@@ -928,7 +928,7 @@ a different view of the world than cultural heritage organizations and historian
 Because of the focus on the future, we may not want to try to mark up historic
 events, as rich snippets may be unlikely to show up for past events. 
 
-Another option for publishing data about the kind of events taken on objects 
+Another option for publishing data about this kind of event in the life of an object
 may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extension.html)
 to possibly make it clearer to the search engines that certain types of events 
 are different. 
