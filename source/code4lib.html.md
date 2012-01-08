@@ -899,12 +899,13 @@ project records. Museums
 may be interested in various events in the history of a painting including
 provenance and restorations. History museums and historical societies may also
 want to refer to various historical events that relate to their exhibits. Each
-of these may also want to promote various events happening in the future like
+of these institutions may also want to promote various future events like
 movie screenings, limited time exhibits, and tours. So it may be important to be
 able to disambiguate whether an event is in the future or
 of some historical significance.
 
-Schema.org has an Event type defined as: "An event happening at a certain time at a 
+Schema.org has an [Event](http://schema.org/Event) type defined as: 
+"An event happening at a certain time at a 
 certain location." That seems broad enough to apply it to either future or 
 historic events. But
 the message from Google's [support page on Rich Snippets for events](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=164506)
@@ -916,11 +917,12 @@ gives more specific guidance:
 > such as a musical concert or an art festival.
 
 Google has
-a different view of the world than cultural heritage organizations.
+a different view of the world than cultural heritage organizations and historians.
 Because of the focus on the future, we may not want to try to mark up historic
 events, as rich snippets may be unlikely to show up for past events. 
 
-Another option may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extension.html)
+Another option for publishing data about the kind of events taken on objects 
+may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extension.html)
 to possibly make it clearer to the search engines that certain types of events 
 are different. 
 As Schema.org is intended as a Web-scale schema, there is no possibility of 
@@ -938,7 +940,7 @@ same extension and the search engines notice, then the search engines may start
 using the data in a meaningful way. There is not a good, public, formal 
 [process](http://www.w3.org/wiki/SchemaDotOrgProcess) 
 for how to share extensions or advocate for their inclusion in Schema.org proper.
-There is still work to be done to have a clear central location to share 
+There is still work to be done to build up a clear central location to share 
 extensions or have a community process to work out new extensions.
 
 For properties there are two options for mixing in a new property for 
@@ -956,6 +958,10 @@ for the property like this:
     <dd itemprop="http://purl.org/dc/elements/1.1/rights">
           Reproduction and use of this material requires permission from 
           North Carolina State University.</dd>
+
+So while anyone can easily extend Schema.org types and properties, for them to
+have any usefulness, there needs to be some community using or consumer 
+understanding the same extensions in a consistent way.
 
 ### Another way forward for the cultural heritage sector?
 
