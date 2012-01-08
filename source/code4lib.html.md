@@ -116,8 +116,8 @@ implementing RDFa has been overly complex for most web developers. Google has
 supported RDFa in some fashion since 2009, and over that time had discovered
 a [large error rate](http://lists.w3.org/Archives/Public/public-vocabs/2011Oct/0113.html)
 in the application of RDFa by webmasters. 
-Simplicity is one of the main reasons for the development of Microdata and the 
-search engines preferring it over RDFa.
+Simplicity is a central reason for the development of Microdata and the 
+search engines preferring it over RDFa. 
 In part in
 reaction to greater adoption of Microdata, a simplified profile of RDFa has been 
 created. [RDFa Lite 1.1](http://www.w3.org/2010/02/rdfa/sources/rdfa-lite/Overview-src.html)
@@ -143,7 +143,7 @@ Out of that thread and collected use cases [Ian "Hixie" Hickson](http://hixie.ch
 the editor of the HTML5 specification,
 showed the first work on Microdata on [May 10, 2009](http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2009-May/019681.html)
 (the syntax has changed some since then). The syntax is designed to be simple
-for page authors to implement.
+for page authors to implement. 
 
 In technical Microdata terms, the things on an HTML page being described are 
 items. Each item is made up of one or more key-value pairs, a property and a
@@ -234,7 +234,9 @@ Microdata and Schema.org have a tight connection, though each can be used withou
 the other. 
 The search engines are currently the main consumers
 of Schema.org data and have a stated preference for Microdata.
-The Schema.org examples are written using the Microdata syntax.
+The Schema.org examples are written using the Microdata syntax. Both are 
+designed and work well together to make adoption simple (and less error-prone) 
+for webmasters.
 
 Here is the above Microdata example rewritten 
 use the Schema.org [`Organization`](http://schema.org/Organization)
@@ -575,7 +577,7 @@ Some retrospective and ongoing work would be needed to
 choose the correct type for
 every building. For now NCSU has made the decision to always pick the more
 specific type of `LandmarksOrHistoricalBuildings` for all the buildings we
-describe as something of a compromise. It better communicates that the resource 
+describe as something of a compromise. It almost communicates that the resource 
 is part of the historic record, but it does lose on the specificity we might
 like to have.
 
