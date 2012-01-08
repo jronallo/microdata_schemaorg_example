@@ -13,14 +13,11 @@ announced the joint effort [Schema.org](http://schema.org). When the big search
 engines talk, web site authors listen. 
 
 This is an introduction to Microdata and Schema.org. 
-YKK
-The tutorial will introduce you to implementing these new technologies on a 
+A tutorial will move through implementing these new technologies on a 
 site for discovery of cultural heritage materials.
-Along the way, you will be introduced to some tools for implementers and some
-issues with applying this to cultural heritage materials. 
-The conclusion will
-provide some suggestions on how the cultural heritage sector could work to 
-better leverage Microdata and Schema.org.
+Along the way, some tools for implementers will be introduced.
+Issues with applying this to cultural heritage materials will crop up along with
+opportunities for the cultural sector to improve the situation.
 
 Foundation
 ----------
