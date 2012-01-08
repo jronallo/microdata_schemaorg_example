@@ -1,7 +1,7 @@
 HTML5 Microdata and Schema.org
 ==============================
 
-by Jason Ronallo, Digital Collections Technology Librarian, NCSU Libraries
+by <span itemscope itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <span itemprop="jobTitle">Digital Collections Technology Librarian</span>, <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
 
 DRAFT NOTE: YKK means things that still need zipped up.
 
@@ -212,7 +212,14 @@ into depth in any one area.
 A central goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
 and cover the most common use cases.
-The vocabulary does seem to have a bias towards commercial use cases.
+The vocabulary does seem to have a bias towards search engine and commercial use 
+cases.
+
+> The type hierarchy presented on this site is not intended to be a 'global 
+> ontology' of the world. It only covers the types of entities for which we 
+> (Microsoft, Yahoo! and Google), think we can provide some special treatment 
+> for, through our search engine, in the near future. [Schema.org Data Model](http://schema.org/docs/datamodel.html)
+
 You can browse the 
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
 feel of the bounds of the world according to search engines. 
@@ -1002,7 +1009,9 @@ schema.
 The Dublin Core Metadata Initiative
 has begun an effort to do such a mapping. In each of these mappings there are 
 certainly some areas where there is not overlap, so there is potential for 
-expanding Schema.org in those directions. 
+expanding Schema.org in those directions.
+
+
 
 Conclusion
 ----------
@@ -1013,7 +1022,7 @@ implementers, it also provides a chance for
 cultural heritage organizations to enter the conversation. 
 There is still an
 opportunity to have an impact on these technologies to improve the 
-discoverability and uses of our collections and services.
+discoverability and uses of our collections and services. 
 The next step is to take a closer look, try it out, and report back to the 
 community on your experiences and use cases. Who is interested working together
 to make structured data on the web easier and more expressive for libraries, 
