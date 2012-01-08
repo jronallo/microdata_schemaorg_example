@@ -944,7 +944,10 @@ to handle historic events would be to extend Event:
 At least the search engines will
 understand that these items are some type of event. If enough other folks use the 
 same extension and the search engines notice, then the search engines may start
-using the data in a meaningful way. There is not a good, public, formal 
+using the data in a meaningful way. This is one way to grow the schema
+organically with actual use influencing the vocabulary, though there are no 
+assurances that extensions will get used.
+There is not a good, public, formal 
 [process](http://www.w3.org/wiki/SchemaDotOrgProcess) 
 for how to share extensions or advocate for their inclusion in Schema.org proper.
 There is still work to be done to build up a clear central location to share 
@@ -968,7 +971,8 @@ for the property like this:
 
 So while anyone can easily extend Schema.org types and properties, for them to
 have any usefulness, there needs to be some community using or consumer 
-understanding the same extensions in a consistent way. Do not expect the search
+understanding the same extensions in a consistent way. 
+Do not expect the search
 engines to do anything with any arbitrary property name.
 
 ### Another way forward for the cultural heritage sector?
