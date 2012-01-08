@@ -500,6 +500,7 @@ that any type in the Schema.org hierarchy can be selected to create
 a new item as the value of the `about` property. The [Photograph](http://schema.org/Photograph)
 type is most appropriate for this example.
 
+They way to show relationships between items on a page is through nesting items.
 Nesting is implemented by using all three attributes 
 (`itemprop`, `itemscope`, `itemtype`) on the same element. Doing this states
 that the value of a property is a new item of a particular type.
