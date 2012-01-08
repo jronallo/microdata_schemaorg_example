@@ -1021,8 +1021,9 @@ There is still an
 opportunity to have an impact on these technologies to improve the 
 discoverability and uses of our collections and services.
 The next step is to take a closer look, try it out, and report back to the 
-community on your experiences and use cases. Who is interested in making the 
-web a better place for libraries, archives, and museums?
+community on your experiences and use cases. Who is interested working together
+to make structured data on the web easier and more expressive for libraries, 
+archives, and museums?
 
 YKK call to action too cheesy?
 
