@@ -794,12 +794,12 @@ making available.
 ### time and Datatypes
 
 Another piece of data which would be good to add to the Photograph
-is the created date (`dateCreated`) with an 
+is the created date using the `dateCreated` property with an 
 expected value of [`Date`](http://schema.org/Date).
 
 The Microdata specification (unlike RDFa and Microformats-2) does not provide a 
 generic mechanism for specifying data types.
-Instead Microdata again [relies on a vocabulary](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#names:-the-itemprop-attribute)
+Instead Microdata [relies on a vocabulary](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#names:-the-itemprop-attribute)
 to define expected data types. 
 Schema.org has four basic types: Boolean, Date, Number, and Text, but none of 
 them are very well documented.
@@ -809,61 +809,52 @@ and these can be used for the Schema.org datatypes.
 The [`time`](http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-time-element) 
 and [`data`](http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-data-element)
 elements have been added to HTML5. The specification of `time` has not been 
-stable. In fact it was removed with some [strong objections](http://www.brucelawson.co.uk/2011/goodbye-html5-time-hello-data/)
+stable. In fact the `time` element was removed from HTML5 with some 
+[strong objections](http://www.brucelawson.co.uk/2011/goodbye-html5-time-hello-data/)
 and lots of exciting specification [drama](https://plus.google.com/107429617152575897589/posts/3ZEQAVkF6xd).
 
-So while `time` is in the specification again, the Schema.org and Google
-documentation adds its own confusion
-to the matter, by using the `meta` element instead when it needs a date. 
+So while the `time` element is in the specification again, 
+the Schema.org and Google documentation add confusion
+to the matter by using the `meta` element instead when the content is a date. 
 Lots of examples around look like this:
 
     <meta itemprop="startDate" content="2016-04-21T20:00">
       Thu, 04/21/16
       8:00 p.m.
 
-Using the `meta` and `link` elements within the `body` body of a document is 
+Using the `meta` and `link` elements within the `body` element of a document is 
 [allowed in HTML5 when used with an `itemprop` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#flow-content). 
-These
+These elements
 can sometimes be useful for Microdata in expressing the meaning of content or
-a URL which has no
-usefulness to a human reader. 
-The `meta` element here is used to give the machine readable date near the date
+a URL which has no usefulness to a human reader. 
+The `meta` element above is used to give the machine readable date near the date
 visible to the user. It is hidden on the page, so goes against the general 
 recommendation to not use hidden markup for Microdata. 
-Further, the `meta` element does not even surround the free text version of the 
+Further, the `meta` element does not surround the free text version of the 
 date disassociating them from each other. 
 
-You could alternatively mark up the same text with `<time>` like so:
+The same data as above could be marked up using `<time>` like so:
   
     <time itemprop="startDate" datetime="2016-04-21T20:00">
       Thu, 04/21/16
       8:00 p.m.
     </time>
     
-The `time` element has the correct semantics for our Photograph:
+The `time` element has the correct semantics for the Photograph:
 
     <time itemprop="dateCreated" datetime="1981">
       circa 1981
     </time>
     
 I have made no attempt to handle the approximate date ("circa"). The current
-specification processing rules does not handle many valid ISO8601 dates.
+processing rules in the specification do
+not handle many valid ISO8601 dates. 
 As dates and [ambiguity about dates](http://wiki.whatwg.org/wiki/Time_element#Fuzzy_dates) 
 is important for describing cultural heritage 
-materials, hopefully the HTML5 processing rules can be adjusted to handle all
+materials, hopefully the HTML5 processing rules can be adjusted to handle more
 valid ISO8601 dates. It seems as if the WHATWG has accepted a proposal to
 support [year only dates](http://wiki.whatwg.org/wiki/Time_element#year_only),
-which is a start.
-
-(YKKK Move this to a footnote or remove? Also the MicrodataJS parser in use on this site erroneously takes 
-the text value of the `time` element rather than the value of the `@datetime` 
-attribute. As `time` is currently specified, the value for purposes of Microdata
-of `time` is only falls back to the text content if there is no `@datetime` 
-attribute.
-Up until some time in December of 2011 the Google Rich Snippets Testing Tool, 
-was throwing a warning that just a year was not a valid ISO8601 date,
-[though it seems to be](http://en.wikipedia.org/wiki/ISO_8601#Years). The
-HTML5 specification has [stricter processing rules](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#vaguer-moments-in-time).) 
+which is a start. 
 
 ### itemid
 
