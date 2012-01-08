@@ -858,10 +858,7 @@ which is a start.
 
 ### itemid
 
-The Building the Memorial Bell Tower is a unique resource which can be represented by this
-Freebase URI:
-
-[http://www.freebase.com/m/026twjv](http://www.freebase.com/m/026twjv)
+YKK something about improving the linkability of Microdata?
 
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
@@ -869,20 +866,25 @@ globally unique URL identifier, "so that it can be related to other items on pag
 elsewhere on the web." 
 This is the main 
 mechanism by which Microdata natively supports something like linked data. 
-("Item types are opaque identifiers, and user agents must not dereference 
-unknown item types, or otherwise deconstruct them, in order to determine how to 
-process items that use them." [Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
-The meaning of the `@itemid` attribute is determined by the vocabulary. 
+Other URLs used throughout Microdata do not provide this linkability:
 
+> Item types are opaque identifiers, and user agents must not dereference 
+> unknown item types, or otherwise deconstruct them, in order to determine how to 
+> process items that use them. ([Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
+
+The meaning of the `@itemid` attribute is determined by the vocabulary.
 Unfortunately, Schema.org 
 [does not document any use or support for the `itemid` attribute](http://www.w3.org/2011/webschema/track/issues/6)
 at this time, though they ["strongly encourage the use of itemids"](http://groups.google.com/group/schemaorg-discussion/msg/f3317f1482d56232). 
 The semantics of `itemid` in the Schema.org context seems 
-[uncertain and overlapping with the consistent use of url properties](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
+[uncertain and overlapping with the consistent use of url property names](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
 
-We'll add an `itemid` in any case.
+We'll add an `itemid` in any case. 
+The building the Memorial Bell Tower is a unique resource which can be 
+represented by this Freebase URI:
+[http://www.freebase.com/m/026twjv](http://www.freebase.com/m/026twjv)
 
-    <div id="building" class="info" itemprop="about" itemscope="" itemtype="http://schema.org/LandmarksOrHistoricalBuildings" itemid="http://www.freebase.com/m/026twjv">
+    <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings" itemid="http://www.freebase.com/m/026twjv">
   
 
 ### Extending Schema.org
