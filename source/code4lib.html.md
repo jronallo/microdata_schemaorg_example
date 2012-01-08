@@ -303,17 +303,12 @@ site.
 Tutorial
 --------
 
-This tutorial will lead you through implementing Microdata and Schema.org on
+This tutorial will move through implementing Microdata and Schema.org on
 a pre-existing site for exposing digitized collections. The example is based on
 [NCSU Libraries' Digital Collections: Rare and Unique Materials](http://d.lib.ncsu.edu/collections).
 Each section will lead you through decisions that are made and common
-problems that are encounted in implementing Microdata and Schema.org. 
-
-YKK 
-
-* some useful tools. 
-* tips tricks
-* deeper dive into the specifications
+problems that are encounted in implementing Microdata and Schema.org. Along the
+way are tips, tricks, tools, and a closer look at the specifications.
 
 ### Before Microdata
 
