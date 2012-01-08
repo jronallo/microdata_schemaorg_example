@@ -1109,10 +1109,10 @@ help expose your data in a way that the search engines understand.
 * [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
 * [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
 
-
-This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/),
-except for the image of students jumping in front of Memorial Bell Tower, which
-requires permission from North Carolina State University for reproduction and
-use.
+The text of this work is licensed under a [Creative Commons Attribution 3.0 United States License](http://creativecommons.org/licenses/by/3.0/us/).
+Any code is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+The image of students jumping in front of Memorial Bell Tower
+[requires permission](http://www.lib.ncsu.edu/specialcollections/research/index.html#permission) 
+from North Carolina State University for reproduction and use.
 
 
