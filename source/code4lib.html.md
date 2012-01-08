@@ -781,6 +781,9 @@ possible items to create a search result snippet.
 Google currently only supports Rich Snippets for several of the Schema.org types 
 (Applications, Authors, Events, Movie, Music, People, Products, Products with many offers, Recipes, Reviews, TV Series--
 not all of which are Schema.org types). 
+For each of these item types Google requires that certain properties be present
+in order for a rich snippet to have a chance of showing up. Even then a rich
+snippet may only show up for a page if an item is relevant to the users query.
 But using the 
 [Structured Data Linter](http://linter.structured-data.org/) we get this 
 possible preview for the LandmarksOrHistoricalBuildings item.
