@@ -1105,9 +1105,11 @@ help expose your data in a way that the search engines understand.
 ### Discussions
 
 * [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
-  Schema.org discussion has moved over to this list.
+  Schema.org feedback and discussion has moved over to this W3C list, and other 
+  web vocabularies may join them in the future.
 * [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
 * [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
+
 
 The text of this work is licensed under a [Creative Commons Attribution 3.0 United States License](http://creativecommons.org/licenses/by/3.0/us/).
 Any code is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
