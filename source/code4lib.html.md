@@ -716,9 +716,9 @@ YKK redo this link with the final version.
 
 ### itemref
 
-One thing we have not marked up yet, is to associate the Photograph with the
-image on the page. We need to fix that, because a rich snippet for a Photograph
-is unlikely to show up for a photograph without a value for the `image` property. 
+So far the image is not associated with the Photograph or any items on the page. 
+That needs to be fixed, because a rich snippet for a Photograph
+is unlikely to show up without a value for the `image` property. 
 The problem is that the image is not nested within the same `div` where the 
 Photograph is defined.
 
@@ -727,13 +727,11 @@ Photograph is defined.
 > determine the meaning of the additional markup. [http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice)
 
 While we have the content on our page relatively well organized to contain our
-items, our layout and grid system mean that the image of the photograph is
-not nested within the same `div` as the metadata about the photograph. When
-coding new pages it is important to think not just about presentation but also
+items, our layout and grid system result in the image of the photograph 
+not being nested within the same `div` as the metadata about the photograph. 
+When coding new pages, it is important to think 
 about how to structure the page with [both presentation and data in mind](http://semanticweb.com/schema-org-microdata-rdfa-and-black-friday-at-bestbuy_b24643). 
-It makes marking up data easier if the 
-properties of a thing are grouped together.
-
+It makes marking up data easier if the properties of a thing are grouped together.
 While in most
 cases it will be easier to arrange our markup so that the properties of an
 item are all within the same block on the page, there are times like this where
@@ -748,11 +746,13 @@ Microdata uses the `itemref` attribute to make this more convenient.
 > data to be annotated does not follow a convenient tree structure.
 > [Microdata specification itemref attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemref)
 
-In our example above we already have an `id` of main_image_and an `itemprop` with 
-the value "image" on the image. All that we need to give our Photograph an image
-property  is add
-`itemref="main_image"` to `div#metadata`. This adds it to the queue of locations
-in the DOM to check for properties.
+In our example above the `img` already has an `id` of "main_image" and an 
+`itemprop` with the value "image." All that we need to do to use that
+image property for the Photograph is add
+`itemref="main_image"` to `div#metadata`. The `itemref` adds elements with
+that id attribute to the queue of locations
+in the DOM to check for properties for the item created on the same
+element. Here is the relevant markup:
 
     <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" 
             src="/images/bell_tower.png" itemprop="image"> 
@@ -761,14 +761,19 @@ in the DOM to check for properties.
       ...
     </div>
     
+The `div#metadata` which contains all of the information about the photograph
+now uses four Microdata attributes. The same `itemref` value could be added
+to the building to associate the page image with that item as well.
+    
 ### Problems with Rich Snippets
 
 No rich
 snippet would show up in search results or the [Rich Snippets Testing Tool](http://www.google.com/webmasters/tools/richsnippets)
 for this example right now.
-Even though we valid Microdata and multiple Schema.org items marked up, 
+Even though the Microdata is valid and multiple Schema.org items properly 
+marked up, 
 at the time of this writing, Google would not use data from any of the 
-possible items in a search result snippet.
+possible items to create a search result snippet.
 Google currently only supports Rich Snippets for several of the Schema.org types 
 (Applications, Authors, Events, Movie, Music, People, Products, Products with many offers, Recipes, Reviews, TV Series--
 not all of which are Schema.org types). 
@@ -780,9 +785,9 @@ possible preview for the LandmarksOrHistoricalBuildings item.
 <img alt="Screenshot of page for digital photograph" src="/images/memorial_tower_snippet.png"/>
 </p>
 
-This is exactly the kind of attractive rich snippet we want users to see for our 
-digitized resources. It uses the image and address to make a more clickable 
-target. Hopefully the search engines will begin showing snippets
+This is exactly the kind of attractive rich snippet we want users to see for 
+digitized resources. The snippet includes the image and address to make a more 
+clickable target. Hopefully the search engines will begin showing snippets
 for some of the types cultural heritage organizations are most likely to be
 making available.
 
