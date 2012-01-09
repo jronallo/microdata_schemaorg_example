@@ -629,6 +629,7 @@ This kind of link also begins to make Microdata more linkable data.
 
 ### Result so far
 
+YKK: What should the hrefs for the links in this markup be?
 Here's what our marked up snippet looks like so far: 
 
     <div id="main" role="main" class="container_12" itemscope itemtype="http:schema.org/ItemPage">
