@@ -3,8 +3,6 @@ HTML5 Microdata and Schema.org
 
 by <span itemscope="" itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Associate Head of Digital Library Initiatives</span></a>, <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
 
-DRAFT NOTE: YKK means things that still need zipped up.
-
 On June 2, 2011 [Bing](http://www.bing.com/community/site_blogs/b/search/archive/2011/06/02/bing-google-and-yahoo-unite-to-build-the-web-of-objects.aspx), 
 [Google](http://googleblog.blogspot.com/2011/06/introducing-schemaorg-search-engines.html ), 
 and 
@@ -629,13 +627,12 @@ This kind of link also begins to make Microdata more linkable data.
 
 ### Result so far
 
-YKK: What should the hrefs for the links in this markup be?
 Here's what our marked up snippet looks like so far: 
 
     <div id="main" role="main" class="container_12" itemscope itemtype="http:schema.org/ItemPage">
-    <h2 id="page_name" itemprop="name">
-      Students jumping in front of Memorial Bell Tower
-    </h2>
+      <h2 id="page_name" itemprop="name">
+        Students jumping in front of Memorial Bell Tower
+      </h2>
       <div class="grid_5"> 
           <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
       </div> 
@@ -715,9 +712,8 @@ The nested types could be represented by this image:
 <img alt="Screenshot of page for digital photograph" src="/images/nested_itemtypes.png"/>
 </p>
 
-You can see the extracted JSON [at Live Microdata](http://foolip.org/microdatajs/live/?html=%3Cdiv%20id%3D%22main%22%20role%3D%22main%22%20class%3D%22container_12%22%20itemscope%20itemtype%3D%22http%3Aschema.org%2FItemPage%22%3E%0A%20%20%20%20%3Ch2%20id%3D%22page_name%22%20itemprop%3D%22name%22%3E%0A%20%20%20%20%20%20Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%0A%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grid_5%22%3E%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20itemprop%3D%22image%22%20id%3D%22main_image%22%20alt%3D%22Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%22%20src%3D%22%2Fimages%2Fbell_tower.png%22%3E%20%20%20%20%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%20%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22metadata%22%20class%3D%22grid_7%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPhotograph%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22item%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EPhotograph%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ECreated%20Date%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20circa%201981%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ESubjects%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23buildings%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EBuildings%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23students%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EStudents%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EGenre%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23architectural_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EArchitectural%20photographs%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23publicity_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EPublicity%20photographs%3C%2Fspan%3E%3C%2Fa%3E%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDigital%20Collection%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23uapc%22%3EUniversity%20Archives%20Photographs%3C%2Fa%3E%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20item%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22building%22%20class%3D%22info%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FLandmarksOrHistoricalBuildings%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EBuilding%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EBuilding%20Name%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23memorial_tower%22%3E%3Cspan%20itemprop%3D%22name%22%3EMemorial%20Tower%3C%2Fspan%3E%3C%2Fa%3E%3C%2Fdd%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDescription%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22description%22%3EMemorial%20Tower%20honors%20those%20alumni%20who%20were%20killed%20in%20World%20War%20I.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20The%20cornerstone%20was%20laid%20in%201922%20and%20the%20Tower%20was%20dedicated%20on%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20November%2011%2C%201949.%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EAddress%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22address%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPostalAddress%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22streetAddress%22%3E2701%20Sullivan%20Drive%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22addressLocality%22%3ERaleigh%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22addressLocality%22%3ENC%3C%2Fspan%3E%20%3Cspan%20itemprop%3D%22postalCode%22%3E26707%3C%2Fspan%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ELatitude%2C%20Longitude%3C%2Fdt%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22geo%22%20itemscope%3D%22%22%20itemtype%3D%22http%3A%2F%2Fschema.org%2FGeoCoordinates%22%3E%3Cspan%20itemprop%3D%22latitude%22%3E35.786098%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22longitude%22%3E-78.663498%3C%2Fspan%3E%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20building%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22source%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESource%20Information%3C%2Fh2%3E%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20...%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20source%20--%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%20%0A%20%20%20%20%3C%2Fdiv%3E)
+You can see the extracted JSON [at Live Microdata](http://foolip.org/microdatajs/live/?html=%3Cdiv%20id%3D%22main%22%20role%3D%22main%22%20class%3D%22container_12%22%20itemscope%20itemtype%3D%22http%3Aschema.org%2FItemPage%22%3E%0A%20%20%20%20%3Ch2%20id%3D%22page_name%22%20itemprop%3D%22name%22%3E%0A%20%20%20%20%20%20Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%0A%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grid_5%22%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20itemprop%3D%22image%22%20id%3D%22main_image%22%20alt%3D%22Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%22%20src%3D%22%2Fimages%2Fbell_tower.png%22%3E%20%20%20%20%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22metadata%22%20class%3D%22grid_7%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPhotograph%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22item%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EPhotograph%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ECreated%20Date%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20circa%201981%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ESubjects%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23buildings%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EBuildings%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23students%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EStudents%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EGenre%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23architectural_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EArchitectural%20photographs%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23publicity_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EPublicity%20photographs%3C%2Fspan%3E%3C%2Fa%3E%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDigital%20Collection%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23uapc%22%3EUniversity%20Archives%20Photographs%3C%2Fa%3E%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20item%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22building%22%20class%3D%22info%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FLandmarksOrHistoricalBuildings%22%20itemref%3D%22main_image%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EBuilding%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EBuilding%20Name%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23memorial_tower%22%3E%3Cspan%20itemprop%3D%22name%22%3EMemorial%20Tower%3C%2Fspan%3E%3C%2Fa%3E%3C%2Fdd%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDescription%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22description%22%3EMemorial%20Tower%20honors%20those%20alumni%20who%20were%20killed%20in%20World%20War%20I.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20The%20cornerstone%20was%20laid%20in%201922%20and%20the%20Tower%20was%20dedicated%20on%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20November%2011%2C%201949.%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EAddress%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22address%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPostalAddress%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22streetAddress%22%3E2701%20Sullivan%20Drive%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22addressLocality%22%3ERaleigh%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22addressLocality%22%3ENC%3C%2Fspan%3E%20%3Cspan%20itemprop%3D%22postalCode%22%3E26707%3C%2Fspan%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ELatitude%2C%20Longitude%3C%2Fdt%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22geo%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FGeoCoordinates%22%3E%3Cspan%20itemprop%3D%22latitude%22%3E35.786098%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22longitude%22%3E-78.663498%3C%2Fspan%3E%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20building%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22source%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESource%20Information%3C%2Fh2%3E%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20...%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20source%20--%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%3C%2Fdiv%3E)
 under the JSON tab.
-YKK redo this link with the final version.
 
 ### itemref
 
@@ -866,7 +862,10 @@ which is a start.
 
 ### itemid
 
-YKK something about improving the linkability of Microdata?
+Some items have unique identifiers or canonical representations elsewhere on the 
+web that help to link resources together. 
+The Memorial Bell Tower is a unique landmark that could be linked together
+with other representations of the same site.
 
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
@@ -875,7 +874,7 @@ elsewhere on the web."
 This is the main 
 mechanism by which Microdata natively supports something like linked data. 
 Other URLs used throughout Microdata do not provide this linkability, and
-the assumption is that consumers would have a built-in knowledge of the 
+the assumption is that consumers will have a built-in knowledge of the 
 vocabulary used for item types and properties in order to make sense of the data.
 Microdata does not adhere to the "follow-your-nose principle, whereby vocabulary
 authors are encouraged to provide a machine-readable description of
@@ -887,7 +886,7 @@ classes and properties at the URL used for the class or property," like RDF does
 > process items that use them. ([HTML Microdata: Items](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#items))
 
 
-The meaning of the `@itemid` attribute is determined by the vocabulary.
+The meaning of the `itemid` attribute is determined by the vocabulary.
 Unfortunately, Schema.org 
 [does not document any use or support for the `itemid` attribute](http://www.w3.org/2011/webschema/track/issues/6)
 at this time, though they ["strongly encourage the use of itemids"](http://groups.google.com/group/schemaorg-discussion/msg/f3317f1482d56232). 
@@ -895,7 +894,7 @@ The semantics of `itemid` in the Schema.org context seems
 [uncertain and overlapping with the consistent use of url property names](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
 
 We'll add an `itemid` in any case. 
-The building the Memorial Bell Tower is a unique resource which can be 
+The building the Memorial Bell Tower can be 
 represented by this Freebase URI:
 [http://www.freebase.com/m/026twjv](http://www.freebase.com/m/026twjv)
 
@@ -962,7 +961,10 @@ for how to share extensions or advocate for their inclusion in Schema.org proper
 There is still work to be done to build up a clear central location to share 
 extensions or have a community process to work out new extensions.
 
-YKK properties are erm a little sparse.
+Dan Brickley has noted that the properties available in the Schema.org types for 
+describing 
+museum objects are "[a erm little sparse](http://groups.google.com/group/schemaorg-discussion/msg/272738cbc0e05816)" 
+compared to some controlled vocabularies used by museums. 
 For properties there are two options for mixing in a new property for 
 an existing (or extended type). Schema.org prefers page authors to just add
 the new property name as if it were defined by Schema.org. 
@@ -979,11 +981,12 @@ for the property like this:
           Reproduction and use of this material requires permission from 
           North Carolina State University.</dd>
 
-So while anyone can easily extend Schema.org types and properties, for them to
-have any usefulness, there needs to be some community using or consumer 
-understanding the same extensions in a consistent way. 
+So while anyone can easily extend Schema.org types and properties, 
+there needs to be some community using or consumer 
+understanding the same extensions in a consistent way for the extensions to
+have any usefulness. 
 Do not expect the search
-engines to do anything with any arbitrary property name.
+engines to do anything with property names that are not documented on Schema.org.
 
 ### Another way forward for the cultural heritage sector?
 
@@ -1033,7 +1036,6 @@ certainly some areas where there is not overlap, so there is potential for
 expanding Schema.org in those directions.
 
 
-
 Conclusion
 ----------
 
@@ -1043,13 +1045,11 @@ implementers, it also provides a chance for
 cultural heritage organizations to enter the conversation. 
 There is still an
 opportunity to have an impact on these technologies to improve the 
-discoverability and uses of our collections and services. 
+discoverability and use of our collections and services. 
 The next step is to take a closer look, try it out, and report back to the 
-community on your experiences and use cases. Who is interested working together
+community on your experiences. Who is interested in working together
 to make structured data on the web easier and more expressive for libraries, 
 archives, and museums?
-
-YKK call to action too cheesy?
 
 
 Appendix: Resources
