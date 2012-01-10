@@ -1,7 +1,7 @@
 HTML5 Microdata and Schema.org
 ==============================
 
-by <span itemscope="" itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Digital Collections Technology Librarian</span></a>, <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
+by <span itemscope="" itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Associate Head of Digital Library Initiatives</span></a>, <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
 
 DRAFT NOTE: YKK means things that still need zipped up.
 
@@ -962,6 +962,7 @@ for how to share extensions or advocate for their inclusion in Schema.org proper
 There is still work to be done to build up a clear central location to share 
 extensions or have a community process to work out new extensions.
 
+YKK properties are erm a little sparse.
 For properties there are two options for mixing in a new property for 
 an existing (or extended type). Schema.org prefers page authors to just add
 the new property name as if it were defined by Schema.org. 
@@ -1036,7 +1037,7 @@ expanding Schema.org in those directions.
 Conclusion
 ----------
 
-Semantic markup of data embedded in HTML is a rapidly changing area, and much of 
+The semantic markup of data embedded in HTML is a rapidly changing area, and much of 
 what is written here is likely to change. While this is challenging for 
 implementers, it also provides a chance for
 cultural heritage organizations to enter the conversation. 
