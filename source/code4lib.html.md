@@ -33,12 +33,14 @@ often went overlooked.
 HTML elements often have
 some semantics. For example, an `ol` element is an ordered list, and by default
 gets rendered with numbers for the list items. 
-With HTML5 we also have new semantic elements 
+HTML5 provides new semantic elements 
 like `header`, `nav`, `article`, and `footer` that allow more expressiveness for 
 page authors. A bunch of `div`s with various class names 
-is no longer the way to divide up so much content. These new elements also
-enable new tools and better services. Browser plugins can pull out the text of
-the article for a cleaner reading 
+is no longer the way to divide up so much content. 
+
+The new HTML5 elements also
+enable new tools and better services. Browser plugins can more easily pull out 
+the text of the article for a cleaner reading 
 experience, or search engines can give more weight to the `article` content 
 rather than the advertising in the sidebar.
 
@@ -78,6 +80,8 @@ to maintain.
 
 ### Embedding Data in Markup
 
+Another approach which avoids some of these problems is to embed the data within
+the HTML.
 The HTML representation is most visible to users, so it
 is also the HTML code which gets the most attention from developers. 
 Little-used, overlooked APIs or data feeds are easy to let go stale.
@@ -376,6 +380,19 @@ some sections and attributes removed with ellipses for brevity.
 
 ### Adding a WebPage
 
+When you are adding Microdata there is a sense in which you are always just 
+describing a web page. Ian Hickson, the editor of the Microdata specification, 
+has said that
+Microdata items exist "in the context of a page and its 
+DOM. It does not have an independent existence outside the page" 
+([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html)).
+This is different than the way RDFa may think about embedding structured data in 
+HTML as part of a graph which links items together across the web. Microdata 
+is not so much linked data as it is a description of a single page. 
+While there are efforts to serialize [Microdata as RDF](https://dvcs.w3.org/hg/htmldata/raw-file/default/ED/microdata-rdf/20120107/index.html), 
+the Microdata model
+is tree-based so it has some limitations as linked data.
+
 When using the Schema.org vocabularies, every page is implicitly assumed to be 
 some kind of [`WebPage`](http://schema.org/WebPage), but the advice is to 
 explicitly declare the type of page. When picking an appropriate type, it is 
@@ -392,19 +409,6 @@ from other types of web pages.
 For the same reason, marking up a [`SearchResultsPage`](http://schema.org/SearchResultsPage) 
 could give the hint to the
 search engines to crawl but not index the page.
-
-When you are adding Microdata there is a sense in which you are always just 
-describing a web page. Ian Hickson, the editor of the Microdata specification, 
-has said that
-Microdata items exist "in the context of a page and its 
-DOM. It does not have an independent existence outside the page" 
-([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html)).
-This is different than the way RDFa may think about embedding structured data in 
-HTML as part of a graph which links items together across the web. Microdata 
-is not so much linked data as it is a description of a single page. 
-While there are efforts to serialize [Microdata as RDF](https://dvcs.w3.org/hg/htmldata/raw-file/default/ED/microdata-rdf/20120107/index.html), 
-the Microdata model
-is tree-based so it has some limitations as linked data.
 
 In the HTML snippet below the ItemPage is added to the `div#main` on the page and some properties
 are added within the scope of that `div#main`. 
