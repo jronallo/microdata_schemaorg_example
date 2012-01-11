@@ -736,7 +736,8 @@ under the JSON tab.
 
 ### itemref
 
-So far the image is not associated with the Photograph or any items on the page. 
+So far the image is not associated with the Photograph or any child items on the 
+page. 
 That needs to be fixed, because a rich snippet for a Photograph
 is unlikely to show up without a value for the `image` property. 
 The problem is that the image is not nested within the same `div` where the 
@@ -744,7 +745,8 @@ Photograph is defined.
 
 > Valid HTML is particularly important in pages that contain embedded markup. 
 > All methods of embedding data within HTML use the structure of the HTML to 
-> determine the meaning of the additional markup. [http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice)
+> determine the meaning of the additional markup. 
+> ((Choosing an HTML Data Format)[http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice))
 
 While we have the content on our page relatively well organized to contain our
 items, our layout and grid system result in the image of the photograph 
@@ -764,7 +766,7 @@ Microdata uses the `itemref` attribute to make this more convenient.
 > Note: The itemref attribute is not part of the microdata data model. It is merely a 
 > syntactic construct to aid authors in adding annotations to pages where the 
 > data to be annotated does not follow a convenient tree structure.
-> [Microdata specification itemref attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemref)
+> ([Microdata specification itemref attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemref))
 
 In our example above the `img` already has an `id` of "main_image" and an 
 `itemprop` with the value "image." All that we need to do to use that
@@ -811,13 +813,13 @@ possible preview for the LandmarksOrHistoricalBuildings item.
 This is exactly the kind of attractive rich snippet we want users to see for 
 digitized resources. The snippet includes the image and address to make a more 
 clickable target. Hopefully the search engines will begin showing snippets
-for some of the types cultural heritage organizations are most likely to be
+for some of the item types cultural heritage organizations are most likely to be
 making available.
 
 ### time and Datatypes
 
 Another piece of data which would be good to add to the Photograph
-is the created date using the `dateCreated` property with an 
+is the date created using the `dateCreated` property with an 
 expected value of [`Date`](http://schema.org/Date).
 
 The Microdata specification (unlike RDFa and Microformats-2) does not provide a 
@@ -839,7 +841,7 @@ and lots of exciting specification [drama](https://plus.google.com/1074296171525
 So while the `time` element is in the specification again, 
 the Schema.org and Google documentation add confusion
 to the matter by using the `meta` element instead when the content is a date. 
-Lots of examples around look like this:
+Lots of the examples look like this:
 
     <meta itemprop="startDate" content="2016-04-21T20:00">
       Thu, 04/21/16
@@ -884,7 +886,7 @@ which is a start.
 Some items have unique identifiers or canonical representations elsewhere on the 
 web that help to link resources together. 
 The Memorial Bell Tower is a unique landmark that could be linked together
-with other representations of the same site.
+with other representations of the same place.
 
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
@@ -892,13 +894,14 @@ globally unique URL identifier, "so that it can be related to other items on pag
 elsewhere on the web." 
 This is the main 
 mechanism by which Microdata natively supports something like linked data. 
-Other URLs used throughout Microdata do not provide this linkability, and
+The other URLs used as values throughout Microdata do not provide this 
+linkability, and
 the assumption is that consumers will have a built-in knowledge of the 
 vocabulary used for item types and properties in order to make sense of the data.
 Microdata does not adhere to the "follow-your-nose principle, whereby vocabulary
 authors are encouraged to provide a machine-readable description of
-classes and properties at the URL used for the class or property," like RDF does.
-[HTML Data Guide, W3C Editor's Draft 08 January 2012](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#application-considerations)
+classes and properties at the URL used for the class or property," like RDF does
+([HTML Data Guide, W3C Editor's Draft 08 January 2012](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#application-considerations)).
 
 > Item types are opaque identifiers, and user agents must not dereference 
 > unknown item types, or otherwise deconstruct them, in order to determine how to 
@@ -908,13 +911,12 @@ classes and properties at the URL used for the class or property," like RDF does
 The meaning of the `itemid` attribute is determined by the vocabulary.
 Unfortunately, Schema.org 
 [does not document any use or support for the `itemid` attribute](http://www.w3.org/2011/webschema/track/issues/6)
-at this time, though they ["strongly encourage the use of itemids"](http://groups.google.com/group/schemaorg-discussion/msg/f3317f1482d56232). 
+at this time, though they "[strongly encourage the use of itemids](http://groups.google.com/group/schemaorg-discussion/msg/f3317f1482d56232)." 
 The semantics of `itemid` in the Schema.org context seems 
-[uncertain and overlapping with the consistent use of url property names](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
+[uncertain and overlapping with the consistent use of `url` property names](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0023.html).
 
 We'll add an `itemid` in any case. 
-The building the Memorial Bell Tower can be 
-represented by this Freebase URI:
+The Memorial Bell Tower can be represented by this Freebase URI:
 [http://www.freebase.com/m/026twjv](http://www.freebase.com/m/026twjv)
 
     <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings" itemid="http://www.freebase.com/m/026twjv">
