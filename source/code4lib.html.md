@@ -958,7 +958,7 @@ events, as rich snippets may be unlikely to show up for past events.
 
 Another option for publishing data about this kind of event in the life of an object
 may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extension.html)
-to possibly make it clearer to the search engines that certain types of events 
+to try to make it clearer to the search engines that certain types of events 
 are different. 
 As Schema.org is intended as a Web-scale schema, there is no possibility of 
 having it fit every kind of data on the web.
@@ -970,16 +970,15 @@ to handle historic events would be to extend Event:
     http://schema.org/Event/HistoricEvent
 
 At least the search engines will
-understand that these items are some type of event. If enough other folks use the 
+understand that these items are some type of `Event`. If enough other folks use the 
 same extension and the search engines notice, then the search engines may start
 using the data in a meaningful way. This is one way to 
 [grow the schema organically](http://www.jenitennison.com/blog/node/156)
 with actual use influencing the vocabulary, though there are those who question
 this extension mechanism and there are no assurances that extensions will get used.
-There is not a good, public, formal 
-[process](http://www.w3.org/wiki/SchemaDotOrgProcess) 
-for how to share extensions or advocate for their inclusion in Schema.org proper.
-There is still work to be done to build up a clear central location to share 
+Schema.org lacks a good, public, formal [process](http://www.w3.org/wiki/SchemaDotOrgProcess)
+for sharing extensions and advocating for their inclusion in the vocabulary.
+Work still needs to be done to build up a clear central location to share 
 extensions or have a community process to work out new extensions.
 
 Dan Brickley has noted that the properties available in the Schema.org types for 
@@ -1029,8 +1028,8 @@ needs of news organizations.
 Another change to the schema was the result of a [collaboration](http://www.whitehouse.gov/blog/2011/11/07/open-innovation-heroes-introducing-veterans-job-bank) 
 between Schema.org
 and the United States Office of Science and Technology Policy to 
-[add support for job postings](http://blog.schema.org/2011/11/schemaorg-support-for-job-postings.html) 
-to Schema.org. These additions were immediately put to use to create a
+[add support for job postings](http://blog.schema.org/2011/11/schemaorg-support-for-job-postings.html). 
+These additions were immediately put to use to create a
 [job search widget](https://www.nationalresourcedirectory.gov/home/job_search_widget) 
 for government web sites to highlight job listings from 
 employers who commit to hiring veterans. 
@@ -1124,7 +1123,7 @@ These are tools which I have regularly used.
   allows you to implement the Microdata DOM API on your own site, similar
   to how this tutorial outputs the JSON from parsing the page.
 * [HTML5 Living Validator](http://html5.validator.nu/)
-* [schema.rdfs.org list of tools](http://schema.rdfs.org/tools.html)
+* [schema.rdfs.org list of tools and libraries](http://schema.rdfs.org/tools.html)
 
 ### Mappings
 
@@ -1142,7 +1141,8 @@ help expose your data in a way that the search engines understand.
 
 * [Google Rich Snippets Videos](http://googlewebmastercentral.blogspot.com/2011/12/rich-snippets-instructional-videos.html?m=1):
   This series of short tutorial videos uses Microdata and Schema.org. 
-* [Getting started with schema.org](http://schema.org/docs/gs.html) 
+* [Getting started with schema.org](http://schema.org/docs/gs.html)  The Schema.org
+  examples have been reported to include [some bugs](http://www.w3.org/2011/webschema/track/issues/10).
 * [HTML Data Guide](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#publishers):
   This guide helps producers and consumers determine which structured data 
   syntax to use. It covers Microformats, RDFa, and Microdata. Highly Recommended. 
