@@ -296,7 +296,9 @@ By providing the search engines
 with more data on your pages, it improves the search experience of users and 
 can draw them to your site. Since most of the users of your site likely come
 through the search engines, this could be a powerful way to draw more users
-to your resources.
+to your resources. The search engines may also start using structured data like
+this as [signals for relevance](http://wiki.goodrelations-vocabulary.org/GoodRelations_for_Semantic_SEO), 
+though they are unlikely to say much about this. 
 
 From a developer's perspective there are [many considerations](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html) 
 for choosing a particular syntax. Microdata has a natural fit with HTML and is
