@@ -428,19 +428,20 @@ are added within the scope of that `div#main`.
 
 Here we apply the `itemscope` and `itemtype` attributes at a level in the DOM
 that surrounds everything we want to describe about the page.
-Since we are describing, the page, we could instead add the `itemscope` and
+Since we are describing the page, we could instead add the `itemscope` and
 `itemtype` at a higher level. If we need to use some metadata in the `head` of
 the document, say the `title` element, we could apply this to the `body` or
 even the `html`
 element, though there are [some limitations to using Microdata within `head`](https://www.w3.org/Bugs/Public/show_bug.cgi?id=15304). 
 
+An `itemprop` is added as an attribute to the element which contains its value.
 Within `div#main` we add the two `itemprop`s for the "name" and "image"
 properties. Different elements take their `itemprop` value from different
 places. 
-In this case the "name" property is taken from the text content of `h2` element.
+In this case the `name` property is taken from the text content of `h2` element.
 For the `img` element the value is taken from the `src` attribute, which is
 then resolved into an absolute URL. The `a` element uses the absolute URL
-from the `href` attribute. Like `img` and `a` many elements provide their 
+from the `href` attribute. Like `img` and `a`, many elements provide their 
 values through an attribute rather than the text content.
 If you start using Microdata, you will want to consult 
 [this list from the spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#values)
@@ -454,12 +455,11 @@ One of the cool features of Microdata is that it is designed to be
 You can copy any HTML snippet with Microdata markup into 
 [Live Microdata](http://foolip.org/microdatajs/live/) 
 to see what the JSON output would look like. 
-
 Live Microdata uses [MicrodataJS](https://gitorious.org/microdatajs/),
 which is a Javascript (jQuery) implementation of the [Microdata DOM API](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#microdata-dom-api).
+
 The Microdata DOM API is another neat feature of HTML5 Microdata
 which allows you to extract Microdata client-side. 
-
 You can test whether your browser implements the Microdata DOM API by running the
 [Microdata test suite](http://w3c-test.org/html/tests/submission/Opera/microdata/001.html) 
 created by Opera. If
@@ -468,7 +468,7 @@ you open a page containing Microdata with [Opera Next](http://www.opera.com/brow
 and open up the console (Ctrl+Shift+i), you can play with the Microdata
 DOM API a bit. 
 `document.getItems()` will return a `NodeList` of all items. 
-The `NodeList` will contain only the top-level items, in this case one
+The `NodeList` will contain only the top-level items; in this case, one
 element. It is possible to get all items of a particular type by specifying the
 type or types as an argument like `document.getItems('http://schema.org/ItemPage')`.
 This API may change in the future 
