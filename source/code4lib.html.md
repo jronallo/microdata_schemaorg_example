@@ -10,8 +10,8 @@ and
 announced the joint effort [Schema.org](http://schema.org). When the big search
 engines talk, web site authors listen. 
 
-This is an introduction to Microdata and Schema.org. 
-Included is a tutorial that will move through implementing these new 
+This article is an introduction to Microdata and Schema.org. 
+Included is a tutorial for implementing these new 
 technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, some tools for implementers will be introduced.
@@ -1059,6 +1059,9 @@ expanding Schema.org in those directions.
 Conclusion
 ----------
 
+Microdata and Schema.org provide a relatively simple way for libraries,
+archives, and museums to begin to expose their data in new ways and make their
+collections more discoverable and useful.
 The semantic markup of data embedded in HTML is a rapidly changing area, and much of 
 what is written here is likely to change. While this is challenging for 
 implementers, it also provides a chance for
@@ -1066,10 +1069,8 @@ cultural heritage organizations to enter the conversation.
 There is still an
 opportunity to have an impact on these technologies to improve the 
 discoverability and use of our collections and services. 
-The next step is to take a closer look, try it out, and report back to the 
-community on your experiences. Who is interested in working together
-to make structured data on the web easier and more expressive for libraries, 
-archives, and museums?
+
+
 
 
 Appendix: Resources
