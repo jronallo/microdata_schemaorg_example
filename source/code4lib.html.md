@@ -486,26 +486,28 @@ This API may change in the future
 ### ItemPage about a Photograph
 
 Now that we have some basic microdata about the page, let's try to to describe more
-items on the page. Looking at the valid properties for an [`ItemPage`](http://schema.org/ItemPage),
-it has an `about` property, inherited from [CreativeWork](http://schema.org/CreativeWork).
+items. 
+One valid property for an [`ItemPage`](http://schema.org/ItemPage),
+is `about`, inherited from [CreativeWork](http://schema.org/CreativeWork).
 `ItemPage` inherits different
 properites from `Thing`, `CreativeWork`, and `WebPage`.
 In some cases child types add in new properites, but in the case of `ItemPage` no 
 new properties are defined.
 
-If we add `itemprop="about"` to the `div` containing all metadata, then what
-would be extracted from the page is just the text content within the `div` with 
+One way to express what the page is about would be to add `itemprop="about"` to 
+the `div#metadata` containing all metadata. What
+would be extracted from the page is just the text content within the `div#metadata` with 
 line breaks and all. Microdata processing never maintains markup.
 (If you need to maintain some snippet of markup,
 then [consider](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#syntax-considerations) 
 using microformats or RDfa, which have the ability to maintain
 XML literals.) 
-
 Microdata is specified in a way where if the
 author of the page gets use of the vocabulary wrong, the processor may still be 
 able to do something
 useful with even just that text content. Processors should expect bad data 
 ([Conformance](http://schema.org/docs/datamodel.html)).
+
 Looking at how the `about` property of an `ItemPage` is defined, though, 
 the proper value of 
 the `about` property is another `Thing` (not text content). 
@@ -540,7 +542,7 @@ We could attach the "genres" `itemprop` to the `dd` element, but then a processo
 would extract all the text contained within as a single chunk of text. 
 The genres have some spaces within each term, so rather
 than leaving it up to a post-processor to handle that, we apply the same 
-`itemprop` to each term separately. This insures that the multiword genres 
+`itemprop` to each term separately. This ensures that the multiword genres 
 remain intact. 
 At this time irregardless of the use of 
 [singulars or plurals for property names](http://www.w3.org/2011/webschema/track/issues/5)
@@ -591,8 +593,8 @@ engines to realize that the items refer to the historic record of these
 places rather than to their current services. 
 We could be giving exact geographic coordinates for a hospital which was
 demolished or no longer in operation!
-Also, this is a new metadata facet that may not already being captured in a way
-that would be easy to convert to Schema.org types. 
+Also, this is a new metadata facet that may not already be captured in a way
+that makes it easy to convert to Schema.org types. 
 Some retrospective and ongoing work would be needed to 
 choose the correct type for
 every building. For now NCSU has made the decision, that will likely get revisited,
@@ -612,18 +614,18 @@ With the thousands of types of objects that may be held by libraries, archives,
 museums and historical societies (LAMs), it is [not feasible](www.heppnetz.de/files/IEEE-IC-PossibleOntologies-published.pdf) 
 to add every type to Schema.org.
 One suggestion made by Charles Moad, Director of the Indianapolis Museum of Art 
-Lab, is to extend `CreativeWork` with an "objectType" property (private correspondence). 
-
+Lab, is to extend `CreativeWork` with an "objectType" property (private correspondence).
 If this "objectType" property were part of Schema.org, then the LAM community 
 could suggest that the value of the property come from a vocabulary that 
 covers the kinds of objects LAMs collect. 
 This could go a long way towards expanding the 
-options for LAMs to describe their materials. The [`JobPosting`](http://schema.org/JobPosting)
+options for LAMs to describe their materials. 
+This pattern of using external vocabularies maintained by domain experts is 
+used in other places within Schema.org.
+The [`JobPosting`](http://schema.org/JobPosting)
 type includes an
 `occupationalCategory` property which suggests the use of the [BLS O*NET-SOC taxonomy](http://www.onetcenter.org/taxonomy.html)
-(though the exact format this value should take is underspecified). This same
-pattern of using external vocabularies maintained by domain experts is likely
-to be repeated for other property values. 
+(though the exact format this value should take is underspecified).
 
 This still leaves open the question of what free, open vocabulary would allow
 for the kind of extensibility LAMs need to cover all of their object types at
@@ -888,9 +890,11 @@ which is a start.
 ### itemid
 
 Some items have unique identifiers or canonical representations elsewhere on the 
-web that help to link resources together. 
+web that can be used to link resources together. 
 The Memorial Bell Tower is a unique landmark that could be linked together
-with other representations of the same place.
+with other representations of the same place. This linking could help machines
+to make connections between representations or users to follow their nose to
+related resources.
 
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
