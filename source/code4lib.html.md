@@ -328,11 +328,11 @@ way are tips, tricks, tools, and a closer look at the specifications.
 
 ### Before Microdata
 
-Here's a screenshot of the page to mark up. As we add Microdata to the page,
+Here's a screenshot of the page to mark up. As we add Microdata markup,
 the appearance of the page will not change at all. The page uses a grid system to
 place the image on the left and the metadata to the right.
 
-These students are jumping from excitement to learn more about HTML5 Microdata 
+These students are jumping with excitement to learn more about HTML5 Microdata 
 and Schema.org!
 
 <p>
@@ -376,31 +376,34 @@ some sections and attributes removed with ellipses for brevity.
 
 ### Adding a WebPage
 
-When using the schema.org vocabularies, every page is implicitly assumed to be 
-some kind of [WebPage](http://schema.org/WebPage), but the advice is to 
+When using the Schema.org vocabularies, every page is implicitly assumed to be 
+some kind of [`WebPage`](http://schema.org/WebPage), but the advice is to 
 explicitly declare the type of page. When picking an appropriate type, it is 
 best to choose the most specific type that could accurately represent the
-thing we want to mark up. In this case it seems appropriate to use 
-[ItemPage](http://schema.org/ItemPage) which is a subclass of WebPage. ItemPage
-adds no new properties to WebPage, but it communicates to the search engines that
-the page refers to a single item rather than a search results or other
+thing to be marked up. In this case it seems appropriate to use 
+[`ItemPage`](http://schema.org/ItemPage) which is a subclass of `WebPage`. 
+`ItemPage`
+adds no new properties to `WebPage`, but it communicates to the search engines that
+the page refers to a single item rather than a search results page or other
 type of page.
 I can find no proof for this yet, but it may be that using ItemPage will give
 an extra hint to a crawler that a page should be indexed or treated differently
 from other types of web pages. 
-For the same reason, marking up a SearchResultsPage could give the hint to the
+For the same reason, marking up a [`SearchResultsPage`](http://schema.org/SearchResultsPage) 
+could give the hint to the
 search engines to crawl but not index the page.
 
 When you are adding Microdata there is a sense in which you are always just 
-describing a web page. Ian Hickson the editor of the Microdata specification, 
+describing a web page. Ian Hickson, the editor of the Microdata specification, 
 has said that
 Microdata items exist "in the context of a page and its 
-DOM. It does not have an independent existence outside the page." 
-([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html).)
-This is different than the way RDFa may think about embedded structured data in 
+DOM. It does not have an independent existence outside the page" 
+([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html)).
+This is different than the way RDFa may think about embedding structured data in 
 HTML as part of a graph which links items together across the web. Microdata 
 is not so much linked data as it is a description of a single page. 
-While there are efforts to serialize Microdata as RDF, the Microdata model
+While there are efforts to serialize [Microdata as RDF](https://dvcs.w3.org/hg/htmldata/raw-file/default/ED/microdata-rdf/20120107/index.html), 
+the Microdata model
 is tree-based so it has some limitations as linked data.
 
 Below the ItemPage is added to the `div#main` on the page and some properties
