@@ -406,7 +406,7 @@ While there are efforts to serialize [Microdata as RDF](https://dvcs.w3.org/hg/h
 the Microdata model
 is tree-based so it has some limitations as linked data.
 
-Below the ItemPage is added to the `div#main` on the page and some properties
+In the HTML snippet below the ItemPage is added to the `div#main` on the page and some properties
 are added within the scope of that `div#main`. 
 
     <div id="main" class="container_12" itemscope itemtype="http:schema.org/ItemPage">
@@ -447,7 +447,7 @@ which details how property values are determind for different elements.
 
 One of the cool features of Microdata is that it is designed to be 
 [extracted into JSON](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#json). 
-You can copy any of the HTML snippets with an itemscope from here into 
+You can copy any HTML snippet with Microdata markup into 
 [Live Microdata](http://foolip.org/microdatajs/live/) 
 to see what the JSON output would look like. 
 
@@ -457,18 +457,18 @@ The Microdata DOM API is another neat feature of HTML5 Microdata
 which allows you to extract Microdata client-side. 
 
 You can test whether your browser implements the Microdata DOM API by running the
-[microdata test suite](http://w3c-test.org/html/tests/submission/Opera/microdata/001.html) 
+[Microdata test suite](http://w3c-test.org/html/tests/submission/Opera/microdata/001.html) 
 created by Opera. If
-you open a page with Microdata with [Opera Next](http://www.opera.com/browser/next/) 
+you open a page containing Microdata with [Opera Next](http://www.opera.com/browser/next/) 
 (at the time of this writing version 12.00 alpha, build 1191)
 and open up the console (Ctrl+Shift+i), you can play with the Microdata
 DOM API a bit. 
-`document.getItems()` will return a NodeList of all items. 
-The NodeList will contain only the top-level items, in this case one
+`document.getItems()` will return a `NodeList` of all items. 
+The `NodeList` will contain only the top-level items, in this case one
 element. It is possible to get all items of a particular type by specifying the
 type or types as an argument like `document.getItems('http://schema.org/ItemPage')`.
 This API may change in the future 
-["to match what actually gets implemented"](http://old.nabble.com/Re%3A-New-feature-announcement---Implement-HTML5-Microdata-in-WebKit-p32521849.html).
+"[to match what actually gets implemented](http://old.nabble.com/Re%3A-New-feature-announcement---Implement-HTML5-Microdata-in-WebKit-p32521849.html)."
 
     >>> var itemPage = document.getItems('http://schema.org/ItemPage')
       undefined
@@ -481,36 +481,38 @@ This API may change in the future
 
 ### ItemPage about a Photograph
 
-Now that we have some basic microdata on the page, let's try to to describe more
-items on the page. Looking at the valid properties for an [ItemPage](http://schema.org/ItemPage),
+Now that we have some basic microdata about the page, let's try to to describe more
+items on the page. Looking at the valid properties for an [`ItemPage`](http://schema.org/ItemPage),
 it has an `about` property, inherited from [CreativeWork](http://schema.org/CreativeWork).
-ItemPage inherits different
-properites from Thing, CreativeWork, and WebPage.
-In some cases child types add in new properites, but in the case of ItemPage no 
+`ItemPage` inherits different
+properites from `Thing`, `CreativeWork`, and `WebPage`.
+In some cases child types add in new properites, but in the case of `ItemPage` no 
 new properties are defined.
 
 If we add `itemprop="about"` to the `div` containing all metadata, then what
-would be extracted from the page is just the text content with line breaks and
-all. Microdata processing never maintains markup.
+would be extracted from the page is just the text content within the `div` with 
+line breaks and all. Microdata processing never maintains markup.
 (If you need to maintain some snippet of markup,
 then [consider](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#syntax-considerations) 
 using microformats or RDfa, which have the ability to maintain
 XML literals.) 
 
 Microdata is specified in a way where if the
-author of the page gets it wrong, the processor may still be able to do something
+author of the page gets use of the vocabulary wrong, the processor may still be 
+able to do something
 useful with even just that text content. Processors should expect bad data 
 ([Conformance](http://schema.org/docs/datamodel.html)).
-Looking at how the `about` property is defined, though, the proper value of 
-the `about` property is another `Thing` (not a jumble of text). 
+Looking at how the `about` property of an `ItemPage` is defined, though, 
+the proper value of 
+the `about` property is another `Thing` (not text content). 
 In this way Schema.org suggests how to nest items within other items forming
 a tree.
-In this case specifying Thing as a valid value of the `about` property means 
+In this case specifying `Thing` as a valid value of the `about` property means 
 that any type in the Schema.org hierarchy can be selected to create
-a new item as the value of the `about` property. The [Photograph](http://schema.org/Photograph)
+a new item as the value of the `about` property. The [`Photograph`](http://schema.org/Photograph)
 type is most appropriate for this example.
 
-They way to show relationships between items on a page is through nesting items.
+The way to show relationships between items on a page is through nesting items.
 Nesting is implemented by using all three attributes 
 (`itemprop`, `itemscope`, `itemtype`) on the same element. Doing this states
 that the value of a property is a new item of a particular type.
@@ -518,13 +520,14 @@ Since all of the metadata is describing the photograph, these attributes
 will be applied to `div#metadata` which contains all of the metadata.
 
 At this point the subjects and genres can be added as properties of the
-Photograph. Subjects
-map well enough to the "keywords" property of `Photograph`. 
+`Photograph`. Subjects
+map well enough to the `keywords` property of `Photograph`. 
+The older practice of using invisible `meta` keywords 
+that had nothing to do with the content in the body were used to try to game
+the search engines, so they were ignored.
 These keywords are 
-visible to users, so the values are less likely to be used to try to game
-search engines to rank for particular terms that had nothing to do with the
-content in the body in the way
-the use of invisible `meta` keywords in the `head` of a document were long ago.
+visible to users, so the values are less likely to be used to try to trick
+search engines to rank for particular terms. 
 Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
 on the page, but to stick to adding microdata attributes to what is visible to 
 users.
@@ -537,9 +540,9 @@ than leaving it up to a post-processor to handle that, we apply the same
 remain intact. 
 At this time irregardless of the use of 
 [singulars or plurals for property names](http://www.w3.org/2011/webschema/track/issues/5)
-in the Schema.org documentation, it is allowable in 
+in the Schema.org documentation, it is allowable
 to repeat all Schema.org properties like this. When these repeated properties
-are parsed, the values are merged under a single property to form a list/array
+are parsed, the values are merged under a single property key to form a list/array
 of values.
 
 The "keywords" `itemprop` cannot be applied to the `a` element that 
@@ -547,7 +550,8 @@ surrounds each term.
 The gotcha here is that the property value of an `a` element
 is the value of its `href` attribute. To work
 around this we use the common pattern of adding some extra spans around the
-text so that the text content is selected instead.
+text. Adding the `itemprop` to the spans allows the text content to be selected 
+instead.
 
 ### Picking Types and Properties (and More Nesting)
 
@@ -562,8 +566,8 @@ Tower. In this case,
 
 Once we add an item for the building, it is easy to add
 name and description properties for the building.
-We also have the data to add the address (as a [PostalAddress](http://schema.org/PostalAddress)) 
-and geographic location ("geo" property with a value of a [GeoCoordinates](http://schema.org/GeoCoordinates))
+We also have the data to add the address (as a [`PostalAddress`](http://schema.org/PostalAddress)) 
+and geographic location (`geo` property with a value of a [`GeoCoordinates`](http://schema.org/GeoCoordinates))
 as further nested data items.
 
 Picking appropriate types is an important issue for describing the historic record.
@@ -572,10 +576,11 @@ drawings accessible. Some of these buildings are on the National
 Register of Historic Places, but many are buildings of 
 lesser note. Some were never built or have since been demolished. 
 It could be that for most of the
-records of buildings an architectural collection, that a more generic item type
-like [Place](http://schema.org/Place)
+records of buildings in an architectural collection, that a more generic item type
+like [`Place`](http://schema.org/Place)
 would be a more appropriate fit. For other buildings there are definitely 
-more specific types like Airport, CityHall, Courthouse, Hospital, and Church.
+more specific types like `Airport`, `CityHall`, `Courthouse`, `Hospital`, and 
+`Church`.
 
 Using a more specific type, it would still be impossible for the search
 engines to realize that the items refer to the historic record of these
@@ -586,30 +591,32 @@ Also, this is a new metadata facet that may not already being captured in a way
 that would be easy to convert to Schema.org types. 
 Some retrospective and ongoing work would be needed to 
 choose the correct type for
-every building. For now NCSU has made the decision to always pick the more
-specific type of `LandmarksOrHistoricalBuildings` for all the buildings we
-describe as something of a compromise. It almost communicates that the resource 
+every building. For now NCSU has made the decision, that will likely get revisited,
+to always pick 
+`LandmarksOrHistoricalBuildings` for all the buildings we
+describe as something of a compromise. 
+It almost communicates that the resource 
 is part of the historic record, but it does lose on the specificity we might
 like to have.
 
 Picking appropriate types is one area where Schema.org does not provide anything 
 near the level of granularity at which archives and museums often specify the types
-of objects they describe. There are types for Painting, Photograph, and 
-Sculpture. Some types of objects like drawings, vases, and suits of armor
+of objects they describe. Schema.org has types for `Painting`, `Photograph`, and 
+`Sculpture`. Some types of objects like drawings, vases, and suits of armor
 may have to move back up the hierarchy to use the generic CreativeWork type. 
 With the thousands of types of objects that may be held by libraries, archives, 
 museums and historical societies (LAMs), it is [not feasible](www.heppnetz.de/files/IEEE-IC-PossibleOntologies-published.pdf) 
 to add every type to Schema.org.
 One suggestion made by Charles Moad, Director of the Indianapolis Museum of Art 
-Lab, is to extend CreativeWork with an objectType property (private correspondence). 
+Lab, is to extend `CreativeWork` with an "objectType" property (private correspondence). 
 
 If this "objectType" property were part of Schema.org, then the LAM community 
 could suggest that the value of the property come from a vocabulary that 
 covers the kinds of objects LAMs collect. 
 This could go a long way towards expanding the 
-options for LAMs to describe their materials. The [JobPosting](http://schema.org/JobPosting)
+options for LAMs to describe their materials. The [`JobPosting`](http://schema.org/JobPosting)
 type includes an
-"occupationalCategory" property which suggests the use of the [BLS O*NET-SOC taxonomy](http://www.onetcenter.org/taxonomy.html)
+`occupationalCategory` property which suggests the use of the [BLS O*NET-SOC taxonomy](http://www.onetcenter.org/taxonomy.html)
 (though the exact format this value should take is underspecified). This same
 pattern of using external vocabularies maintained by domain experts is likely
 to be repeated for other property values. 
@@ -618,14 +625,14 @@ This still leaves open the question of what free, open vocabulary would allow
 for the kind of extensibility LAMs need to cover all of their object types at
 a good enough level of specificity. It is not feasible to create a vocabulary
 to cover and keep up with every type of thing LAMs may collect.
-The [product ontology](http://www.productontology.org/) provides a possible
+The [Product Ontology](http://www.productontology.org/) provides a possible
 model for how to create such an extensible vocabulary
 by reusing the names of Wikipedia articles 
 to identify types of objects. Something like the following code could be done to 
 simply reuse the name of the [Plate_armour](http://en.wikipedia.org/wiki/Plate_armour)
 article to note that the type of object in the collection is plate armour.
 The URL `http://objectontology.org/id/Plate_armour` could resolve to useful 
-information and tutorial information similar to the product ontology page for
+information and tutorial information similar to the Product Ontology page for
 [Plate armour](http://www.productontology.org/doc/Plate_armour). 
 An object in a LAM collection differs enough from a product for sale
 to need a new namespace to explain the difference, especially to machines.
@@ -659,18 +666,18 @@ Here's what our marked up snippet looks like so far:
             
             <dt>Subjects</dt>
             <dd>
-              <a href="#buildings"><span itemprop="keywords">Buildings</span></a><br>
-              <a href="#students"><span itemprop="keywords">Students</span></a><br>
+              <a href="/s/buildings"><span itemprop="keywords">Buildings</span></a><br>
+              <a href="/s/students"><span itemprop="keywords">Students</span></a><br>
             </dd> 
             
             <dt>Genre</dt>
             <dd>
-              <a href="#architectural_photos"><span itemprop="genre">Architectural photographs</span></a><br>
-              <a href="#publicity_photos"><span itemprop="genre">Publicity photographs</span></a>         
+              <a href="/g/architectural_photos"><span itemprop="genre">Architectural photographs</span></a><br>
+              <a href="/g/publicity_photos"><span itemprop="genre">Publicity photographs</span></a>         
             </dd>
             
             <dt>Digital Collection</dt>
-            <dd><a href="#uapc">University Archives Photographs</a></dd> 
+            <dd><a href="/c/uapc">University Archives Photographs</a></dd> 
           </dl> 
         </div><!-- item -->
         
@@ -678,7 +685,7 @@ Here's what our marked up snippet looks like so far:
           <h2>Building Information</h2>
           <dl>
             <dt>Building Name</dt>
-            <dd><a href="#memorial_tower"><span itemprop="name">Memorial Tower</span></a></dd>   
+            <dd><a href="/b/memorial_tower"><span itemprop="name">Memorial Tower</span></a></dd>   
             
             <dt>Description</dt>
             <dd itemprop="description">Memorial Tower honors those alumni who were killed in World War I. 
