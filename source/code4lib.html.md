@@ -3,15 +3,16 @@ HTML5 Microdata and Schema.org
 
 by <span itemscope="" itemtype="http://schema.org/Person"><a href="https://twitter.com/#!/ronallo" itemprop="url"><span itemprop="givenName">Jason</span> <span itemprop="familyName">Ronallo</span></a>, <a href="http://www.lib.ncsu.edu/staff/jnronall/index.php"><span itemprop="jobTitle">Associate Head of Digital Library Initiatives</span></a>, <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Organization"><a href="http://www.lib.ncsu.edu/" itemprop="url"><span itemprop="name">NCSU Libraries</span></a></span></span>
 
-On June 2, 2011 [Bing](http://www.bing.com/community/site_blogs/b/search/archive/2011/06/02/bing-google-and-yahoo-unite-to-build-the-web-of-objects.aspx), 
+On June 2, 2011, [Bing](http://www.bing.com/community/site_blogs/b/search/archive/2011/06/02/bing-google-and-yahoo-unite-to-build-the-web-of-objects.aspx), 
 [Google](http://googleblog.blogspot.com/2011/06/introducing-schemaorg-search-engines.html ), 
 and 
-[Yahoo](http://developer.yahoo.com/blogs/ydn/posts/2011/06/introducing-schema-org-a-collaboration-on-structured-data/ ) 
+[Yahoo!](http://developer.yahoo.com/blogs/ydn/posts/2011/06/introducing-schema-org-a-collaboration-on-structured-data/ ) 
 announced the joint effort [Schema.org](http://schema.org). When the big search
 engines talk, web site authors listen. 
 
 This is an introduction to Microdata and Schema.org. 
-A tutorial will move through implementing these new technologies on a 
+Included is a tutorial that will move through implementing these new 
+technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, some tools for implementers will be introduced.
 Issues with applying this to cultural heritage materials will crop up along with
@@ -27,19 +28,22 @@ The [HTML5 standard](http://www.w3.org/TR/html5/)
 depending on who you ask) has brought a lot of changes to web authoring.
 Amongst all the buzz about HTML5 (some of which is not even part of the HTML spec),
 HTML5 Microdata, a new semantic markup syntax that *is* part of the HTML standard,
-often went overlooked. HTML elements often have
+often went overlooked. 
+
+HTML elements often have
 some semantics. For example, an `ol` element is an ordered list, and by default
 gets rendered with numbers for the list items. 
 With HTML5 we also have new semantic elements 
 like `header`, `nav`, `article`, and `footer` that allow more expressiveness for 
 page authors. A bunch of `div`s with various class names 
 is no longer the way to divide up so much content. These new elements also
-enable new tools and better services. Browser plugins can pull out the article for a 
-cleaner reading 
-experience, or search engines to give more weight to the `article` content 
-rather than the advertising sidebar.
+enable new tools and better services. Browser plugins can pull out the text of
+the article for a cleaner reading 
+experience, or search engines can give more weight to the `article` content 
+rather than the advertising in the sidebar.
 
-While these new elements provide useful extra information about the content, 
+While these new elements provide useful extra information about the sections of
+content, 
 they provide no deeper understanding of what the `article` is *about*. 
 In many cases you are probably
 using a nicely normalized relational database or an XML document with a lot of 
@@ -68,7 +72,7 @@ This approach can work in many cases, but it has some problems.
 Techniques like this do not use the visible content
 of the HTML, so the consumers of your data have to know to look for this
 particular invisible content. It also adds a layer of complication by relying 
-on digital collections to have APIs or
+on a site to have APIs or
 metadata gateways that can be burdensome to setup and expensive for organizations
 to maintain.
 
@@ -99,7 +103,7 @@ Some Microformat
 specifications like [hCard](http://microformats.org/wiki/hcard), 
 [hCalendar](http://microformats.org/wiki/hcalendar), and 
 [rel-license](http://microformats.org/wiki/rel-license) are in common use across
-the web. Development of the various small Microformat standards take place on 
+the web. Development of the various small Microformat standards takes place on 
 a community wiki.
 Simply put, Microformats usually use the convention of standard class 
 names to provide meaning on a web page. The latest version [microformats-2](http://microformats.org/wiki/microformats-2)
@@ -134,7 +138,7 @@ available for autodiscovery by machines.
 
 ### So what is Microdata?
 
-Microdata came out of a [long thread about incorporating RDFa in HTML5](http://www.jenitennison.com/blog/node/124).
+Microdata came out of a [long thread about incorporating RDFa into HTML5](http://www.jenitennison.com/blog/node/124).
 Because RDFa simply was not going to be incorporated into HTML5, 
 something else was needed to fill the gap.
 Out of that thread and collected use cases [Ian "Hixie" Hickson](http://hixie.ch/),
@@ -150,7 +154,7 @@ The Microdata syntax is completely made up of attributes. These attributes
 can be used on any valid HTML element. Only three new HTML
 attributes are core to the data model:
 
-* `itemscope` says that there is a new item
+* `itemscope` says that there is a new item within
 * `itemtype` specifies the type of item
 * `itemprop` gives the item properties and values
 
@@ -160,12 +164,12 @@ attributes are core to the data model:
       <span itemprop="eponym">code4lib</span>
     </div>
     
-The user of a browser would only see the text "code4lib".
+The user of a browser would only see the text "code4lib" on the page.
 The snippet provides more meaning for machines by asserting that there is an 
 "unorganization" with the "eponym" of "code4lib."
 
-The `@itemscope` attribute creates an item and requires no value.
-The `@itemtype` attribute asserts that the type of thing being described is an 
+The `itemscope` attribute creates an item and requires no value.
+The `itemtype` attribute asserts that the type of thing being described is an 
 "unorganization."
 This item has a single
 key-value pair--the property "eponym" with a value of "code4lib." 
@@ -191,7 +195,7 @@ Pretty simple, right?
 ### What is Schema.org?
 
 While the above snippet is completely valid Microdata, 
-it uses arbitrary language for its `@itemtype` and `@itemprop` values. If you
+it uses arbitrary language for its `itemtype` and `itemprop` values. If you
 only need to communicate this information within a tight community and do not
 need anyone else to ever understand what your data means, 
 that may be just fine. But for the most
@@ -200,10 +204,11 @@ your content. To accomplish this you need to use a shared language so that page
 authors and consumers can cooperate on how to interpret the meaning.
 
 This is where the Schema.org vocabulary comes in. The search 
-engines (Bing, Google, Yahoo) created Schema.org 
+engines (Bing, Google, Yahoo!) created Schema.org 
 and have agreed to support and understand it. It is unrealistic for them to try
-to support every vocabulary in use, so this is an attempt to have a shared
-vocabulary at broad, web scale focusing on popular concepts.
+to support every vocabulary in use. This is an attempt to have a broad,
+Web-scale, shared
+vocabulary focusing on popular concepts.
 It stakes a position as a ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html)
 that does not attempt to have the scope of an "ontology of everything" or go 
 into depth in any one area.
@@ -216,17 +221,16 @@ cases.
 > The type hierarchy presented on this site is not intended to be a 'global 
 > ontology' of the world. It only covers the types of entities for which we 
 > (Microsoft, Yahoo! and Google), think we can provide some special treatment 
-> for, through our search engine, in the near future. [Schema.org Data Model](http://schema.org/docs/datamodel.html)
+> for, through our search engine, in the near future. ([Schema.org Data Model](http://schema.org/docs/datamodel.html))
 
 You can browse the 
 [full hierarchy of the vocabulary](http://schema.org/docs/full.html) to get a 
-feel of the bounds of the world according to search engines. 
-
-Schema.org defines a hierarchy of types all descending from Thing. Thing has four
+feel of the bounds of the world according to search engines.
+Schema.org defines a hierarchy of types all descending from `Thing`. `Thing` has four
 properties (description, image, name, url) which are inherited by all other types.
 Child types can add their own properites and in turn can have their own children 
 types. Each property name has the same meaning when found in any type in the 
-vocabulary. We will get to other specifics as we go through a tutorial.
+vocabulary. We will get to other specifics in the tutorial.
 
 Microdata and Schema.org have a tight connection, though each can be used without
 the other. 
@@ -236,7 +240,7 @@ The Schema.org examples are written using the Microdata syntax. Both are
 designed and work well together to make adoption simple (and less error-prone) 
 for webmasters.
 
-Here is the above Microdata example rewritten 
+Here is the above Microdata example rewritten to
 use the Schema.org [`Organization`](http://schema.org/Organization)
 type (and make more sense).
 
