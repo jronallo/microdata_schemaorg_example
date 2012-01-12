@@ -49,9 +49,8 @@ content,
 they provide no deeper understanding of what the `article` is *about*. 
 In many cases you are probably
 using a nicely normalized relational database or an XML document with a lot of 
-fielded information about your resources. Putting that information in HTML 
-loses a lot of what you
-already know. The trip metadata takes from the database or XML into HTML results 
+fielded information about your resources. The trip metadata takes from the 
+database or XML into HTML results 
 in lost meaning. Maybe a human can read your field labels to understand your 
 metadata, but that meaning is lost on machines.
 
@@ -80,9 +79,9 @@ to maintain.
 
 ### Embedding Data in Markup
 
-Another approach which avoids some of these problems is to embed the data within
-the HTML.
-The HTML representation is most visible to users, so it
+Another approach which avoids some of those problems is to embed the data within
+the HTML. 
+The HTML representation of a resource is most visible to users, so it
 is also the HTML code which gets the most attention from developers. 
 Little-used, overlooked APIs or data feeds are easy to let go stale.
 If the website goes down, you are likely to hear about it from multiple sources
@@ -357,7 +356,25 @@ some sections and attributes removed with ellipses for brevity.
         <div id="item" class="info">
           <h2>Photograph Information</h2>
           <dl>   
-            ...         
+            <dt>Created Date</dt>
+            <dd>
+              circa 1981
+            </dd>  
+            
+            <dt>Subjects</dt>
+            <dd>
+              <a href="/s/buildings">Buildings</a><br>
+              <a href="/s/students">Students</a><br>
+            </dd> 
+            
+            <dt>Genre</dt>
+            <dd>
+              <a href="/g/architectural_photos">Architectural photographs</a><br>
+              <a href="/g/publicity_photos">Publicity photographs</a>         
+            </dd>
+            
+            <dt>Digital Collection</dt>
+            <dd><a href="/c/uapc">University Archives Photographs</a></dd>         
           </dl> 
         </div><!-- item -->
         
