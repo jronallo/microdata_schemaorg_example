@@ -389,7 +389,7 @@ DOM. It does not have an independent existence outside the page"
 This is different than the way RDFa may think about embedding structured data in 
 HTML as part of a graph which links items together across the web. Microdata 
 is not so much linked data as it is a description of a single page. 
-While there are efforts to serialize [Microdata as RDF](https://dvcs.w3.org/hg/htmldata/raw-file/default/ED/microdata-rdf/20120107/index.html), 
+While there are efforts to serialize [Microdata as RDF](http://www.w3.org/TR/2012/WD-microdata-rdf-20120112/), 
 the Microdata model
 is tree-based so it has some limitations as linked data.
 
@@ -902,6 +902,8 @@ globally unique URL identifier, "so that it can be related to other items on pag
 elsewhere on the web." 
 This is the main 
 mechanism by which Microdata natively supports something like linked data. 
+(When serialized to RDF the `itemid` of an item would become the [global identifier](http://www.w3.org/TR/2012/WD-microdata-rdf-20120112/)
+used as the subject of triples.)
 The other URLs used as values throughout Microdata do not provide this 
 linkability, and
 the assumption is that consumers will have a built-in knowledge of the 
