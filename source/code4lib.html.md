@@ -15,8 +15,8 @@ Included is a tutorial for implementing these new
 technologies on a 
 site for discovery of cultural heritage materials.
 Along the way, some tools for implementers will be introduced.
-Issues with applying this to cultural heritage materials will crop up along with
-opportunities for the cultural sector to improve the situation.
+Issues with applying these technologies to cultural heritage materials will crop 
+up along with opportunities for the cultural sector to improve the situation.
 
 Foundation
 ----------
@@ -51,8 +51,8 @@ In many cases you are probably
 using a nicely normalized relational database or an XML document with a lot of 
 fielded information about your resources. The trip metadata takes from the 
 database or XML into HTML results 
-in lost meaning. Maybe a human can read your field labels to understand your 
-metadata, but that meaning is lost on machines.
+in lost meaning. Maybe a human can read your field labels on the page to 
+understand your metadata, but that meaning is lost on machines.
 
 ### One Simple Solution
 
@@ -70,8 +70,7 @@ The link provides the type of the alternative representation and a relative URL
 where it can be found.
 
 This approach can work in many cases, but it has some problems.
-Techniques like this do not use the visible content
-of the HTML, so the consumers of your data have to know to look for this
+Techniques like this require consumers of your data have to know to look for this
 particular invisible content. It also adds a layer of complication by relying 
 on a site to have APIs or
 metadata gateways that can be burdensome to setup and expensive for organizations
@@ -91,8 +90,8 @@ neglected. Data embedded in visible HTML helps keep the representations in sync
 so that page authors only have to expose one public version of their data.
 This insight has lead to a number of different standards over time
 which take the
-approach of embedding structured data with the visible HTML content. Microdata
-is just one of the syntaxes in use today.
+approach of embedding structured data along with the visible HTML content. 
+Microdata is just one of the syntaxes in use today.
 
 ### History of Structured Data in HTML
 
@@ -274,12 +273,12 @@ Snippets with this kind of extra information are
 reported to [increase click through rates](http://www.heppresearch.com/gr4google). 
 
 Google started presenting rich snippets [in 2009](http://googlewebmastercentral.blogspot.com/2009/05/introducing-rich-snippets.html). 
-Using embedded markup like microformats, RDFa or Microdata, page authors 
+Using embedded markup like microformats, RDFa, or Microdata, page authors 
 can influence what may show up in a search result snippet.
 Both [Microformats](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=146897) 
 and [RDFa](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=146898) 
-were promoted
-for rich snippets in the past and continue to be supported. 
+were promoted for rich snippets in the past using various vocabularies and 
+continue to be supported. 
 Google [added support for Microdata for Rich Snippets](http://googlewebmastercentral.blogspot.com/2010/03/microdata-support-for-rich-snippets.html) 
 in early 2010. After RDFa Lite was created, the Schema.org partners agreed to
 support that syntax as well.
@@ -353,13 +352,11 @@ some sections and attributes removed with ellipses for brevity.
           <img id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
       </div> 
       <div id="metadata" class="grid_7">
-        <div id="item" class="info">
+        <div id="object" class="info">
           <h2>Photograph Information</h2>
           <dl>   
             <dt>Created Date</dt>
-            <dd>
-              circa 1981
-            </dd>  
+            <dd>circa 1981</dd>  
             
             <dt>Subjects</dt>
             <dd>
@@ -512,7 +509,7 @@ In some cases child types add in new properites, but in the case of `ItemPage` n
 new properties are defined.
 
 One way to express what the page is about would be to add `itemprop="about"` to 
-the `div#metadata` containing all metadata. What
+the `div#metadata` containing all of the metadata. What
 would be extracted from the page is just the text content within the `div#metadata` with 
 line breaks and all. Microdata processing never maintains markup.
 (If you need to maintain some snippet of markup,
@@ -522,8 +519,8 @@ XML literals.)
 Microdata is specified in a way where if the
 author of the page gets use of the vocabulary wrong, the processor may still be 
 able to do something
-useful with even just that text content. Processors should expect bad data 
-([Conformance](http://schema.org/docs/datamodel.html)).
+useful with even just that text content. Processors and consumers should expect 
+bad data ([Conformance](http://schema.org/docs/datamodel.html)).
 
 Looking at how the `about` property of an `ItemPage` is defined, though, 
 the proper value of 
@@ -539,7 +536,7 @@ The way to show relationships between items on a page is through nesting items.
 Nesting is implemented by using all three attributes 
 (`itemprop`, `itemscope`, `itemtype`) on the same element. Doing this states
 that the value of a property is a new item of a particular type.
-Since all of the metadata is describing the photograph, these attributes
+Since all of the metadata describes the photograph, these attributes
 will be applied to `div#metadata` which contains all of the metadata.
 
 At this point the subjects and genres can be added as properties of the
@@ -548,7 +545,7 @@ map well enough to the `keywords` property of `Photograph`.
 The older practice of using invisible `meta` keywords 
 that had nothing to do with the content in the body were used to try to game
 the search engines, so they were ignored.
-These keywords are 
+The keywords on the example page are 
 visible to users, so the values are less likely to be used to try to trick
 search engines to rank for particular terms. 
 Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
@@ -655,7 +652,7 @@ to identify types of objects. Something like the following code could be done to
 simply reuse the name of the [Plate_armour](http://en.wikipedia.org/wiki/Plate_armour)
 article to note that the type of object in the collection is plate armour.
 The URL `http://objectontology.org/id/Plate_armour` could resolve to useful 
-information and tutorial information similar to the Product Ontology page for
+information and a tutorial similar to the Product Ontology page for
 [Plate armour](http://www.productontology.org/doc/Plate_armour). 
 An object in a LAM collection differs enough from a product for sale
 to need a new namespace to explain the difference, especially to machines.
@@ -679,13 +676,11 @@ Here's what our marked up snippet looks like so far:
           <img itemprop="image" id="main_image" alt="Students jumping in front of Memorial Bell Tower" src="/images/bell_tower.png">    
       </div> 
       <div id="metadata" class="grid_7" itemprop="about" itemscope itemtype="http://schema.org/Photograph">
-        <div id="item" class="info">
+        <div id="object" class="info">
           <h2>Photograph Information</h2>
           <dl>            
             <dt>Created Date</dt>
-            <dd>
-              circa 1981
-            </dd>  
+            <dd>circa 1981</dd>  
             
             <dt>Subjects</dt>
             <dd>
@@ -734,8 +729,8 @@ Here's what our marked up snippet looks like so far:
       </div> 
     </div>
 
-All told there are five Microdata items (ItemPage, Photograph, 
-LandmarksOrHistoricalBuildings, PostalAddress, GeoCoordinates) on the page.
+All told there are five Microdata items  on the page (ItemPage, Photograph, 
+LandmarksOrHistoricalBuildings, PostalAddress, GeoCoordinates).
 In part, this snippet now basically says something like this in English:
 
 > This page is an ItemPage about a Photograph. The Photograph is about a 
@@ -748,13 +743,13 @@ In part, this snippet now basically says something like this in English:
 > is a PostalAddress item (with its own properties), as well as, a "geo"
 > property which is a GeoCoordinates item. 
 
-The nested types could be represented by this image:
+The nested item types could be represented by this image:
 
 <p>
 <img alt="Screenshot of page for digital photograph" src="/images/nested_itemtypes.png"/>
 </p>
 
-You can see the extracted JSON [at Live Microdata](http://foolip.org/microdatajs/live/?html=%3Cdiv%20id%3D%22main%22%20role%3D%22main%22%20class%3D%22container_12%22%20itemscope%20itemtype%3D%22http%3Aschema.org%2FItemPage%22%3E%0A%20%20%20%20%3Ch2%20id%3D%22page_name%22%20itemprop%3D%22name%22%3E%0A%20%20%20%20%20%20Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%0A%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grid_5%22%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20itemprop%3D%22image%22%20id%3D%22main_image%22%20alt%3D%22Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%22%20src%3D%22%2Fimages%2Fbell_tower.png%22%3E%20%20%20%20%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22metadata%22%20class%3D%22grid_7%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPhotograph%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22item%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EPhotograph%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ECreated%20Date%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20circa%201981%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ESubjects%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23buildings%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EBuildings%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23students%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EStudents%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EGenre%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23architectural_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EArchitectural%20photographs%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23publicity_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EPublicity%20photographs%3C%2Fspan%3E%3C%2Fa%3E%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDigital%20Collection%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23uapc%22%3EUniversity%20Archives%20Photographs%3C%2Fa%3E%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20item%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22building%22%20class%3D%22info%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FLandmarksOrHistoricalBuildings%22%20itemref%3D%22main_image%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EBuilding%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EBuilding%20Name%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%23memorial_tower%22%3E%3Cspan%20itemprop%3D%22name%22%3EMemorial%20Tower%3C%2Fspan%3E%3C%2Fa%3E%3C%2Fdd%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDescription%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22description%22%3EMemorial%20Tower%20honors%20those%20alumni%20who%20were%20killed%20in%20World%20War%20I.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20The%20cornerstone%20was%20laid%20in%201922%20and%20the%20Tower%20was%20dedicated%20on%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20November%2011%2C%201949.%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EAddress%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22address%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPostalAddress%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22streetAddress%22%3E2701%20Sullivan%20Drive%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22addressLocality%22%3ERaleigh%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22addressLocality%22%3ENC%3C%2Fspan%3E%20%3Cspan%20itemprop%3D%22postalCode%22%3E26707%3C%2Fspan%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ELatitude%2C%20Longitude%3C%2Fdt%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22geo%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FGeoCoordinates%22%3E%3Cspan%20itemprop%3D%22latitude%22%3E35.786098%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22longitude%22%3E-78.663498%3C%2Fspan%3E%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20building%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22source%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESource%20Information%3C%2Fh2%3E%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20...%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20source%20--%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%3C%2Fdiv%3E)
+You can see the extracted JSON [at Live Microdata](http://foolip.org/microdatajs/live/?html=%3Cdiv%20id%3D%22main%22%20role%3D%22main%22%20class%3D%22container_12%22%20itemscope%20itemtype%3D%22http%3Aschema.org%2FItemPage%22%3E%0A%20%20%20%20%20%20%3Ch2%20id%3D%22page_name%22%20itemprop%3D%22name%22%3E%0A%20%20%20%20%20%20%20%20Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%0A%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22grid_5%22%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20itemprop%3D%22image%22%20id%3D%22main_image%22%20alt%3D%22Students%20jumping%20in%20front%20of%20Memorial%20Bell%20Tower%22%20src%3D%22%2Fimages%2Fbell_tower.png%22%3E%20%20%20%20%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22metadata%22%20class%3D%22grid_7%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPhotograph%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22object%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EPhotograph%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ECreated%20Date%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3Ecirca%201981%3C%2Fdd%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ESubjects%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2Fs%2Fbuildings%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EBuildings%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2Fs%2Fstudents%22%3E%3Cspan%20itemprop%3D%22keywords%22%3EStudents%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EGenre%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2Fg%2Farchitectural_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EArchitectural%20photographs%3C%2Fspan%3E%3C%2Fa%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2Fg%2Fpublicity_photos%22%3E%3Cspan%20itemprop%3D%22genre%22%3EPublicity%20photographs%3C%2Fspan%3E%3C%2Fa%3E%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDigital%20Collection%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%2Fc%2Fuapc%22%3EUniversity%20Archives%20Photographs%3C%2Fa%3E%3C%2Fdd%3E%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20item%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22building%22%20class%3D%22info%22%20itemprop%3D%22about%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FLandmarksOrHistoricalBuildings%22%20itemref%3D%22main_image%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3EBuilding%20Information%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdl%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EBuilding%20Name%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%3E%3Ca%20href%3D%22%2Fb%2Fmemorial_tower%22%3E%3Cspan%20itemprop%3D%22name%22%3EMemorial%20Tower%3C%2Fspan%3E%3C%2Fa%3E%3C%2Fdd%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EDescription%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22description%22%3EMemorial%20Tower%20honors%20those%20alumni%20who%20were%20killed%20in%20World%20War%20I.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20The%20cornerstone%20was%20laid%20in%201922%20and%20the%20Tower%20was%20dedicated%20on%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20November%2011%2C%201949.%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3EAddress%3C%2Fdt%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22address%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FPostalAddress%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22streetAddress%22%3E2701%20Sullivan%20Drive%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20itemprop%3D%22addressLocality%22%3ERaleigh%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22addressLocality%22%3ENC%3C%2Fspan%3E%20%3Cspan%20itemprop%3D%22postalCode%22%3E26707%3C%2Fspan%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdt%3ELatitude%2C%20Longitude%3C%2Fdt%3E%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdd%20itemprop%3D%22geo%22%20itemscope%20itemtype%3D%22http%3A%2F%2Fschema.org%2FGeoCoordinates%22%3E%3Cspan%20itemprop%3D%22latitude%22%3E35.786098%3C%2Fspan%3E%2C%20%3Cspan%20itemprop%3D%22longitude%22%3E-78.663498%3C%2Fspan%3E%3C%2Fdd%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdl%3E%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20building%20--%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22source%22%20class%3D%22info%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESource%20Information%3C%2Fh2%3E%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20...%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%3C!--%20source%20--%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%0A%20%20%20%20%3C%2Fdiv%3E)
 under the JSON tab.
 
 ### itemref
@@ -769,7 +764,7 @@ Photograph is defined.
 > Valid HTML is particularly important in pages that contain embedded markup. 
 > All methods of embedding data within HTML use the structure of the HTML to 
 > determine the meaning of the additional markup. 
-> ((Choosing an HTML Data Format)[http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice))
+> ([Choosing an HTML Data Format](http://www.w3.org/wiki/Choosing_an_HTML_Data_Format#Good_Publishing_Practice))
 
 While we have the content on our page relatively well organized to contain our
 items, our layout and grid system result in the image of the photograph 
