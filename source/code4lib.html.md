@@ -885,9 +885,11 @@ The same data as above could be marked up using `<time>` like so:
     
 The `time` element has the correct semantics for the Photograph:
 
-    <time itemprop="dateCreated" datetime="1981">
-      circa 1981
-    </time>
+    <dd>
+      <time itemprop="dateCreated" datetime="1981">
+        circa 1981
+      </time>
+    </dd>
     
 I have made no attempt to handle the approximate date ("circa"). The current
 processing rules in the specification do
