@@ -907,8 +907,8 @@ Some items have unique identifiers or canonical representations elsewhere on the
 web that can be used to link resources together. 
 The Memorial Bell Tower is a unique landmark that could be linked together
 with other representations of the same place. This linking could help machines
-to make connections between representations or users to follow their nose to
-related resources.
+to make connections between resources or users to follow their nose to
+related representations.
 
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
