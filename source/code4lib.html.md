@@ -8,7 +8,7 @@ On June 2, 2011, [Bing](http://www.bing.com/community/site_blogs/b/search/archiv
 and 
 [Yahoo!](http://developer.yahoo.com/blogs/ydn/posts/2011/06/introducing-schema-org-a-collaboration-on-structured-data/ ) 
 announced the joint effort [Schema.org](http://schema.org). When the big search
-engines talk, web site authors listen. 
+engines talk, Web site authors listen. 
 
 This article is an introduction to Microdata and Schema.org. 
 Included is a tutorial for implementing these new 
@@ -25,24 +25,24 @@ Foundation
 
 The [HTML5 standard](http://www.w3.org/TR/html5/) 
 (or [HTML Living Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/), 
-depending on who you ask) has brought a lot of changes to web authoring.
+depending on who you ask) has brought a lot of changes to Web authoring.
 Amongst all the buzz about HTML5 (some of which is not even part of the HTML spec),
-HTML5 Microdata, a new semantic markup syntax that *is* part of the HTML standard,
-often went overlooked. 
+is a new semantic markup syntax that *is* part of the HTML standard.
 
-HTML elements often have
-some semantics. For example, an `ol` element is an ordered list, and by default
+HTML elements often have semantics. For example, an `ol` element is an ordered list, and by default
 gets rendered with numbers for the list items. 
 HTML5 provides new semantic elements 
-like `header`, `nav`, `article`, and `footer` that allow more expressiveness for 
+like `header`, `nav`, `article`, `aside`, `section` and `footer` that allow more expressiveness for 
 page authors. A bunch of `div`s with various class names 
-is no longer the way to divide up so much content. 
+is no longer the only way to markup this content. 
 
 The new HTML5 elements also
 enable new tools and better services. Browser plugins can more easily pull out 
 the text of the article for a cleaner reading 
-experience, or search engines can give more weight to the `article` content 
-rather than the advertising in the sidebar.
+experience. Search engines can give more weight to the `article` content 
+rather than the advertising in the sidebar. Screen reader software can 
+use the structural elements such as `nav` to make textual content more
+accessible to people with disabilities.
 
 While these new elements provide useful extra information about the sections of
 content, 
@@ -83,46 +83,46 @@ the HTML.
 The HTML representation of a resource is most visible to users, so it
 is also the HTML code which gets the most attention from developers. 
 Little-used, overlooked APIs or data feeds are easy to let go stale.
-If the website goes down, you are likely to hear about it from multiple sources
+If the Website goes down, you are likely to hear about it from multiple sources
 immediately. If the OAI-PMH gateway goes down, it would probably take longer
-for you to find out about it. Hidden services and content are too easy to get
-neglected. Data embedded in visible HTML helps keep the representations in sync
+for you to find out about it. Hidden services and content are too easy to 
+neglect. Data embedded in visible HTML helps keep the representations in sync
 so that page authors only have to expose one public version of their data.
 This insight has lead to a number of different standards over time
 which take the
 approach of embedding structured data along with the visible HTML content. 
 Microdata is just one of the syntaxes in use today.
 
-### History of Structured Data in HTML
+### A Short History of Structured Data in HTML
 
-Other efforts that came before Microdata have solved this same problem of marking
-up the meaning of content. Of the main syntaxes used today,
-[Microformats](http://microformats.org/) was not the first but was
-an [early effort](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Dec/0030.html)
-to provide "a general approach
-of using visible HTML markup to publish structured data to the web." 
+Other efforts that came before Microdata have addressed this same problem of marking
+up the meaning of content.  [Microformats](http://microformats.org/) are one of
+the
+[earliest](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Dec/0030.html)
+efforts to provide "a general approach
+of using visible HTML markup to publish structured data to the Web." 
 Some Microformat
 specifications like [hCard](http://microformats.org/wiki/hcard), 
 [hCalendar](http://microformats.org/wiki/hcalendar), and 
 [rel-license](http://microformats.org/wiki/rel-license) are in common use across
-the web. Development of the various small Microformat standards takes place on 
+the Web. Development of the various small Microformat standards takes place on 
 a community wiki.
 Simply put, Microformats usually use the convention of standard class 
-names to provide meaning on a web page. The latest version [microformats-2](http://microformats.org/wiki/microformats-2)
+names to provide meaning on a Web page. The latest version [microformats-2](http://microformats.org/wiki/microformats-2)
 simplifies and harmonizes these conventions across specifications significantly.
 
 RDFa, a standard of the W3C, has the vision of 
 "[Bridging the Human and Data Webs](http://www.w3.org/TR/xhtml-rdfa-primer/)."
 The idea is to provide attributes and processing rules for embedding RDF (and
-all of its graph-based, linked data goodness) in HTML. 
+all of its graph-based, Linked Data goodness) in HTML. 
 With all that expressive power comes some difficulty, and
-implementing RDFa has been overly complex for most web developers. Google has
+implementing RDFa has proven to be overly complex for most Web developers. Google has
 supported RDFa in some fashion since 2009, and over that time had discovered
 a [large error rate](http://lists.w3.org/Archives/Public/public-vocabs/2011Oct/0113.html)
 in the application of RDFa by webmasters. 
 Simplicity is a central reason for the development of Microdata and the 
 search engines preferring it over RDFa. 
-In part in
+In part a
 reaction to greater adoption of Microdata, a simplified profile of RDFa has been 
 created. [RDFa Lite 1.1](http://www.w3.org/2010/02/rdfa/sources/rdfa-lite/Overview-src.html)
 provides simpler authoring guidelines that 
@@ -130,13 +130,15 @@ provides simpler authoring guidelines that
 
 It also bears mentioning that in the library space, we have developed 
 specifications which tried to solve similar problems of making structured data 
-available to machines through HTML pages.
+available to machines through HTML.
 The [unAPI](http://unapi.info/) specification uses a microformat for 
-exposing (through the [deprecated `abbr` method](http://microformats.org/wiki/value-class-pattern)) 
+exposing (using the [deprecated `abbr` method](http://microformats.org/wiki/value-class-pattern)) 
 the presence of identifiers
-which may resolve to alternative formats through a service. 
+which may resolve to alternative formats through a Web service. 
 [COinS](http://ocoins.info/) uses empty spans to make OpenURL context objects
-available for autodiscovery by machines.
+available for autodiscovery by machines. While there has been some deployment 
+of unAPI and COinS in the library community, it in no way approaches the use 
+that Microformats and RDFa have seen in the larger Web ecosystem.
 
 ### So what is Microdata?
 
@@ -147,20 +149,22 @@ Out of that thread and collected use cases [Ian "Hixie" Hickson](http://hixie.ch
 the editor of the HTML5 specification,
 showed the first work on Microdata on [May 10, 2009](http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2009-May/019681.html)
 (the syntax has changed some since then). The syntax is designed to be simple
-for page authors to implement. 
+for page authors to implement.
 
-In technical Microdata terms, the things on an HTML page being described are 
-items. Each item is made up of one or more key-value pairs, a property and a
+According to Microdata terminology the things being described in an HTML page 
+are items. Each item is made up of one or more key-value pairs: a property and a
 value.
-The Microdata syntax is completely made up of attributes. These attributes 
-can be used on any valid HTML element. Only three new HTML
-attributes are core to the data model:
+The Microdata syntax is completely made up of HTML attributes. These attributes 
+can be used on any valid HTML element. The core of the data model is made up
+of three new HTML attributes:
 
-* `itemscope` says that there is a new item within
-* `itemtype` specifies the type of item
-* `itemprop` gives the item properties and values
+* `itemscope` which says that there is a new item within
+* `itemtype` which specifies the type of item
+* `itemprop` which gives the item properties and values
 
 ### A First Example
+
+Here is a simple example of what Microdata looks like:
 
     <div itemscope itemtype="unorganization">
       <span itemprop="eponym">code4lib</span>
@@ -201,14 +205,14 @@ it uses arbitrary language for its `itemtype` and `itemprop` values. If you
 only need to communicate this information within a tight community and do not
 need anyone else to ever understand what your data means, 
 that may be just fine. But for the most
-part you probably want many other machines to understand the meaning of
+part you probably want many other machines (like Web crawlers) to understand the meaning of
 your content. To accomplish this you need to use a shared language so that page 
 authors and consumers can cooperate on how to interpret the meaning.
 
 This is where the Schema.org vocabulary comes in. The search 
 engines (Bing, Google, Yahoo!) created Schema.org 
 and have agreed to support and understand it. It is unrealistic for them to try
-to support every vocabulary in use. This is an attempt to have a broad,
+to support every vocabulary in use. Schema.org is an attempt to define a broad,
 Web-scale, shared
 vocabulary focusing on popular concepts.
 It stakes a position as a ["middle" ontology](http://lists.w3.org/Archives/Public/public-vocabs/2011Nov/0006.html)
@@ -217,8 +221,7 @@ into depth in any one area.
 A central goal of having such a broad schema all in one place is to 
 [simplify things for mass adoption](http://blog.schema.org/2011/11/using-rdfa-11-lite-with-schemaorg.html?showComment=1321045329383#c3006481536068088400)
 and cover the most common use cases.
-The vocabulary does seem to have a bias towards search engine and commercial use 
-cases.
+Understandably, the vocabulary does seem to have a bias towards search engine and commercial use cases.
 
 > The type hierarchy presented on this site is not intended to be a 'global 
 > ontology' of the world. It only covers the types of entities for which we 
@@ -232,7 +235,7 @@ Schema.org defines a hierarchy of types all descending from `Thing`. `Thing` has
 properties (description, image, name, url) which are inherited by all other types.
 Child types can add their own properites and in turn can have their own children 
 types. Each property name has the same meaning when found in any type in the 
-vocabulary. We will get to other specifics in the tutorial.
+vocabulary. We will get to other specifics later in the tutorial.
 
 Microdata and Schema.org have a tight connection, though each can be used without
 the other. 
@@ -240,7 +243,7 @@ The search engines are currently the main consumers
 of Schema.org data and have a stated preference for Microdata.
 The Schema.org examples are written using the Microdata syntax. Both are 
 designed and work well together to make adoption simple (and less error-prone) 
-for webmasters.
+for HTML authors.
 
 Here is the above Microdata example rewritten to
 use the Schema.org [`Organization`](http://schema.org/Organization)
@@ -268,7 +271,7 @@ for "vegan cupcakes":
 This search result snippet for a recipe includes an image, reviews, cooking 
 time, calorie count, some of the text introducing the recipe, and a list of
 some of the ingredients needed. This gives a lot more information to the user 
-to decide to click on a particular result.
+to help them decide whether to click on a particular result.
 Snippets with this kind of extra information are
 reported to [increase click through rates](http://www.heppresearch.com/gr4google). 
 
@@ -395,17 +398,17 @@ some sections and attributes removed with ellipses for brevity.
 ### Adding a WebPage
 
 When you are adding Microdata there is a sense in which you are always just 
-describing a web page. Ian Hickson, the editor of the Microdata specification, 
+describing a Web page. Ian Hickson, the editor of the Microdata specification, 
 has said that
 Microdata items exist "in the context of a page and its 
 DOM. It does not have an independent existence outside the page" 
 ([Ian Hickson on public-vocabs list](http://lists.w3.org/Archives/Public/public-html-data-tf/2011Oct/0140.html)).
 This is different than the way RDFa may think about embedding structured data in 
-HTML as part of a graph which links items together across the web. Microdata 
-is not so much linked data as it is a description of a single page. 
-While there are efforts to serialize [Microdata as RDF](http://www.w3.org/TR/2012/WD-microdata-rdf-20120112/), 
-the Microdata model
-is tree-based so it has some limitations as linked data.
+HTML as part of a graph which links items together across the Web. Microdata 
+is not so much Linked Data as it is a description of a single page. 
+There are efforts to serialize [Microdata as
+RDF](http://www.w3.org/TR/2012/WD-microdata-rdf-20120112/) that allow 
+Microdata to be used in a Linked Data environment.
 
 When using the Schema.org vocabularies, every page is implicitly assumed to be 
 some kind of [`WebPage`](http://schema.org/WebPage), but the advice is to 
@@ -417,12 +420,6 @@ thing to be marked up. In this case it seems appropriate to use
 adds no new properties to `WebPage`, but it communicates to the search engines that
 the page refers to a single item rather than a search results page or other
 type of page.
-I can find no proof for this yet, but it may be that using ItemPage will give
-an extra hint to a crawler that a page should be indexed or treated differently
-from other types of web pages. 
-For the same reason, marking up a [`SearchResultsPage`](http://schema.org/SearchResultsPage) 
-could give the hint to the
-search engines to crawl but not index the page.
 
 In the HTML snippet below the ItemPage is added to the `div#main` on the page and some properties
 are added within the scope of that `div#main`. 
@@ -441,7 +438,7 @@ are added within the scope of that `div#main`.
     </div>
 
 Here we apply the `itemscope` and `itemtype` attributes at a level in the DOM
-that surrounds everything we want to describe about the page.
+that surrounds the item being described in the page.
 Since we are describing the page, we could instead add the `itemscope` and
 `itemtype` at a higher level. If we need to use some metadata in the `head` of
 the document, say the `title` element, we could apply this to the `body` or
@@ -455,7 +452,7 @@ places.
 In this case the `name` property is taken from the text content of `h2` element.
 For the `img` element the value is taken from the `src` attribute, which is
 then resolved into an absolute URL. The `a` element uses the absolute URL
-from the `href` attribute. Like `img` and `a`, many elements provide their 
+from the `href` attribute. Like `img` and `a`, several elements provide their 
 values through an attribute rather than the text content.
 If you start using Microdata, you will want to consult 
 [this list from the spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#values)
@@ -499,7 +496,7 @@ This API may change in the future
 
 ### ItemPage about a Photograph
 
-Now that we have some basic microdata about the page, let's try to to describe more
+Now that we have some basic Microdata about the page, let's try to to describe more
 items. 
 One valid property for an [`ItemPage`](http://schema.org/ItemPage),
 is `about`, inherited from [CreativeWork](http://schema.org/CreativeWork).
@@ -514,16 +511,14 @@ would be extracted from the page is just the text content within the `div#metada
 line breaks and all. Microdata processing never maintains markup.
 (If you need to maintain some snippet of markup,
 then [consider](https://dvcs.w3.org/hg/htmldata/raw-file/default/html-data-guide/index.html#syntax-considerations) 
-using microformats or RDfa, which have the ability to maintain
+using microformats or RDFa, which have the ability to maintain
 XML literals.) 
-Microdata is specified in a way where if the
-author of the page gets use of the vocabulary wrong, the processor may still be 
-able to do something
-useful with even just that text content. Processors and consumers should expect 
-bad data ([Conformance](http://schema.org/docs/datamodel.html)).
+Unlike XML, Microdata is designed to be tolerant of errors. So 
+in this case a processor may still be able to do something useful with even 
+just the text content contained by the `div#metadata`. Processors and 
+consumers should expect bad data ([Conformance](http://schema.org/docs/datamodel.html)).
 
-Looking at how the `about` property of an `ItemPage` is defined, though, 
-the proper value of 
+Looking at how the `about` property of an `ItemPage` is defined, the proper value of 
 the `about` property is another `Thing` (not text content). 
 In this way Schema.org suggests how to nest items within other items forming
 a tree.
@@ -532,7 +527,7 @@ that any type in the Schema.org hierarchy can be selected to create
 a new item as the value of the `about` property. The [`Photograph`](http://schema.org/Photograph)
 type is most appropriate for this example.
 
-The way to show relationships between items on a page is through nesting items.
+The way to show relationships between items on a page is by nesting items.
 Nesting is implemented by using all three attributes 
 (`itemprop`, `itemscope`, `itemtype`) on the same element. Doing this states
 that the value of a property is a new item of a particular type.
@@ -549,7 +544,7 @@ The keywords on the example page are
 visible to users, so the values are less likely to be used to try to trick
 search engines to rank for particular terms. 
 Google advises page authors to not mark up [non-visible content](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=176035)
-on the page, but to stick to adding microdata attributes to what is visible to 
+on the page, but to stick to adding Microdata attributes to what is visible to 
 users.
 
 We could attach the "genres" `itemprop` to the `dd` element, but then a processor
@@ -580,7 +575,7 @@ The photograph has the Memorial Bell Tower at North Carolina State University in
 the background.
 The Photograph is `about` the Memorial Bell
 Tower. In this case, 
-`LandmarksOrHistoricalBuildings` seems to work well enough as a type. 
+[`LandmarksOrHistoricalBuildings`](http://schema.org/LandmarksOrHistoricalBuildings) seems to work well enough as a type. 
 
     <div id="building" class="info" itemprop="about" itemscope itemtype="http://schema.org/LandmarksOrHistoricalBuildings">
 
@@ -603,7 +598,7 @@ more specific types like `Airport`, `CityHall`, `Courthouse`, `Hospital`, and
 `Church`.
 
 Using a more specific type, it would still be impossible for the search
-engines to realize that the items refer to the historic record of these
+engines to recognize that the items refer to the historic record of these
 places rather than to their current services. 
 We could be giving exact geographic coordinates for a hospital which was
 demolished or no longer in operation!
@@ -634,6 +629,7 @@ could suggest that the value of the property come from a vocabulary that
 covers the kinds of objects LAMs collect. 
 This could go a long way towards expanding the 
 options for LAMs to describe their materials. 
+
 This pattern of using external vocabularies maintained by domain experts is 
 used in other places within Schema.org.
 The [`JobPosting`](http://schema.org/JobPosting)
@@ -663,6 +659,13 @@ This kind of link also begins to make Microdata more linkable data.
       Item Type: <link itemprop="objectType" href="http://objectontology.org/id/Plate_armour"> Plate armour
     </div>
 
+Although it could be argued that the addition of `objectType` isn't actually
+necessary since the Microdata data model allows for `itemtype` to be used
+with Wikipedia URLs:
+
+    <div itemscope itemtype="http://en.wikipedia.org/wiki/Plate_armour" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
+      <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span><br/>
+    </div>
 
 ### Result so far
 
@@ -781,13 +784,13 @@ scope.
 
 Microdata uses the `itemref` attribute to make this more convenient.
 
-> Note: The itemref attribute is not part of the microdata data model. It is merely a 
+> Note: The itemref attribute is not part of the Microdata data model. It is merely a 
 > syntactic construct to aid authors in adding annotations to pages where the 
 > data to be annotated does not follow a convenient tree structure.
 > ([Microdata specification itemref attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemref))
 
-In our example above the `img` already has an `id` of "main_image" and an 
-`itemprop` with the value "image." All that we need to do to use that
+In our example above the `img` already has an `id` of `main_image` and an 
+`itemprop` with the value `image`. All that we need to do to use that
 image property for the Photograph is add
 `itemref="main_image"` to `div#metadata`. The `itemref` adds elements with
 that id attribute to the queue of locations
@@ -832,7 +835,9 @@ This is exactly the kind of attractive rich snippet we want users to see for
 digitized resources. The snippet includes the image and address to make a more 
 clickable target. Hopefully the search engines will begin showing snippets
 for some of the item types cultural heritage organizations are most likely to be
-making available.
+making available. There may also be an opportunity for cultural heritage
+organizations to build their own local and cross-institutional search engines
+that take more advantage of more detailed Microdata.
 
 ### time and Datatypes
 
@@ -904,7 +909,7 @@ which is a start.
 ### itemid
 
 Some items have unique identifiers or canonical representations elsewhere on the 
-web that can be used to link resources together. 
+Web that can be used to link resources together. 
 The Memorial Bell Tower is a unique landmark that could be linked together
 with other representations of the same place. This linking could help machines
 to make connections between resources or users to follow their nose to
@@ -913,11 +918,11 @@ related representations.
 In Microdata the [`itemid` attribute](http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#attr-itemid) 
 can be used to associate an item with a
 globally unique URL identifier, "so that it can be related to other items on pages
-elsewhere on the web." 
+elsewhere on the Web." 
 This is the main 
-mechanism by which Microdata natively supports something like linked data. 
+mechanism by which Microdata natively supports something like Linked Data. 
 (When serialized to RDF the `itemid` of an item would become the [global identifier](http://www.w3.org/TR/2012/WD-microdata-rdf-20120112/)
-used as the subject of triples.)
+used as the subject of RDF assertions.)
 The other URLs used as values throughout Microdata do not provide this 
 linkability, and
 the assumption is that consumers will have a built-in knowledge of the 
@@ -985,7 +990,7 @@ may be to use the Schema.org [Extension Mechanism](http://schema.org/docs/extens
 to try to make it clearer to the search engines that certain types of events 
 are different. 
 As Schema.org is intended as a Web-scale schema, there is no possibility of 
-having it fit every kind of data on the web.
+having it fit every kind of data on the Web.
 The basic mechanism for extending an item type is to take any Schema.org type 
 URL, add a forward slash to 
 the end, and then add the camel cased name of the extension. So one possibility
@@ -1007,10 +1012,10 @@ extensions or have a community process to work out new extensions.
 
 Dan Brickley has noted that the properties available in the Schema.org types for 
 describing 
-museum objects are "[a erm little sparse](http://groups.google.com/group/schemaorg-discussion/msg/272738cbc0e05816)" 
+museum objects are a little "[sparse](http://groups.google.com/group/schemaorg-discussion/msg/272738cbc0e05816)" 
 compared to some controlled vocabularies used by museums. 
 For properties there are two options for mixing in a new property for 
-an existing (or extended type). Schema.org prefers page authors to just add
+an existing (or extended type). Schema.org prefers page authors to add
 the new property name as if it were defined by Schema.org. 
 So our rights statement could be given this markup:
 
@@ -1055,7 +1060,7 @@ and the United States Office of Science and Technology Policy to
 [add support for job postings](http://blog.schema.org/2011/11/schemaorg-support-for-job-postings.html). 
 These additions were immediately put to use to create a
 [job search widget](https://www.nationalresourcedirectory.gov/home/job_search_widget) 
-for government web sites to highlight job listings from 
+for government Web sites to highlight job listings from 
 employers who commit to hiring veterans. 
 (See the [Veterans Job Bank](https://www.nationalresourcedirectory.gov/jobSearch/index).)
 
@@ -1067,18 +1072,20 @@ fit their data and use cases.
 There has been some suggestion for [future discussions with the cultural sector](http://www.w3.org/wiki/WebSchemas#Proposals_from_and_for_Schema.org) 
 to this end.
 One suggested location for this kind of activity is the [W3C wiki](http://www.w3.org/wiki/SchemaDotOrgProcess),
-which points to the simplicity of the submission for job postings.
+which points to the simplicity of the submission for job postings. Another 
+place this work is being done is in the [Schema.org Alignment Task
+Group](http://wiki.dublincore.org/index.php/Schema.org_Alignment) of the 
+[Dublin Core Metadata Initiative](http://dublincore.org), which has a
+multi-decade history of working internationally with Web metadata in the 
+cultural heritage sector.
 
 Some of this work may already be available.
 Work is ongoing to map other vocabularies to Schema.org. 
 This provides a simpler way for organizations to expose their data through 
 Microdata and Schema.org while still maintaining their data in their current
-schema.
-The Dublin Core Metadata Initiative
-has begun an effort to do such a mapping. In each of these mappings there are 
+schema. In each of these mappings there are 
 certainly some areas where there is not overlap, so there is potential for 
 expanding Schema.org in those directions.
-
 
 Conclusion
 ----------
@@ -1089,12 +1096,10 @@ collections more discoverable and useful.
 The semantic markup of data embedded in HTML is a rapidly changing area, and much of 
 what is written here is likely to change. While this is challenging for 
 implementers, it also provides a chance for
-cultural heritage organizations to enter the conversation. 
-There is still an
-opportunity to have an impact on these technologies to improve the 
-discoverability and use of our collections and services. 
-
-
+cultural heritage organizations to enter the conversation, and build new
+tools that actually use the newly available structured data.
+There is a huge opportunity to have an impact on these technologies to improve 
+the discoverability and use of our collections and services. 
 
 
 Appendix: Resources
@@ -1110,7 +1115,7 @@ Appendix: Resources
 * [Biodiversity Heritage Library](http://www.biodiversitylibrary.org/bibliography/51518)
   Adds an "OCLC" property for a Book.
 * [Sudoc French academic union catalogue](http://www.sudoc.fr/132133520.html) 
-  Seems to only show the microdata representation to crawlers? 
+  Seems to only show the Microdata representation to crawlers? 
   [more information](http://lists.w3.org/Archives/Public/public-lld/2011Jul/0013.html)
 * [Sindice Search](http://sindice.com/search?q=schema&nq=&fq=class%3Ahttp%3A%2F%2Fschema.org%2F*%20format%3AMICRODATA&interface=guru&facet.field=domain)
   This search can be adjusted to find a specific schema.org type (class here).
@@ -1131,7 +1136,7 @@ These are tools which I have regularly used.
   way.
 * [Structured Data Linter](http://linter.structured-data.org/) 
   The best feature of this tool is the way that it displays your nested
-  microdata as nested tables, making it easy to spot problems. 
+  Microdata as nested tables, making it easy to spot problems. 
   If the Rich Snippets Testing Tool doesn't show a rich snippet for your 
   content, this is a good alternative to see what your snippets *might* 
   look like.
@@ -1141,7 +1146,7 @@ These are tools which I have regularly used.
   The code is open source, so you can run your own instance to be able
   to check your syntax while you are in development.
   This is written by folks who have been part of the conversations around
-  web vocabularies and structured data in HTML.
+  Web vocabularies and structured data in HTML.
 * [Live Microdata](http://foolip.org/microdatajs/live/)
   A good open-source tool for testing snippets of HTML marked up with
   Microdata. The [MicrodataJS source code](https://gitorious.org/microdatajs/)
@@ -1182,7 +1187,7 @@ help expose your data in a way that the search engines understand.
 
 * [Public Vocabs list](http://lists.w3.org/Archives/Public/public-vocabs/)
   Schema.org feedback and discussion has moved over to this W3C list, and other 
-  web vocabularies may join them in the future.
+  Web vocabularies may join them in the future.
 * [W3C HTML Data Task Force](http://www.w3.org/wiki/Html-data-tf)
 * [W3C Web Schemas Task Force](http://www.w3.org/2001/sw/interest/webschema.html)
 
