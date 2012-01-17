@@ -667,6 +667,19 @@ following is another option:
     <div itemscope itemtype="http://en.wikipedia.org/wiki/Plate_armour" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
       <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span><br/>
     </div>
+    
+Another possibility that would maintain compatibility with Schema.org is the
+following based on a Product Ontology example. The example objectontology.org
+URL is used here, but the Wikipedia page URL may work as well.
+
+    <div itemscope itemtype="http://schema.org/CreativeWork" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
+      <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span><br/>
+      Item Type: <link itemprop="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" href="http://objectontology.org/id/Plate_armour"> Plate armour
+    </div>
+    
+Because there are multiple possibilities to express more specific types of 
+objects, this is definitely an area where the cultural heritage community could
+come to some agreement and promote a shared approach to the problem.
 
 ### Result so far
 
