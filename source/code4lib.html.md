@@ -678,8 +678,9 @@ URL is used here, but the Wikipedia page URL may work as well.
     </div>
     
 Because there are multiple possibilities to express more specific types of 
-objects, this is definitely an area where the cultural heritage community could
-come to some agreement and promote a shared approach to the problem.
+objects, each with their own strengths, this is definitely an area where the 
+cultural heritage community could come to some agreement and promote a shared 
+approach to the problem.
 
 ### Result so far
 
