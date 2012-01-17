@@ -659,9 +659,10 @@ This kind of link also begins to make Microdata more linkable data.
       Item Type: <link itemprop="objectType" href="http://objectontology.org/id/Plate_armour"> Plate armour
     </div>
 
-Although it could be argued that the addition of `objectType` isn't actually
+Although it could be argued that the addition of `objectType` is not actually
 necessary since the Microdata data model allows for `itemtype` to be used
-with Wikipedia URLs:
+with Wikipedia URLs. If compatibility with Schema.org is not a concern the
+following is another option:
 
     <div itemscope itemtype="http://en.wikipedia.org/wiki/Plate_armour" itemid="http://www.philamuseum.org/collections/permanent/71286.html">
       <span itemprop="name">Gorget (neck defense) and Cuirass (torso defense), for use in the field</span><br/>
